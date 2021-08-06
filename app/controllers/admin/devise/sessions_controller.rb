@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Public::Devise::SessionsController < Devise::SessionsController
+class Admin::Devise::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,8 +25,8 @@ class Public::Devise::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    admin = Admin.guest
+    sign_in admin
+    redirect_to admin_root_path, notice: 'ゲスト管理者としてログインしました。'
   end
 end

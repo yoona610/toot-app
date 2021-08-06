@@ -1,5 +1,5 @@
 <h2>Log in</h2>
-<%= link_to "ゲストログイン（会員）", users_guest_sign_in_path, method: :post %>
+<%= link_to "ゲストログイン（管理者）", admin_guest_sign_in_path, method: :post %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">

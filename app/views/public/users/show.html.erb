@@ -1,0 +1,12 @@
+<!--マイページ（会員詳細ページ）-->
+<div class="row d-flex mt-5">
+  <div class="col-md-2 col-sm-1 text-md-right">
+    <%= link_to (attachment_image_tag @user, :profile_image_id, format: 'jpg', fallback: 'no_image.jpg', size:'80x80', class:'rounded-circle'), user_path(@user.id) %>
+  </div>
+
+  <div class="col-md-4 col-sm-4">
+    <h3><%= link_to @user.name, user_path(@user.id), class:'jp-font-pop font-color-green' %></h3>
+    <p class='jp-font-pop pr-1'><%= @user.introduction %></p>
+    <p><%= link_to '編集する', edit_user_path(current_user.id) %></p>
+  </div>
+</div>
