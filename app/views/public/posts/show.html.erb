@@ -1,0 +1,25 @@
+<!---------- 投稿詳細 -------------->
+  <div class="row">
+    <div class="mx-auto mt-5">
+      <h2 class="jp-font-classic px-3"><%= @post.title %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <p class="jp-font-classic">by
+      <% if admin_signed_in? %>
+        <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id), class:'font-color-green' %></p>
+      <% else %>
+        <%= link_to "#{@post.user.name}", user_path(@post.user.id), class:'font-color-green' %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <%= attachment_image_tag @post, :post_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  </div>
+
+  <div class="row mt-4 mb-3">
+    <p style="width: 450px" class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
+  </div>

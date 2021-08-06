@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'public/homes#top'
+
   #deviseのルーティング
   devise_for :admins,
     path: :admin,
@@ -25,17 +27,17 @@ Rails.application.routes.draw do
 
   #publicのルーティング
   scope module: :public do
-    root to: 'homes#top'
     get 'about' => 'homes#about'
 
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:show, :edit, :update]
+    resources :posts
   end
 
   #adminのルーティング
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'users#index'
     resources :users, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

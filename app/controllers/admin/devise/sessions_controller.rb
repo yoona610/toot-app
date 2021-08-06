@@ -24,9 +24,22 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  before_action :reset_status, only: [:create]
+
+  def after_sign_in_path_for(resourse)
+    admin_root_path
+  end
+
   def guest_sign_in
+    reset_session
     admin = Admin.guest
     sign_in admin
-    redirect_to admin_root_path, notice: 'ゲスト管理者としてログインしました。'
+    redirect_to admin_user_path(current_admin), notice: 'ゲスト管理者としてログインしました。'
+  end
+
+  def reset_status
+    if user_signed_in?
+      sign_out current_user
+    end
   end
 end

@@ -27,13 +27,21 @@ class Public::Devise::SessionsController < Devise::SessionsController
 
   before_action :reject_deleted_user, only: [:create]
 
+  def after_sign_in_path_for(resourse)
+    user_path(current_user)
+  end
+
   def guest_sign_in
+    reset_session
     user = User.guest
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(current_user), notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def reject_deleted_user
+    if admin_signed_in?
+      sign_out current_admin
+    end
     user = User.find_by(email: params[:user][:email])
     if user
       if user.valid_password?(params[:user][:password]) && user.is_deleted

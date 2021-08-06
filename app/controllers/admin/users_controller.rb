@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
   def edit
   end
 
-  def update #reset_session?
+  def update
     if @user.update(user_params)
       redirect_to admin_user_path(@user), notice: "会員ステータスを更新しました"
     else
