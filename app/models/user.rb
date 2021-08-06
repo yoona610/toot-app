@@ -12,6 +12,14 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  def is_deleted_status
+    if is_deleted == true
+      "退会済"
+    elsif is_deleted == false
+      "有効"
+    end
+  end
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-  #showを除いて、ユーザーがログインしているか確認
   before_action :authenticate_user!, except: [:show]
   before_action :set_user, only: [:edit, :show, :update]
   before_action :set_current_user, only: [:unsubscribe, :withdraw]
