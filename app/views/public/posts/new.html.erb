@@ -2,7 +2,7 @@
 <div class="container mt-4 align-imtes-center">
   <div class='bg-light mx-auto mb-5'>
 
-  <%= form_with model: @post, url: {controller: 'posts', action: 'index' }, local:true do |f| %>
+  <%= form_with model: @post, local:true do |f| %>
     <div class="row">
       <div class="form-group mt-5 mx-auto">
         <%= f.text_field :title, placeholder: "タイトル", size: "45", class:'py-2 px-2' %>

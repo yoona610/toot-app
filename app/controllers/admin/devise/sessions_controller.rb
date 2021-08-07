@@ -40,6 +40,7 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   def reset_status
     if user_signed_in?
       sign_out current_user
+      sign_out current_admin
     end
   end
 end

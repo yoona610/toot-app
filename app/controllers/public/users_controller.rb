@@ -19,7 +19,7 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
-    if @user.id == 2
+    if @user.id == 1
       redirect_to root_path, alert: "恐れ入りますが、ゲスト会員では退会できません。"
     else
       render :unsubscribe

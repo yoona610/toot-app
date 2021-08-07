@@ -40,6 +40,7 @@ class Public::Devise::SessionsController < Devise::SessionsController
 
   def reject_deleted_user
     if admin_signed_in?
+      sign_out current_user
       sign_out current_admin
     end
     user = User.find_by(email: params[:user][:email])

@@ -25,7 +25,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲスト会員"
       user.introduction = "ゲスト・アカウント（会員）です。"
-      user.id = 2
+      user.id = 1
     end
   end
 end
