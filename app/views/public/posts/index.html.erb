@@ -1,6 +1,6 @@
 <!--------- 投稿一覧画面 ------------>
 <div class="container">
-  <h3 class="mt-5 pl-3 mb-0 jp-font-classic font-weight-bold font-color-green"><span class="fas fa-utensils font-color-green"></span>投稿一覧</h3>
+  <h3 class="mt-5 pl-3 mb-0 jp-font-classic font-weight-bold font-color-green">投稿一覧</h3>
 
   <div class="row">
     <div class="col-md-12">
@@ -11,12 +11,12 @@
   <div class="row mb-5">
     <div class="d-flex flex-wrap">
       <% @latest_posts.each do |latest_post| %>
-        <div style='width: 220px' class="card text-center mt-3 p-3 ml-4 mb-3">
+        <div style='width: 20%' class="card text-center mt-3 p-3 ml-4 mb-3">
           <%= latest_post.title %>
           <%= latest_post.introduction %>
-          <%= attachment_image_tag latest_post, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= attachment_image_tag latest_post, :post_image, :fill, 200, 200, format: 'jpeg', class: 'm-2' %>
           <p class='en-font-pop mr-1 mt-2 mb-0'>by
-            <%= link_to latest_post.user.name, user_path(latest_post.user), class:'card-text text-wrap font-color-green jp-font-pop' %>
+            <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap font-color-green jp-font-pop' %>
           </p>
         </div>
       <% end %>
@@ -25,7 +25,7 @@
 
   <div class="row">
     <div class="mx-auto mb-5">
-      <%= paginate @latest_posts %>
+      <%#= paginate @latest_posts %>
     </div>
   </div>
 </div>

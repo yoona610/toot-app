@@ -38,6 +38,7 @@ class Public::Devise::SessionsController < Devise::SessionsController
     redirect_to user_path(current_user), notice: 'ゲストユーザーとしてログインしました。'
   end
 
+#同一ユーザーによる重複ログインを制限
   def reject_deleted_user
     if admin_signed_in?
       sign_out current_user

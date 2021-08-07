@@ -33,7 +33,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def prohibit_guest_withdraw
-    if @user.id == 2
+    if @user.id == 1
       redirect_to admin_users_path, alert: "ゲスト会員は退会できません。"
     end
   end

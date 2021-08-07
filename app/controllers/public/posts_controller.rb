@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   before_action :set_correct_user, except: [:index, :new, :create]
 
   def index
-    @latest_posts = Post.all.where(is_draft: false)
+    @latest_posts = Post.where(is_draft: false)
   end
 
   def new
@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     # 投稿ボタンを押下した場合
-    if params[:post]
+    if params[:save_post]
       if @post.save(context: :publicize)
         redirect_to post_path(@post), notice: "投稿しました！"
       else
@@ -77,7 +77,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :introduction, :post_image_id, :commentable, :is_draft)
+    params.require(:post).permit(:user_id, :title, :introduction, :post_image, :commentable, :is_draft)
   end
 
   def set_post
