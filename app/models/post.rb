@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :ingredients, dependent: :destroy
+  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda {|attributes| attributes[:name].blank?}
+
   attachment :post_image
 
   with_options presence: true, on: :publicize do

@@ -7,8 +7,10 @@ class Public::PostsController < ApplicationController
     @latest_posts = Post.where(is_draft: false)
   end
 
+  #親モデル.子モデル.buildで子モデルのインスタンス作成
   def new
     @post = Post.new
+    @post_ingredients = @post.ingredients.build
   end
 
   def create
@@ -77,7 +79,8 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :introduction, :post_image, :commentable, :is_draft)
+    params.require(:post).permit(:user_id, :title, :introduction, :post_image, :commentable, :is_draft,
+                                  ingredients_attributes:[:id, :name, :shop_name, :price, :_destroy])
   end
 
   def set_post

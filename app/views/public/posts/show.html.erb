@@ -29,6 +29,28 @@
 </div>
 
 <div class="row mt-4">
+  <table style="width: 60%" class="table table-borderless mx-auto">
+    <thead class="border-bottom">
+      <th class="d-flex pb-0 mb-2">
+        <h5 class="mb-0 jp-font-classic">材料</h5>
+        <p class="mb-0 ml-1 pt-1 jp-font-classic"></p>
+      </th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @post.ingredients.each do |ingredient| %>
+      <tr>
+        <td style="width: 45%" class='pt-4 pl-4'><%= ingredient.name %></td>
+        <td style="width: 10%" class='pt-4'><%= ingredient.shop_name %></td>
+        <td style="width: 10%" class='pt-4'><%= ingredient.price %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row mt-4">
   <div class="mx-auto">
     <% if user_signed_in? && @post.user_id == current_user.id %>
       <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-sm btn-warning text-white mb-4' %></u>
