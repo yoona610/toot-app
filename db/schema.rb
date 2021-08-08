@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_08_07_083343) do
     t.string "title"
     t.string "post_image_id"
     t.text "introduction"
-    t.boolean "commentable"
+    t.boolean "commentable", default: false, null: false
     t.boolean "is_draft", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :post_image_id
       t.text :introduction
-      t.boolean :commentable
+      t.boolean :commentable, default: false, null: false
       t.boolean :is_draft, default: false, null: false
       t.timestamps
     end

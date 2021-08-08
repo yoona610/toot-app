@@ -28,6 +28,17 @@
   <p style="width: 450px" class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
 </div>
 
+<div class="row mt-2">
+  <div class=" mx-auto">
+    <p>コメントステータス</p>
+    <% if @post.commentable == false %>
+      <p><%= @post.commentable_status %></p>
+    <% else %>
+      <p><%= @post.commentable_status %></p>
+    <% end %>
+  </div>
+</div>
+
 <div class="row mt-4">
   <table style="width: 60%" class="table table-borderless mx-auto">
     <thead class="border-bottom">

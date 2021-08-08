@@ -19,3 +19,25 @@
 //= require turbolinks
 //= require_tree .
 //= require cocoon
+
+$(document).on('turbolinks:load', function() {
+  $(function() {
+   function check_to_hide_or_show_add_link() {
+     if ($('#ingredients .nested-fields:visible').length == 5) {
+       $('#ingredients .links a').hide();
+     } else {
+       $('#ingredients .links a').show();
+     }
+   }
+
+   $('#ingredients').on('cocoon:after-insert', function() {
+     check_to_hide_or_show_add_link();
+   });
+
+   $('#ingredients').on('cocoon:after-remove', function() {
+     check_to_hide_or_show_add_link();
+   });
+
+   check_to_hide_or_show_add_link();
+  });
+});

@@ -27,6 +27,16 @@
       </div>
     </div>
 
+    <tr class="form-group text-danger">
+      <td style="width:25%" class="font-weight-bold text-danger">コメントステータス</td>
+      <td>
+        <%= f.radio_button :commentable, :false %>
+        <%= f.label :commentable, "コメント不可", class:' text-danger' %>
+        <%= f.radio_button :commentable, :true %>
+        <%= f.label :commentable, "コメント許可", class:' text-danger' %>
+      </td>
+    </tr>
+
     <div class="ingredients">
       <div class="mx-auto">
         <%= f.fields_for :ingredients do |t| %>
