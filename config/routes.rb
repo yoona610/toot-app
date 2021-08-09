@@ -31,8 +31,17 @@ Rails.application.routes.draw do
 
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
-    resources :users, only: [:show, :edit, :update]
-    resources :posts
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :follows, :followers
+      end
+      resource :relationships, only: [:create, :destroy]
+    end
+    resources :posts do
+      resource :likes, only: [:create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
+      resources :comments, only:[:create, :destroy]
+    end
   end
 
   #adminのルーティング

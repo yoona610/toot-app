@@ -33,6 +33,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments.reverse_order
   end
 
   def edit

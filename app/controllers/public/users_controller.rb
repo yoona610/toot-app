@@ -5,6 +5,8 @@ class Public::UsersController < ApplicationController
   before_action :set_correct_user, only: [:edit, :update]
 
   def show
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def edit
@@ -31,6 +33,16 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path
     flash[:notice] = "ご利用いただき、ありがとうございました。"
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user.reverse_order
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_user.reverse_order
   end
 
   private
