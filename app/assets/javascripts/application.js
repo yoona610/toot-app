@@ -34,28 +34,3 @@ document.addEventListener("turbolinks:load", function() {
     });
   });
 })
-// 追加
-// var minCount = 1;
-// var maxCount = 6;
-
-// $(function(){
-// $('.add_fields').on('click', function(){
-//   var inputCount = $('#ingredients .unit').length;
-//   if (inputCount < maxCount){
-//     var element = $('#ingredients .unit:last-child').clone(true);
-//     var inputList = element[0].querySelectorAll('input[type="text"]');
-//     for (var i = 0; i < inputList.length; i++) {
-//       inputList[i].value = "";
-//     }
-//     $('#ingredients').parent().append(element);
-//   }
-// });
-
-// 削除
-// $('.remove_fields').on('click', function(){
-//   var inputCount = $('#ingredients').length;
-//   if (inputCount > minCount){
-//     $(this).parents('.unit').remove();
-//   }
-// });
-// });
