@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_063902) do
+ActiveRecord::Schema.define(version: 2021_08_10_072306) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 2021_08_09_063902) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "chat_room_id"
+    t.integer "user_id"
+    t.integer "admin_id"
+    t.boolean "is_admin", default: false, null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_chats_on_admin_id"
+    t.index ["chat_room_id"], name: "index_chats_on_chat_room_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|

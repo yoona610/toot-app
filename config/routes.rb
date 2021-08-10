@@ -42,12 +42,14 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only:[:create, :destroy]
     end
+    resource :chats, only: [:show, :create]
   end
 
   #adminのルーティング
   namespace :admin do
     root to: 'users#index'
     resources :users, only: [:index, :show, :edit, :update]
+    resources :chats, only: [:index, :show, :create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

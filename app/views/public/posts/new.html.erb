@@ -36,24 +36,23 @@
     </tr>
 
     <!--材料のフォームを追加・削除-->
-    <!--<div id="ingredients">-->
-      <div class="mx-auto">
+    <div class="mx-auto">
+      <div id="ingredients">
         <%= f.fields_for :ingredients do |t| %>
           <%= render "public/posts/ingredient_fields", f: t %>
         <% end %>
       </div>
-    <!--</div>-->
+    </div>
 
     <div id="detail-association-insertion-point"></div>
 
-    <div class="col-10 mx-auto mt-2"> 
-    <!--id="hide-button"-->
+    <div class="col-10 mx-auto mt-2 add-ingredient">
       <%= link_to_add_association "+フォームを追加", f, :ingredients,
-        class: "btn btn-secondary btn-block",
+        class: "btn btn-secondary btn-block"
         data: {
         association_insertion_node: '#detail-association-insertion-point',
-        association_insertion_method: 'after'
-        }%>
+        association_insertion_method: 'after'}
+        %>
     </div>
 
     <div class="row mt-4 pb-5">

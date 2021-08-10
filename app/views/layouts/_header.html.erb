@@ -25,6 +25,9 @@
             <%= link_to "会員一覧", admin_users_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "お問い合わせ", admin_chats_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>

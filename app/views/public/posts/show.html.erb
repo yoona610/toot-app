@@ -20,22 +20,12 @@
     <%= attachment_image_tag @post, :post_image, :fill, 100, 100, format: 'jpeg' %>
   </div>
 </div>
-<!--いいねボタン-->
 <div class="row mt-4 mb-3">
   <p style="width: 450px" class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
-  
-<!--ブックマークボタン-->
-  <p style="width: 450px" class="mx-auto text-wrap text-center px-3">
-    <% if @post.bookmarked_by?(current_user) %>
-      <%= link_to post_bookmarks_path(@post), method: :delete, class: "bookmark_btn" do %>
-        ★<%= @post.bookmarks.count %> ブックマーク
-      <% end %>
-    <% else %>
-      <%= link_to post_bookmarks_path(@post), method: :post, class: "bookmark_btn" do %>
-        ☆<%= @post.bookmarks.count %> ブックマーク
-      <% end %>
-    <% end %>
-   </p>
+  <!--いいねボタン-->
+  <div id="like_<%= @post.id %>"><%= render "public/likes/like-btn", like_post: @post %></div>
+  <!--ブックマークボタン-->
+  <div id="book_<%= @post.id %>"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
 </div>
 
 <!--材料のフォーム追加・削除-->
@@ -80,28 +70,17 @@
     <% end %>
   </div>
 </div>
-
-<div class="comments ml-5 mt-5">
-  <% if @post.commentable == true %>
-    <%= form_with(model:[@post, @comment], local: true) do |f| %>
-      <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-      <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-    <% end %>
-    <p>コメント件数：<%= @comments.count %></p>
-    <div class="comments-index mb-2">
-      <% @comments.each do |comment| %>
-        <%= comment.user.name %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-        <div class="d-flex">
-          <%= comment.comment %>
-          <% if comment.user == current_user %>
-            <div class="comment-delete">
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn-sm btn-danger" %>
-            </div>
-          <% end %>
-        </div>
+<div class="row mt-4">
+  <div class="mx-auto">
+    <% if @post.commentable == true %>
+      <%= form_with model:[@post, @comment] do |f| %>
+        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
+        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
       <% end %>
-    </div>
-  <% end %>
-  <%#= paginate @comments %>
+      <div class="comments ml-5 mt-5">
+          <div id="comment_<%= @post.id %>"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
+        <%#= paginate @comments %>
+      </div>
+    <% end %>
+  </div>
 </div>

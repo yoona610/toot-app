@@ -22,15 +22,15 @@
         <td style="width:25%" class="font-weight-bold text-danger">会員ステータス</td>
         <td>
           <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted, "有効", class:' text-danger' %><br />
+          <%= f.label :is_deleted, "有効", class: 'text-danger' %><br />
           <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "退会済", class:' text-danger' %>
+          <%= f.label :is_deleted, "退会済", class: 'text-danger' %>
         </td>
       </tr>
     </table>
 
     <div class="d-flex mt-4 ml-2">
-      <%= f.submit '会員ステータスを変更', class:'btn btn-sm btn-danger py-0', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
+      <%= f.submit '会員ステータスを変更', class: 'btn btn-sm btn-danger py-0', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
       <%= link_to "戻る", admin_user_path(@user.id), class: 'btn btn-sm btn-secondary ml-4' %>
     </div>
     <% end %>

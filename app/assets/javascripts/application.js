@@ -20,25 +20,42 @@
 //= require_tree .
 //= require cocoon
 
-$(document).on('turbolinks:load', function() {
-  $(function() {
-  // limits the number of ingredients
-  $('#ingredients').on('cocoon:after-insert', function() {
-    check_to_hide_or_show_add_link();
-  });
-
-  $('#ingredients').on('cocoon:after-remove', function() {
-    check_to_hide_or_show_add_link();
-  });
-
-  check_to_hide_or_show_add_link();
-s
-  function check_to_hide_or_show_add_link() {
-    if ($('#ingredients .nested-fields:visible').length == 5) {
-      $('#hide-button').hide();
-    } else {
-      $('#hide-button').show();
+document.addEventListener("turbolinks:load", function() {
+  $('.add_fields').on("click", function () {
+    if ($('.nested-fields').length == 5) {
+      $('.add_fields').hide();
     }
-  }
-  })
-});
+    $('.remove_fields').on("click", function () {
+        console.log(('.nested-fields').length)
+
+      if ($('.nested-fields').length < 7 ) {
+        $('.add_fields').show();
+      }
+    });
+  });
+})
+// 追加
+// var minCount = 1;
+// var maxCount = 6;
+
+// $(function(){
+// $('.add_fields').on('click', function(){
+//   var inputCount = $('#ingredients .unit').length;
+//   if (inputCount < maxCount){
+//     var element = $('#ingredients .unit:last-child').clone(true);
+//     var inputList = element[0].querySelectorAll('input[type="text"]');
+//     for (var i = 0; i < inputList.length; i++) {
+//       inputList[i].value = "";
+//     }
+//     $('#ingredients').parent().append(element);
+//   }
+// });
+
+// 削除
+// $('.remove_fields').on('click', function(){
+//   var inputCount = $('#ingredients').length;
+//   if (inputCount > minCount){
+//     $(this).parents('.unit').remove();
+//   }
+// });
+// });
