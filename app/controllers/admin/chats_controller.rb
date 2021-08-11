@@ -27,6 +27,6 @@ class Admin::ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:message, :chat_room_id)
+    params.require(:chat).permit(:message, :chat_room_id, :is_admin)
   end
 end

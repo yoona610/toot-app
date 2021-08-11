@@ -21,6 +21,7 @@
       <div class="form-group mb-1 mx-auto">
         <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力", class: 'p-3 clear-form' %>
         <%= f.hidden_field :chat_room_id %>
+        <%= f.hidden_field :is_admin, value: true %>
       </div>
     </div>
     <div class="row mb-5">
