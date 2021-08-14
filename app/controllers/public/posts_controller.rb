@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, except: [:index, :new, :create]
-  before_action :set_correct_user, except: [:index, :new, :create]
+  before_action :set_correct_user, except: [:index, :new, :create, :show]
 
   def index
     @latest_posts = Post.where(is_draft: false)

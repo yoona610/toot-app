@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :activities, as: :subject, dependent: :destroy
+
 
   validates :introduction, length: { maximum: 40 }
   with_options presence: true do

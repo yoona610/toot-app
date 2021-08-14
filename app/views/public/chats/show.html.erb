@@ -31,9 +31,10 @@
     </div>
   </div>
   <% end %>
-<% if @chat_room.response_status == false %>
-  <%= link_to "解決した", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
-<% else %>
-  <%= link_to "未解決", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
-<% end %>
+
+  <% if @chat_room.response_status == false %>
+    <%= link_to "解決した", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
+  <% else %>
+    <%= link_to "未解決", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
+  <% end %>
 </div>

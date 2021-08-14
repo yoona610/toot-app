@@ -5,6 +5,7 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :chats, dependent: :destroy
+  has_many :activities, as: :subject, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |admin|

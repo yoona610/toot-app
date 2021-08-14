@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     end
     resource :chats, only: [:show, :create]
     resources :chat_rooms ,only: [:update]
+    resources :activities, only: [:index] do
+      patch :read, on: :member
+    end
   end
 
   #adminのルーティング

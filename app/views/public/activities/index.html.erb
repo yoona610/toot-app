@@ -1,0 +1,11 @@
+<% if @activities.present? %>
+  <% @activities.each do |activity| %>
+    <div class="text-center">
+      <%= render "#{activity.action_type}", activity: activity %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="text-center">
+    | お知らせはありません
+  </div>
+<% end %>

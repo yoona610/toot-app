@@ -5,7 +5,7 @@
   <%= form_with model: @post, local:true do |f| %>
     <div class="row">
       <div class="form-group mt-5 mx-auto">
-        <%= f.text_field :title, placeholder: "タイトル", size: "45", class:'py-2 px-2' %>
+        <%= f.text_field :title, placeholder: "タイトル", size: "45", class: 'py-2 px-2' %>
         <%= render 'layouts/error_messages', obj: @post, column: :title %>
       </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
         <div class="form-group mt-4 ml-md-2">
-          <%= f.text_area :introduction, placeholder: "紹介", size:"45 x 4", class:'p-2' %>
+          <%= f.text_area :introduction, placeholder: "紹介", size: "45 x 4", class: 'p-2' %>
           <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
         </div>
       </div>
@@ -24,14 +24,18 @@
           <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
         </div>
       </div>
+      <div class="form-group">
+        <%= f.label :created_at, class: 'control-label'%>
+        <%= f.datetime_field :created_at, class: 'form-control' %>
+      </div>
     </div>
     <tr class="form-group text-danger">
       <td style="width:25%" class="font-weight-bold text-danger">コメントステータス</td>
       <td>
         <%= f.radio_button :commentable, :false %>
-        <%= f.label :commentable, "コメント不可", class:' text-danger' %>
+        <%= f.label :commentable, "コメント不可", class: ' text-danger' %>
         <%= f.radio_button :commentable, :true %>
-        <%= f.label :commentable, "コメント許可", class:' text-danger' %>
+        <%= f.label :commentable, "コメント許可", class: ' text-danger' %>
       </td>
     </tr>
 
