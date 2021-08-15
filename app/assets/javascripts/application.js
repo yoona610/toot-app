@@ -21,16 +21,17 @@
 //= require cocoon
 
 document.addEventListener("turbolinks:load", function() {
+  // フォームの追加・削除ボタン
   $('.add_fields').on("click", function () {
     if ($('.nested-fields').length == 5) {
       $('.add_fields').hide();
     }
     $('.remove_fields').on("click", function () {
-        console.log(('.nested-fields').length)
-
       if ($('.nested-fields').length < 7 ) {
         $('.add_fields').show();
       }
     });
   });
 })
+
+// console.log(('.nested-fields').length)
