@@ -5,7 +5,9 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
+    # unless @post.user_id == current_user.id
     @comment.save
+    # end
   end
 
   def destroy

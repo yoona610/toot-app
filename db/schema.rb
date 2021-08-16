@@ -14,14 +14,13 @@ ActiveRecord::Schema.define(version: 2021_08_12_022614) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "admin_id"
     t.string "subject_type"
     t.integer "subject_id"
     t.integer "action_type", null: false
+    t.boolean "activity_status", default: false, null: false
     t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_activities_on_admin_id"
     t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end

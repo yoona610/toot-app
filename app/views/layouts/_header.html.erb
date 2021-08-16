@@ -1,50 +1,33 @@
-<!--ヘッダー-->
-<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to "toot", root_path, class: "navbar-brand mb-0 h1" %>
-    <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--  <span class="navbar-toggler-icon"></span>-->
-    <!--</button>-->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
+<!--header-->
+<header class="p-3">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <%= link_to "TOOT", root_path, class: "d-flex align-items-center mb-2 mb-lg-0 mr-md-4 top" %>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "HOME", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "POST", posts_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          </li>
+          <li><%= link_to "HOME", root_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "POST", posts_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "マイページ", user_path(current_user.id), class: "nav-link px-2 text" %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link px-2 text" %></li>
         <% elsif admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "会員一覧", admin_users_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "お問い合わせ", admin_chats_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
-          </li>
+          <li><%= link_to "会員一覧", admin_users_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "POST", admin_posts_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "お問い合わせ", admin_chats_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link px-2 text" %></li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "ABOUT", about_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ゲストログイン（会員）", users_guest_sign_in_path, method: :post, class: "nav-link" %>
-          </li>
+          <li><%= link_to "ABOUT", about_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "POST", posts_path, class: "nav-link px-2 text" %></li>
+          <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link px-2 text" %></li>
         <% end %>
       </ul>
+
+      <%= render 'layouts/search' %>
+
+      <div class="text-end">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-light me-2" %>
+        <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-light" %>
+      </div>
     </div>
   </div>
-</nav>
+</header>

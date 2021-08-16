@@ -4,7 +4,9 @@ class Public::BookmarksController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     bookmark = current_user.bookmarks.new(post_id: @post.id)
+    # unless @post.user_id == current_user.id
     bookmark.save
+    # end
   end
 
   def destroy

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
+    get 'search' => 'searches#index', as: 'public_index'
 
     resources :users, only: [:show, :edit, :update] do
       member do
@@ -53,7 +54,9 @@ Rails.application.routes.draw do
   #adminのルーティング
   namespace :admin do
     root to: 'users#index'
+    get 'search' => 'searches#index', as: 'index'
     resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
     resources :chats, only: [:index, :show, :create]
      resources :activities, only: [:index] do
       patch :read, on: :member

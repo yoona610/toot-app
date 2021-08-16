@@ -2,7 +2,7 @@ class Public::ActivitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @activities = Activity.where(user_id: current_user.id)
+    @activities = Activity.where(user_id: current_user.id, activity_status: "user_activity")
   end
 
   def read

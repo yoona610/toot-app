@@ -17,6 +17,25 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+header .top{
+  color: #a7e28f;
+  font-size: 30px;
+}
+
+header .text{
+  color: #d2e7bf;
+  font-size: 20px;
+}
+
+footer .top{
+  color: #a7e28f;
+  font-size: 30px;
+}
+
+footer .text{
+  color: #d2e7bf;
+}
+
 .activity_read{
   background-color: gray;
 }
@@ -26,5 +45,5 @@ a{
 }
 
 a:hover{
-  color: #000;
+  color: #a7e28f;
 }

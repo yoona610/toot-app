@@ -21,6 +21,7 @@
       <div class="col-md-6 col-lg-5 mt-3 pl-4 pt-2">
         <div class="from-group mr-md-2 mt-3 ml-5 p-3 bg-white shadow-sm">
           <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
+          <%= attachment_image_tag @post, :post_image, :fill, 100, 100, format: 'jpeg' %>
           <%= f.attachment_field :post_image %>
           <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
         </div>

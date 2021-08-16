@@ -1,5 +1,4 @@
-<!---------- 投稿詳細 -------------->
-
+<!---------- 管理者側：投稿詳細 -------------->
 <div class="row">
   <div class="mx-auto mt-5">
     <h2 class="jp-font-classic px-3"><%= @post.title %></h2>
@@ -76,18 +75,9 @@
   </div>
 </div>
 
-<!--コメント投稿フォーム-->
-<div class="row mt-4">
-  <div class="mx-auto">
-    <% if @post.commentable == true %>
-      <%= form_with model:[@post, @comment] do |f| %>
-        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-      <% end %>
-      <div class="comments ml-5 mt-5">
-          <div id="comment_<%= @post.id %>"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
-        <%#= paginate @comments %>
-      </div>
-    <% end %>
+<div class="row">
+  <div class="mb-5 mx-auto">
+    <%= link_to "投稿を削除", "/admin/posts/#{@post.id}", method: :delete, data: {confirm: "本当にレシピを削除しますか？"}, class: 'btn- btn-sm btn-danger py-2' %>
   </div>
+</div>
 </div>

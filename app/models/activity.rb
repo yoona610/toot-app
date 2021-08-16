@@ -5,7 +5,8 @@ class Activity < ApplicationRecord
 
   include Rails.application.routes.url_helpers
 
-  enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, bookmarked_to_own_post: 2, followed_me: 3, chated_me: 4 }
+  enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, bookmarked_to_own_post: 2, followed_me: 3, chated_me: 4, chated_admin: 5 }
+  enum activity_status: { user_activity: false, admin_activity: true }
   enum read: { unread: false, read: true }
 
   def transition_path
@@ -20,6 +21,8 @@ class Activity < ApplicationRecord
       user_path(subject.follower)
     when :chated_me
       chats_path(subject.chat_room)
+    when :chated_admin
+      admin_chat_path(subject.chat_room)
     end
   end
 end

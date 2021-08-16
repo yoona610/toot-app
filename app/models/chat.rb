@@ -9,6 +9,10 @@ class Chat < ApplicationRecord
   private
 
   def create_activities
-    Activity.create!(subject: self, user: self.chat_room.user, action_type: :chated_me)
+    if is_admin == true
+      Activity.create!(subject: self, user: self.chat_room.user, action_type: :chated_me, activity_status: :user_activity)
+    else
+      Activity.create!(subject: self, user: self.chat_room.user, action_type: :chated_admin, activity_status: :admin_activity)
+    end
   end
 end

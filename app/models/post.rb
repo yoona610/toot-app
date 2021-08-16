@@ -23,6 +23,10 @@ class Post < ApplicationRecord
     bookmarks.where(user_id: user.id).exists?
   end
 
+  def self.search_for(contents)
+    Post.where("title LIKE?", "%#{contents}%")
+  end
+
   def commentable_status
     if commentable == false
       "コメント不可"

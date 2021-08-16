@@ -56,4 +56,8 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def self.search_for(contents)
+    User.where("name LIKE?", "%#{contents}%")
+  end
 end

@@ -4,6 +4,7 @@
     <%= form_with model: @user, local:true do |f| %>
       <div class="form-group mt-2">
         <%= f.label :profile_image, 'プロフィール写真:', class: 'mb-1 font-weight-bold' %><br />
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: 'no_image.jpg' %>
         <%= f.attachment_field :profile_image %>
       </div>
 

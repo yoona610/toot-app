@@ -1,9 +1,13 @@
-<% if like_post.liked_by?(current_user) %>
-  <%= link_to post_likes_path(like_post), method: :delete, remote: true, class: "like_btn" do %>
-    ♥<%= like_post.likes.count %> いいね
+<% unless like_post.user_id == current_user.id %>
+  <% if like_post.liked_by?(current_user) %>
+    <%= link_to post_likes_path(like_post), method: :delete, remote: true, class: "like_btn" do %>
+      ♥<%= like_post.likes.count %> いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(like_post), method: :post, remote: true, class: "like_btn" do %>
+      ♡<%= like_post.likes.count %> いいね
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(like_post), method: :post, remote: true, class: "like_btn" do %>
-    ♡<%= like_post.likes.count %> いいね
-  <% end %>
+  <p class="text-danger">♥<%= like_post.likes.count %>いいね</p>
 <% end %>
