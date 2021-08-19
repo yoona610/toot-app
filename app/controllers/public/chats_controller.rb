@@ -16,6 +16,7 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.create(chat_params)
     @chats = @chat.chat_room.chats
+    @chat.chat_room.update(response_status: false)
   end
 
   private

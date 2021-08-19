@@ -34,7 +34,7 @@ class Admin::Devise::SessionsController < Devise::SessionsController
     reset_session
     admin = Admin.guest
     sign_in admin
-    redirect_to admin_user_path(current_admin), notice: 'ゲスト管理者としてログインしました。'
+    redirect_to admin_users_path, notice: 'ゲスト管理者としてログインしました。'
   end
 
 #同一ユーザーによる重複ログインを制限

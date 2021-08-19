@@ -8,25 +8,25 @@
     </div>
   </div>
 
-
-  <div class="d-flex flex-wrap">
+  <div class="flex-wrap">
+    <div class="row justify-content-center">
     <% @latest_posts.each do |latest_post| %>
-      <div style='width: 200px' class="card text-center mt-3 p-3 ml-4 mb-3">
-        <%= latest_post.title %>
-        <%= link_to post_path(latest_post) , data: {"turbolinks" => false} do %>
-          <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: 'm-2' %>
+      <div class="card text-center m-3 mb-3 col-md-3 col-sm-5">
+        <p class="mt-2"><%= latest_post.title %></p>
+        <%= link_to post_path(latest_post) do %>
+          <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
         <% end %>
-        <p class="caption"><%= "#{latest_post.comments.count} コメント" %></p>
-        <p class='en-font-pop mr-1 mt-2 mb-0'>by
-          <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap font-color-green jp-font-pop' %>
+        <p class='mr-1 mt-2 mb-2'>by
+          <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap' %>
         </p>
       </div>
     <% end %>
+    </div>
   </div>
 
   <div class="row">
     <div class="mx-auto mb-5">
-      <%#= paginate @latest_posts %>
+      <%= paginate @latest_posts %>
     </div>
   </div>
 </div>

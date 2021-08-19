@@ -53,7 +53,6 @@ Rails.application.routes.draw do
 
   #adminのルーティング
   namespace :admin do
-    root to: 'users#index'
     get 'search' => 'searches#index', as: 'index'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]

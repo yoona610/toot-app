@@ -9,8 +9,6 @@ class Public::ChatRoomsController < ApplicationController
     else
       @chat_room.response_status = true
     end
-
     @chat_room.save
-    redirect_to chats_path(@chat)
   end
 end

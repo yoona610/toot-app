@@ -3,11 +3,9 @@ class Public::CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.new(comment_params)
+    @comment = current_user.comments.new(current_user: current_user.id, comment: params[:comment][:comment])
     @comment.post_id = @post.id
-    # unless @post.user_id == current_user.id
     @comment.save
-    # end
   end
 
   def destroy
@@ -18,6 +16,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    # params.require(:comment).permit(:comment)
+    {current_user: current_user.id, comment: params[:comment][:comment]}
   end
 end

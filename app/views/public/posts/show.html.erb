@@ -27,11 +27,12 @@
 </div>
 <div class="row mt-4 mb-3">
   <p style="width: 450px" class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
-  <!--いいねボタン-->
-  <div id="like_<%= @post.id %>"><%= render "public/likes/like-btn", like_post: @post %></div>
-  <!--ブックマークボタン-->
-  <div id="book_<%= @post.id %>"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
 </div>
+
+<!--いいねボタン-->
+<div id="like_<%= @post.id %>" class="text-center"><%= render "public/likes/like-btn", like_post: @post %></div>
+<!--ブックマークボタン-->
+<div id="book_<%= @post.id %>" class="text-center"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
 
 <!--材料のフォーム追加・削除-->
 <div class="row mt-4">
@@ -67,12 +68,14 @@
 <!--コメント一覧-->
 <div class="row mt-2">
   <div class=" mx-auto">
-    <p>コメントステータス</p>
-    <% if @post.commentable == false %>
-      <p><%= @post.commentable_status %></p>
-    <% else %>
-      <p><%= @post.commentable_status %></p>
-    <% end %>
+    <p>
+      コメントステータス
+      <% if @post.commentable == false %>
+        <%= @post.commentable_status %>
+      <% else %>
+        <%= @post.commentable_status %>
+      <% end %>
+    </p>
   </div>
 </div>
 
@@ -80,13 +83,14 @@
 <div class="row mt-4">
   <div class="mx-auto">
     <% if @post.commentable == true %>
-      <%= form_with model:[@post, @comment] do |f| %>
-        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-      <% end %>
-      <div class="comments ml-5 mt-5">
-          <div id="comment_<%= @post.id %>"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
-        <%#= paginate @comments %>
+      <div class="comments">
+        <div id="comment_<%= @post.id %>"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
+        <% if user_signed_in? %>
+          <%= form_with model:[@post, @comment] do |f| %>
+            <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
+            <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>

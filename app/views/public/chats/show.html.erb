@@ -13,27 +13,23 @@
   </div>
 
   <!--チャットメッセージ投稿フォーム-->
-  <%= form_with model: @chat, remote: true do |f| %>
   <div class="row">
     <div class="error_explanation offset-md-3"></div>
   </div>
   <div class="row mt-1">
-    <div class="form-group mb-1 mx-auto">
-      <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力してください", class: 'p-3 clear-form' %>
-      <%= f.hidden_field :chat_room_id %>
-      <%= f.hidden_field :is_admin, value: false %>
-    </div>
+    <%= form_with model: @chat, remote: true do |f| %>
+      <div class="chat-area mx-auto">
+        <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力してください", class: 'p-3 clear-form' %>
+        <%= f.hidden_field :chat_room_id %>
+        <%= f.hidden_field :is_admin, value: false %>
+        <%= f.submit "送信", class: 'btn btn-sm btn-outline-secondary ml-4 chat_button'%>
+      </div>
+    <% end %>
   </div>
   <div class="row">
-    <div class="form-group offset-md-8 offset-lg-7">
-      <%= f.submit "送信", class: 'btn btn-sm btn-outline-secondary ml-4'%>
+    <div class="form-group offset-md-8 offset-lg-7" id="response_button">
+      <%= render partial: 'chat_response', locals: { chat_room: @chat.chat_room } %>
     </div>
   </div>
-  <% end %>
 
-  <% if @chat_room.response_status == false %>
-    <%= link_to "解決した", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
-  <% else %>
-    <%= link_to "未解決", chat_room_path(@chat_room.id), method: :PATCH, class: 'btn btn-sm btn-danger ml-4' %>
-  <% end %>
 </div>

@@ -8,6 +8,10 @@ class Admin::ActivitiesController < ApplicationController
   def read
     activity = Activity.find(params[:id])
     activity.read! if activity.unread?
-    redirect_to activity.transition_path
+    if activity.action_type == "chatroom_admin"
+      redirect_to activity.redirect_path
+    else
+      redirect_to activity.transition_path
+    end
   end
 end

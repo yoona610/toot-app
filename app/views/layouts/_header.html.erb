@@ -10,6 +10,18 @@
           <li><%= link_to "POST", posts_path, class: "nav-link px-2 text" %></li>
           <li><%= link_to "マイページ", user_path(current_user.id), class: "nav-link px-2 text" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link px-2 text" %></li>
+          <div class="dropdown text-end">
+            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 8px;">
+              <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', size: '32x32', class: 'rounded-circle' %>
+            </a>
+            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">新プロジェクト...</a></li>
+              <li><a class="dropdown-item" href="#">設定</a></li>
+              <li><a class="dropdown-item" href="#">プロフィール</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">サインアウト</a></li>
+            </ul>
+          </div>
         <% elsif admin_signed_in? %>
           <li><%= link_to "会員一覧", admin_users_path, class: "nav-link px-2 text" %></li>
           <li><%= link_to "POST", admin_posts_path, class: "nav-link px-2 text" %></li>
@@ -23,7 +35,8 @@
       </ul>
 
       <%= render 'layouts/search' %>
-
+      <!--<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">-->
+      <!--</a>-->
       <div class="text-end">
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-light me-2" %>
         <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-light" %>

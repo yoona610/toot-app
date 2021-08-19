@@ -5,8 +5,11 @@ class Public::UsersController < ApplicationController
   before_action :set_correct_user, only: [:edit, :update]
 
   def show
+    @user_posts = Post.where(user_id: @user, is_draft: false).order(created_at: "DESC")
+    @liked_posts = Post.includes(:user).joins(:likes).where(is_draft: false,'likes.user_id': @user.id).order('likes.created_at': "DESC")
     @following_users = @user.following_user
     @follower_users = @user.follower_user
+
   end
 
   def edit
@@ -48,7 +51,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :name, :profile_image_id, :introduction, :is_deleted)
+    params.require(:user).permit(:email, :name, :profile_image, :introduction, :is_deleted)
   end
 
   def set_user

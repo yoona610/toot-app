@@ -3,10 +3,8 @@ class Public::LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    like = current_user.likes.new(post_id: @post.id)
-    # unless @post.user_id == current_user.id
+    like = current_user.likes.new(post_id: @post.id, current_user: current_user.id)
     like.save
-    # end
   end
 
   def destroy
