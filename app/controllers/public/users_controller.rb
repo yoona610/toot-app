@@ -7,9 +7,10 @@ class Public::UsersController < ApplicationController
   def show
     @user_posts = Post.where(user_id: @user, is_draft: false).order(created_at: "DESC")
     @liked_posts = Post.includes(:user).joins(:likes).where(is_draft: false,'likes.user_id': @user.id).order('likes.created_at': "DESC")
+    @saved_posts = Post.includes(:user).joins(:bookmarks).where(is_draft: false,'bookmarks.user_id': @user.id).order('bookmarks.created_at': "DESC")
+    @draft_posts = Post.where(user_id: @user, is_draft: true).order(created_at: "DESC")
     @following_users = @user.following_user
     @follower_users = @user.follower_user
-
   end
 
   def edit

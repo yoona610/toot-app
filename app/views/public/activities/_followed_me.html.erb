@@ -1,13 +1,13 @@
 <% if activity.read == "unread" %>
-  <div class="activity_unread border border-secondary">
+  <div class="activity_unread border">
     <%= link_to read_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
-      <p class="m-0"><%= activity.subject.follower.name %>があなたをフォローしました<%= l activity.created_at, format: :short %></p>
+      <p class="m-0 p-3"><%= activity.subject.follower.name %>があなたをフォローしました<%= l activity.created_at, format: :short %></p>
     <% end %>
   </div>
 <% else %>
-  <div class="activity_read border border-secondary">
+  <div class="activity_read border">
     <%= link_to read_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
-      <p class="m-0"><%= activity.subject.follower.name %>があなたをフォローしました<%= l activity.created_at, format: :short %></p>
+      <p class="m-0 p-3"><%= activity.subject.follower.name %>があなたをフォローしました<%= l activity.created_at, format: :short %></p>
     <% end %>
   </div>
 <% end %>

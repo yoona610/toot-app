@@ -1,46 +1,58 @@
 <!--header-->
 <header class="p-3">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <%= link_to "TOOT", root_path, class: "d-flex align-items-center mb-2 mb-lg-0 mr-md-4 top" %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-main">
+    <div class="container">
+      <h1 class="m-0">
+        <%= link_to "TOOT", root_path, class: "navbar-brand d-block top" %>
+      </h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#grobalNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <div id="grobalNav" class="collapse navbar-collapse">
+
         <% if user_signed_in? %>
-          <li><%= link_to "HOME", root_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "POST", posts_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "マイページ", user_path(current_user.id), class: "nav-link px-2 text" %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link px-2 text" %></li>
           <div class="dropdown text-end">
             <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 8px;">
               <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: 'no_image.jpg', size: '32x32', class: 'rounded-circle' %>
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">新プロジェクト...</a></li>
-              <li><a class="dropdown-item" href="#">設定</a></li>
-              <li><a class="dropdown-item" href="#">プロフィール</a></li>
+              <li><%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" %></li>
+              <li><%= link_to "投稿", posts_path, class: "dropdown-item" %></li>
+              <li><%= link_to "通知", activities_path, class: "dropdown-item" %></li>
+              <li><%= link_to "お問い合わせ", chats_path, class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">サインアウト</a></li>
+              <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </div>
         <% elsif admin_signed_in? %>
-          <li><%= link_to "会員一覧", admin_users_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "POST", admin_posts_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "お問い合わせ", admin_chats_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link px-2 text" %></li>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item pl-4 active"><%= link_to "会員一覧", admin_users_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "POST", admin_posts_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "お問い合わせ", admin_chats_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "通知", admin_activities_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-center text" %></li>
+          </ul>
         <% else %>
-          <li><%= link_to "ABOUT", about_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "POST", posts_path, class: "nav-link px-2 text" %></li>
-          <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link px-2 text" %></li>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item pl-4 active"><%= link_to "ABOUT", about_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "POST", posts_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "ログイン", new_user_session_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item pl-4 active"><%= link_to "サインアップ", new_user_registration_path, class: "nav-link text-center text" %></li>
+          </ul>
         <% end %>
-      </ul>
 
-      <%= render 'layouts/search' %>
-      <!--<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">-->
-      <!--</a>-->
-      <div class="text-end">
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-light me-2" %>
-        <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-light" %>
       </div>
+      <%= render 'layouts/search' %>
     </div>
-  </div>
+  </nav>
 </header>
+
+
+
+
+
+
+
+

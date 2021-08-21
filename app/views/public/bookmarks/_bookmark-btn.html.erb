@@ -1,13 +1,13 @@
 <% if user_signed_in? %>
   <% if bookmark_post.bookmarked_by?(current_user) %>
     <%= link_to post_bookmarks_path(bookmark_post), method: :delete, remote: true, class: "bookmark_btn" do %>
-      ★<%= bookmark_post.bookmarks.count %> ブックマーク
+      <i class="fas fa-bookmark"></i> <%= bookmark_post.bookmarks.count %> 保存
     <% end %>
   <% else %>
     <%= link_to post_bookmarks_path(bookmark_post), method: :post, remote: true, class: "bookmark_btn" do %>
-      ☆<%= bookmark_post.bookmarks.count %> ブックマーク
+      <i class="far fa-bookmark"></i> <%= bookmark_post.bookmarks.count %> 保存
     <% end %>
   <% end %>
 <% else %>
-  <p class="text-danger">♥<%= bookmark_post.bookmarks.count  %>ブックマーク</p>
+  <p class="text-danger"><i class="fas fa-bookmark"></i><%= bookmark_post.bookmarks.count %> 保存</p>
 <% end %>

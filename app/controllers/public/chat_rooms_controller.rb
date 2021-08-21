@@ -4,11 +4,6 @@ class Public::ChatRoomsController < ApplicationController
   def update
     @chat_room = ChatRoom.find(params[:id])
     @chat = @chat_room.chats
-    if @chat_room.response_status == true
-      @chat_room.response_status = false
-    else
-      @chat_room.response_status = true
-    end
-    @chat_room.save
+    @chat_room.update(response_status: true)
   end
 end

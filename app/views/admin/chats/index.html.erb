@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="row">
     <h4 class="page-heading-green mx-auto mt-5 py-2 pl-4">お問い合わせ一覧（チャット）</h4>
   </div>
@@ -8,14 +9,14 @@
       <% @chats.each do |chat| %>
         <% if chat.user != nil %>
         <tr class="mt-5 border-bottom">
-          <td style="width: 12%" class='mb-2'>
+          <td style="width: 25%" class='mb-2'>
             <%= l chat.created_at %>
           </td>
           <td style="width: 30%" class="py-0 align-middle text-left">
-            <u><%= link_to chat.user.name, admin_user_path(chat.user.id) %></u>
+            <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
           </td>
           <td style="width: 35%" class="pt-0 pb-1 align-middle text-center">
-            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn btn-sm btn-outline-warning' %>
+            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn btn-md btn-outline-primary' %>
           </td>
         </tr>
         <% end %>
@@ -28,4 +29,5 @@
     <%#= paginate @chats %>
     </div>
   </div>
+
 </div>

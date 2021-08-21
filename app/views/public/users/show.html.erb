@@ -1,80 +1,135 @@
 <!--マイページ（会員詳細ページ）-->
-<div class="row d-flex mt-5">
-  <div class="col-md-2 col-sm-1 text-md-right">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: 'no_image.jpg', class: 'rounded-circle' %>
+<div class="mypage">
+  <div class="container">
+    <%= link_to "MYPAGE", user_path(@user.id), class: 'btn-sticky m-2' %>
+
+  <div class="row d-flex mt-5">
+    <div class="col-md-2 col-sm-1 text-md-right">
+      <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', class: 'rounded-circle' %>
+    </div>
+
+   <div class="d-flex">
+     <% if current_user != @user %>
+       <div id= "follow_form_<%= @user.id %>">
+         <%= render "public/relationships/follow", user: @user %>
+       </div>
+     <% end %>
+   </div>
+
+    <div class="col-md-4 col-sm-4 ml-5">
+      <h3><%= link_to @user.name, user_path(@user.id), class: 'jp-font-pop font-color-green' %></h3>
+      <p class='jp-font-pop pr-1'><%= @user.introduction %></p>
+      <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
+    </div>
   </div>
 
- <div class="d-flex">
-   <% if current_user != @user %>
-     <div id= "follow_form_<%= @user.id %>">
-       <%= render "public/relationships/follow", user: @user %>
-     </div>
-   <% end %>
- </div>
+  <!--タブ-->
+  <div class="row mt-4 mb-5">
+    <div class="col-11 wrap mx-auto">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="#tab1" class="nav-link tab-style" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab2" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
+        </li>
+        <% if user_signed_in? && @user.id == current_user.id %>
+        <li class="nav-item">
+          <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab4" class="nav-link tab-style" data-toggle="tab"><i class="far fa-hand-paper mr-1"></i>下書き</a>
+        </li>
+        <% end %>
+      </ul>
 
-  <div class="col-md-4 col-sm-4">
-    <h3><%= link_to @user.name, user_path(@user.id), class: 'jp-font-pop font-color-green' %></h3>
-    <p class='jp-font-pop pr-1'><%= @user.introduction %></p>
-    <p><%= link_to '編集する', edit_user_path(@user.id) %></p>
-  </div>
-</div>
+      <div class="tab-content px-4 pb-4 border rounded-bottom">
 
-<!--タブ-->
-<div class="row mt-4 mb-5">
-  <div class="col-11 wrap">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a href="#tab1" class="nav-link tab-style" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab2" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
-      </li>
-      <% if user_signed_in? && @user.id == current_user.id %>
-      <li class="nav-item">
-        <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab4" class="nav-link tab-style" data-toggle="tab"><i class="far fa-hand-paper mr-1"></i>下書き</a>
-      </li>
-      <% end %>
-    </ul>
-    <div class="tab-content px-4 pb-4 border rounded-bottom">
+      <!--タブ：会員本人の投稿-->
+      <div id="tab1" class="tab-pane active">
+        <% if @user_posts.empty? %>
+          <h6 class='jp-font-pop mt-4'>投稿はまだありません。</h6>
+        <% else %>
+          <div class="d-flex flex-wrap">
+            <% @user_posts.each do |user_post| %>
+              <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
+                <%= link_to post_path(user_post) do %>
+                  <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
+                <% end %>
+                <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <!--タブ：会員本人の投稿-->
 
-    <!--タブ：会員本人の投稿-->
-    <div id="tab1" class="tab-pane active">
-      <% if @user_posts.empty? %>
-        <h6 class='jp-font-pop mt-4'>投稿はまだありません。</h6>
-      <% else %>
-        <div class="d-flex flex-wrap">
-          <% @user_posts.each do |user_post| %>
-            <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
-              <%#= link_to ix_image_tag(user_post.post_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_path(user_post.id) %>
-              <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
+      <!--タブ：「いいね」した投稿-->
+      <div id="tab2" class="tab-pane">
+        <% if @liked_posts.empty? %>
+          <h6 class='jp-font-pop mt-4'>いいね！した投稿はまだありません。</h6>
+        <% else %>
+          <div class="d-flex flex-wrap">
+            <% @liked_posts.each do |liked_post| %>
+              <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+                <%= link_to post_path(liked_post) do %>
+                  <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
+                <% end %>
+                <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
+                <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2 font-color-green' %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <!--タブ：「いいね」した投稿-->
+
+      <!--タブ：保存（ブックマーク）した投稿-->
+        <div id="tab3" class="tab-pane">
+          <% if @saved_posts.empty? %>
+            <h6 class='jp-font-pop mt-4'>ブックマーク保存した投稿はまだありません。</h6>
+          <% else %>
+            <div class="d-flex flex-wrap">
+              <% @saved_posts.each do |saved_post| %>
+                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+                  <%= link_to post_path(saved_post) do %>
+                    <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
+                  <% end %>
+                  <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
+                  <p class="mb-1 pt-1 en-font-pop">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1 font-color-green' %></p>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
-      <% end %>
-    </div>
-    <!--タブ：会員本人の投稿-->
+      <!--タブ：保存（ブックマーク）した投稿-->
 
-    <!--タブ：「いいね」した投稿-->
-    <div id="tab2" class="tab-pane">
-      <% if @liked_posts.empty? %>
-        <h6 class='jp-font-pop mt-4'>いいね！した投稿はまだありません。</h6>
-      <% else %>
-        <div class="d-flex flex-wrap">
-          <% @liked_posts.each do |liked_post| %>
-            <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
-              <%#= link_to ix_image_tag(liked_post.post_recipe_image.path, url_params: { w: 150, h: 150, fit: 'crop' }, tag_options: {class: 'card-img-top'}), post_recipe_path(liked_post.id) %>
-              <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
-              <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2 font-color-green' %></p>
-            </div>
+      <!--タブ：下書き保存した投稿-->
+        <div id="tab4" class="tab-pane">
+          <% if @draft_posts.empty? %>
+            <h6 class='jp-font-pop'>下書き中の投稿はまだありません。</h6>
+          <% else %>
+            <table style='width: 90%' class="table ml-2">
+              <% @draft_posts.each do |draft_post| %>
+              <tr>
+                <!--<td class="p-2 text-center">-->
+                <!--</td>-->
+                <td class="p-2 align-middle ml-3">
+                  <%= draft_post.title %>
+                </td>
+                <td class="p-2 align-middle">
+                  <%= link_to "編集する", edit_post_path(draft_post), class: 'btn btn-md btn-outline-primary' %>
+                </td>
+              </tr>
+              <% end %>
+            </table>
           <% end %>
         </div>
-      <% end %>
-    </div>
-    <!--タブ：「いいね」した投稿-->
+      <!--タブ：下書き保存した投稿-->
+
+        </div>
 
     </div>
+  </div>
   </div>
 </div>

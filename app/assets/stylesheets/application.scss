@@ -17,38 +17,57 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+a{
+  text-decoration: none!important;
+  color: #000;
+}
+
+a:hover{
+  color: #000;
+}
+
 // ヘッダー
 header .top{
-  color: #a7e28f;
-  font-size: 30px;
+  color: #000!important;
+  font-size: 30px!important;
 }
 
 header .text{
-  color: #d2e7bf;
-  font-size: 20px;
+  color: #000!important;
 }
 
 // フッター
 footer .top{
-  color: #a7e28f;
+  color: #000;
   font-size: 30px;
 }
 
 footer .text{
-  color: #d2e7bf;
+  color: #000;
+}
+
+// 通知
+.activity-width{
+  width: 70%;
+  margin: 0 auto;
 }
 
 .activity_read{
-  background-color: gray;
+  background-color: #F2F3F4;
 }
 
-a{
-  text-decoration: none!important;
-  color: #a7e28f;
+.border{
+  border: 0!important;
+  border-bottom: 1px solid #FFFFFF!important;
 }
 
-a:hover{
-  color: #a7e28f;
+.border a{
+  text-decoration: none;
+  color: #000000;
+}
+
+.border a:hover{
+  color: #566A8B;
 }
 
 // ログイン・サインアップページ
@@ -80,4 +99,57 @@ a:hover{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+// チャット
+#response_button{
+  position: fixed;
+  right: 10%;
+  bottom: 10%;
+}
+
+.chat,
+a.chat,
+button.chat {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+a.btn--circle {
+  width: 80px;
+  height: 80px;
+  padding: 20px 0 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #000;
+  box-shadow: 0 7px 0 #d2e7bf;
+}
+
+a.btn--circle i {
+  font-size: 150%;
+}
+
+.fa-position-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: calc(50% - 0.5rem);
+}
+
+a.btn--circle:hover {
+  transform: translate(0, 4px);
+  color: #fff;
+  box-shadow: 0 3px 0 #d2e7bf;
 }

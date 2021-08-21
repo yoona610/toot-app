@@ -1,13 +1,19 @@
 <div class="container">
+  <div class="row mt-5">
+    <div class="mx-auto">
+      <h3 class="jp-font-classic text-center">通知一覧</h3>
+    </div>
+  </div>
+
   <% if @activities.present? %>
     <% @activities.each do |activity| %>
-      <div class="text-center">
+      <div class="text-center activity-width">
         <%= render "#{activity.action_type}", activity: activity %>
       </div>
     <% end %>
   <% else %>
     <div class="text-center">
-      | お知らせはありません
+      お知らせはありません
     </div>
   <% end %>
 </div>

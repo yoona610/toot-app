@@ -4,7 +4,6 @@
   <div class="row mt-5">
     <div class="mx-auto">
       <h3 class="jp-font-classic text-center">お問い合わせ</h3>
-      <p class="jp-font-classic text-center">チャット</p>
     </div>
   </div>
 
@@ -13,22 +12,17 @@
   </div>
 
   <!--チャットメッセージ投稿フォーム-->
-  <%= form_with model: [:admin, @chat], remote: true do |f| %>
-    <div class="row">
-      <div class="error_explanation offset-md-3"></div>
-    </div>
-    <div class="row mt-1">
-      <div class="form-group mb-1 mx-auto">
+  <div class="mt-1 mx-auto">
+    <div>
+      <%= form_with model: [:admin, @chat], class: "text-center", remote: true do |f| %>
         <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力", class: 'p-3 clear-form' %>
         <%= f.hidden_field :chat_room_id %>
         <%= f.hidden_field :is_admin, value: true %>
-      </div>
     </div>
-    <div class="row mb-5">
-      <div class="form-group offset-md-8 offset-lg-7">
-        <%= f.submit "送信", class: 'btn btn-sm btn-outline-secondary ml-4'%>
-      </div>
+    <div class="text-center">
+        <%= f.submit "送信", class: 'btn btn-lg btn-outline-primary' %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 
 </div>
