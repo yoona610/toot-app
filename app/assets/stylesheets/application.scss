@@ -17,10 +17,24 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+p {
+  font-family: "Noto Sans JP"!important;
+}
+
 a{
   text-decoration: none!important;
   color: #000;
+  font-family: "Noto Sans JP"!important;
 }
+
+input, label{
+  font-family: "Noto Sans JP"!important;
+}
+
+h1, h3{
+  font-family: "Noto Sans JP"!important;
+}
+
 
 a:hover{
   color: #000;
@@ -124,7 +138,7 @@ button.chat {
   vertical-align: middle;
   text-decoration: none;
   letter-spacing: 0.1em;
-  color: #212529;
+  color: #0C4271;
   border-radius: 0.5rem;
 }
 
@@ -134,8 +148,8 @@ a.btn--circle {
   padding: 20px 0 0;
   border-radius: 50%;
   color: #fff;
-  background: #000;
-  box-shadow: 0 7px 0 #d2e7bf;
+  background: #5FA4A6;
+  box-shadow: 0 7px 0 #0C4271;
 }
 
 a.btn--circle i {
@@ -151,5 +165,5 @@ a.btn--circle i {
 a.btn--circle:hover {
   transform: translate(0, 4px);
   color: #fff;
-  box-shadow: 0 3px 0 #d2e7bf;
+  box-shadow: 0 3px 0 #0C4271;
 }

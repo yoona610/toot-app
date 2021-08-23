@@ -71,7 +71,7 @@
   <div class="row mt-4">
     <div class="mx-auto">
       <% if user_signed_in? && @post.user_id == current_user.id %>
-        <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-sm btn-warning text-white mb-4' %></u>
+        <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn-flat-border mb-4' %></u>
       <% end %>
     </div>
   </div>

@@ -1,100 +1,99 @@
 <!---------- 投稿詳細 -------------->
-<div class="container">
-
-  <div class="row">
-    <div class="mx-auto mt-5">
+<div class="post-form">
+  <div class="container">
+    <p class="btn-sticky m-2">POST DETAIL</p>
+    <div class="text-center">
       <h2 class="px-3"><%= @post.title %></h2>
     </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto">
-      <p class="jp-font-classic">by
-      <% if admin_signed_in? %>
-        <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id) %></p>
-      <% else %>
-        <%= link_to "#{@post.user.name}", user_path(@post.user.id) %></p>
-      <% end %>
-    </div>
-  </div>
-  <div class="row mt-2">
-    <div class="mx-auto">
-      <%= attachment_image_tag @post, :post_image, :fill, 200, 200, format: 'jpeg' %>
-    </div>
-  </div>
-  <div class="row mt-2">
-    <div class="mx-auto">
-      <%= @post.created_at %>
-    </div>
-  </div>
-  <div class="row mt-4 mb-3">
-    <p class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
-  </div>
-
-
-  <div class="row text-center mx-auto" style="justify-content: center; width: 70%;">
-    <!--いいねボタン-->
-    <div id="like_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/likes/like-btn", like_post: @post %></div>
-    <!--ブックマークボタン-->
-    <div id="book_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
-    <!--コメント一覧-->
-    <div class="col-12 col-sm-4">
-      <% if @post.commentable == false %>
-        <p><i class="fas fa-comment-slash"></i> コメント</p>
-      <% else %>
-        <p><i class="fas fa-comment"></i> コメント</p>
-      <% end %>
-    </div>
-  </div>
-
-  <!--材料のフォーム追加・削除-->
-  <div class="row mt-4 text-center table-responsive">
-    <table style="width: 60%" class="table table-borderless table text-nowrap mx-auto">
-      <thead class="border-bottom">
-        <th class="d-flex pb-0 mb-2">
-          <h5 class="mb-0 jp-font-classic">材料</h5>
-          <p class="mb-0 ml-1 pt-1 jp-font-classic"></p>
-        </th>
-        <th></th>
-        <th></th>
-      </thead>
-      <tbody>
-        <% @post.ingredients.each do |ingredient| %>
-        <tr>
-          <td style="width: 40%" class='pt-4'><%= ingredient.name %></td>
-          <td style="width: 30%" class='pt-4'><%= ingredient.shop_name %></td>
-          <td style="width: 30%" class='pt-4'><%= ingredient.price %></td>
-        </tr>
+    <div class="row">
+      <div class="mx-auto">
+        <p class="jp-font-classic">by
+        <% if admin_signed_in? %>
+          <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id) %></p>
+        <% else %>
+          <%= link_to "#{@post.user.name}", user_path(@post.user.id) %></p>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="row mt-4">
-    <div class="mx-auto">
-      <% if user_signed_in? && @post.user_id == current_user.id %>
-        <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-md btn-outline-primary mb-4' %></u>
-      <% end %>
+      </div>
     </div>
-  </div>
-
-
-  <!--コメント投稿フォーム-->
-  <div class="row mt-4">
-    <div class="d-flex mx-auto" style="justify-content: center; width: 60%;">
-      <% if @post.commentable == true %>
-        <div id="comment_<%= @post.id %>" class="col-12 col-sm-6 text-left"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
-        <div class="col-12 col-sm-6 text-center" style="position: relative;">
-          <% if user_signed_in? %>
-            <%= form_with model:[@post, @comment] do |f| %>
-            <div style="position: absolute; bottom: 0; width: 80%">
-              <%= f.text_area :comment, class: "form-control", placeholder: "コメントする" %><br>
-              <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center" %>
-            </div>
-            <% end %>
+    <div class="row mt-2">
+      <div class="mx-auto">
+        <%= attachment_image_tag @post, :post_image, :fill, 200, 200, format: 'jpeg' %>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="mx-auto">
+        <%= @post.created_at %>
+      </div>
+    </div>
+    <div class="row mt-4 mb-3">
+      <p class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
+    </div>
+  
+  
+    <div class="row text-center mx-auto" style="justify-content: center; width: 70%;">
+      <!--いいねボタン-->
+      <div id="like_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/likes/like-btn", like_post: @post %></div>
+      <!--ブックマークボタン-->
+      <div id="book_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
+      <!--コメント一覧-->
+      <div class="col-12 col-sm-4">
+        <% if @post.commentable == false %>
+          <p><i class="fas fa-comment-slash"></i> コメント</p>
+        <% else %>
+          <p><i class="fas fa-comment"></i> コメント</p>
+        <% end %>
+      </div>
+    </div>
+  
+    <!--材料のフォーム追加・削除-->
+    <div class="row mt-4 text-center table-responsive">
+      <table style="width: 60%" class="table table-borderless table text-nowrap mx-auto">
+        <thead class="border-bottom">
+          <th class="d-flex pb-0 mb-2">
+            <h5 class="mb-0 jp-font-classic">材料</h5>
+            <p class="mb-0 ml-1 pt-1 jp-font-classic"></p>
+          </th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @post.ingredients.each do |ingredient| %>
+          <tr>
+            <td style="width: 40%" class='pt-4'><%= ingredient.name %></td>
+            <td style="width: 30%" class='pt-4'><%= ingredient.shop_name %></td>
+            <td style="width: 30%" class='pt-4'><%= ingredient.price %></td>
+          </tr>
           <% end %>
-        </div>
-      <% end %>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="mx-auto">
+        <% if user_signed_in? && @post.user_id == current_user.id %>
+          <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-md btn-outline-primary mb-4' %></u>
+        <% end %>
+      </div>
+    </div>
+  
+  
+    <!--コメント投稿フォーム-->
+    <div class="row mt-4">
+      <div class="d-flex mx-auto" style="justify-content: center; width: 60%;">
+        <% if @post.commentable == true %>
+          <div id="comment_<%= @post.id %>" class="col-12 col-sm-6 text-left"><%= render "public/comments/index", comment_post: @post, comment: @comment %></div>
+          <div class="col-12 col-sm-6 text-center" style="position: relative;">
+            <% if user_signed_in? %>
+              <%= form_with model:[@post, @comment] do |f| %>
+              <div style="position: absolute; bottom: 0; width: 80%">
+                <%= f.text_area :comment, class: "form-control", placeholder: "コメントする" %><br>
+                <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center" %>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
 </div>

@@ -5,15 +5,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header', activities_count: @activities_count %>
     <%= render 'layouts/flash' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
 </html>
+
+<!--partial: "public/activities/index", locals: { activities_count: @activities_count }-->

@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="mx-auto">
-      <h3 class="jp-font-classic text-center">通知一覧</h3>
-    </div>
+  <p class="btn-sticky m-2">ACTIVITY</p>
+
+  <div class="mx-auto">
+    <h3 class="text-center">通知一覧</h3>
   </div>
+
+  <% if @activities_count.count != 0 %>
+    <%= @activities_count.count %>
+  <% end %>
+
 
   <% if @activities.present? %>
     <% @activities.each do |activity| %>

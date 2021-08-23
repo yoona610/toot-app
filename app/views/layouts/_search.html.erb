@@ -1,12 +1,16 @@
 <% if admin_signed_in? %>
-  <%= form_with url: admin_index_path, method: :get, class: 'col-12 col-lg-3 mb-3 mb-lg-0 me-lg-3', local: true do |f| %>
-    <%= f.text_field :content, class: "form-control form-control-dark", placeholder: "検索" %>
-    <%#= f.select :model, options_for_select({ "会員" => "user", "投稿" => "post" }), class: "dropdown-item" %>
-    <%#= f.submit '検索', class: "btn btn-outline-light me-2" %>
+  <%= form_with url: admin_index_path, method: :get, class: 'form-inline', local: true do |f| %>
+    <%= f.text_field :content, class: "form-control m-2", placeholder: "検索" %>
+    <%= f.select :model, options_for_select({ "会員" => "user", "投稿" => "post" }), class: "form-select" %>
+    <%= f.button :type => "submit", style: 'border-style: none;' do %>
+      <i class="fas fa-search"></i>
+    <% end %>
   <% end %>
 <% else %>
-  <%= form_with url: public_index_path, method: :get, class: 'col-12 col-lg-3 mb-3 mb-lg-0 me-lg-3', local: true do |f| %>
-    <%= f.text_field :content, class: "form-control form-control-dark", placeholder: "検索" %>
-    <%#= f.submit '検索', class: "btn btn-outline-light me-2" %>
+  <%= form_with url: public_index_path, method: :get, class: 'form-inline', local: true do |f| %>
+    <%= f.text_field :content, class: "form-control m-2", placeholder: "検索" %>
+    <%= f.button :type => "submit", style: 'border-style: none;', class: "submit-button" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
   <% end %>
 <% end %>

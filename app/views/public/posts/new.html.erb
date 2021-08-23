@@ -1,69 +1,75 @@
 <!---------- 投稿フォーム -------------->
-<div class="container mt-4 align-imtes-center">
-  <div class='bg-light mx-auto mb-5'>
+<div class="post-form">
+  <div class="container mt-4 align-items-center">
+    <p class="btn-sticky m-2">NEW POST</p>
+    <div class='mx-auto mb-5'>
 
-  <%= form_with model: @post, local:true do |f| %>
-    <div class="row">
-      <div class="form-group mt-5 mx-auto">
-        
-      </div>
-      <div class="form-group mt-5 mx-auto">
-        <%= f.text_field :title, placeholder: "タイトル", size: "45", class: 'py-2 px-2' %>
-        <%= render 'layouts/error_messages', obj: @post, column: :title %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
-        <div class="form-group mt-4 ml-md-2">
-          <%= f.text_area :introduction, placeholder: "紹介", size: "45 x 4", class: 'p-2' %>
-          <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
+    <%= form_with model: @post, local:true do |f| %>
+      <div class="row">
+        <div class="form-group mt-5 mx-auto">
+          <%= f.text_field :title, placeholder: "タイトル", size: "40", class: 'py-2 px-2 form-control' %>
+          <%= render 'layouts/error_messages', obj: @post, column: :title %>
         </div>
       </div>
-      <div class="col-md-6 col-lg-5 col-sm-4 mt-3 pl-4 pt-2">
-        <div class="from-group mr-md-2 mt-3 ml-md-5 p-3 bg-white shadow-sm">
-          <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
-          <%= f.attachment_field :post_image %>
-          <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
+          <div class="form-group mt-4 ml-md-2">
+            <%= f.text_area :introduction, placeholder: "紹介", size: "45 x 4", class: 'p-2 form-control' %>
+            <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-sm-4 mt-3 pl-4 pt-2">
+          <div class="from-group mr-md-2 mt-3 ml-md-5 p-3 bg-white shadow-sm">
+            <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
+            <%= f.attachment_field :post_image %>
+            <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="mx-auto">
-      <%= f.radio_button :commentable, :false %>
-      <%= f.label :commentable, "コメント不可", class: ' text-danger' %>
-      <%= f.radio_button :commentable, :true %>
-      <%= f.label :commentable, "コメント許可", class: ' text-danger' %>
-    </div>
 
-    <!--材料のフォームを追加・削除-->
-    <div class="mx-auto">
-      <div id="ingredients">
-        <%= f.fields_for :ingredients do |t| %>
-          <%= render "public/posts/ingredient_fields", f: t %>
-        <% end %>
+
+      <!--材料のフォームを追加・削除-->
+      <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm">
+        <div id="ingredients">
+          <%= f.fields_for :ingredients do |t| %>
+            <%= render "public/posts/ingredient_fields", f: t %>
+          <% end %>
+        </div>
+
+        <div id="detail-association-insertion-point"></div>
+
+        <div class="col-10 mx-auto mt-2 add-ingredient">
+          <%= link_to_add_association "+フォームを追加", f, :ingredients,
+            class: "btn-flat-border text-center",
+            data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'after'}
+            %>
+        </div>
       </div>
-    </div>
 
-    <div id="detail-association-insertion-point"></div>
+      <group class="inline-radio">
+        <div>
+          <%= f.radio_button :commentable, :false %>
+          <%= f.label :commentable, "コメント不可" %>
+        </div>
+        <div>
+          <%= f.radio_button :commentable, :true %>
+          <%= f.label :commentable, "コメント許可" %>
+        </div>
+      </group>
 
-    <div class="col-10 mx-auto mt-2 add-ingredient">
-      <%= link_to_add_association "+フォームを追加", f, :ingredients,
-        class: "btn btn-secondary btn-block",
-        data: {
-        association_insertion_node: '#detail-association-insertion-point',
-        association_insertion_method: 'after'}
-        %>
-    </div>
-
-    <div class="row mt-4 pb-5">
-      <div class="form-inline mx-auto">
-        <%= f.submit '投稿を公開', :name => 'save_post', class: 'mr-5 btn btn-sm btn-warning text-white' %>
-        <%= f.submit '下書きに保存', :name => 'draft', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
+      <div class="row mt-4 pb-5">
+        <div class="form-inline mx-auto">
+          <%= f.submit '投稿を公開', :name => 'save_post', class: 'm-5 btn-flat-border' %>
+          <%= f.submit '下書きに保存', :name => 'draft', class: 'm-5 btn-flat-border' %>
+        </div>
       </div>
-    </div>
 
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
     <% end %>
 
+    </div>
   </div>
 </div>

@@ -9,14 +9,14 @@
       <% @chats.each do |chat| %>
         <% if chat.user != nil %>
         <tr class="mt-5 border-bottom">
-          <td style="width: 25%" class='mb-2'>
-            <%= l chat.created_at %>
+          <td style="width: 30%" class='mb-2'>
+            <%= chat.created_at %>
           </td>
           <td style="width: 30%" class="py-0 align-middle text-left">
             <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
           </td>
-          <td style="width: 35%" class="pt-0 pb-1 align-middle text-center">
-            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn btn-md btn-outline-primary' %>
+          <td style="width: 30%" class="pt-1 pb-1 align-middle text-center">
+            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn-flat-border btn-md' %>
           </td>
         </tr>
         <% end %>

@@ -1,32 +1,28 @@
 <!--------- 投稿一覧画面 ------------>
-<div class="container">
-  <h3 class="mt-5 pl-3 mb-0 jp-font-classic font-weight-bold font-color-green">投稿一覧</h3>
+<div class="post-form">
+  <div class="container">
+    <p class="btn-sticky m-2">POSTS</p>
 
-  <div class="row">
-    <div class="col-md-12">
-      <hr class="border-bottom">
-    </div>
-  </div>
-
-  <div class="flex-wrap">
-    <div class="row justify-content-center">
-    <% @latest_posts.each do |latest_post| %>
-      <div class="card text-center m-3 mb-3 col-md-3 col-sm-5">
-        <p class="mt-2"><%= latest_post.title %></p>
-        <%= link_to post_path(latest_post) do %>
-          <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
-        <% end %>
-        <p class='mr-1 mt-2 mb-2'>by
-          <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap' %>
-        </p>
+    <div class="flex-wrap">
+      <div class="row justify-content-center">
+      <% @latest_posts.each do |latest_post| %>
+        <div class="card text-center m-3 mb-3 col-md-3 col-sm-5 shadow bg-white rounded">
+          <p class="mt-2"><%= latest_post.title %></p>
+          <%= link_to post_path(latest_post) do %>
+            <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
+          <% end %>
+          <p class='mr-1 mt-2 mb-2'>by
+            <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap' %>
+          </p>
+        </div>
+      <% end %>
       </div>
-    <% end %>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="mx-auto mb-5">
-      <%= paginate @latest_posts %>
+    <div class="row">
+      <div class="mx-auto mb-5">
+        <%= paginate @latest_posts %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,12 +1,11 @@
 <!--管理者(会員一覧)-->
 <div class="container">
-  <div class="row">
-    <h3 style='width: 100%' class="page-heading-pink mx-auto mt-5 py-1 text-center">会員一覧</h3>
-  </div>
+  <p class="btn-sticky m-2">USERS</p>
+  <h3 class="mx-auto py-1 text-center">会員一覧</h3>
 
   <div class="row mb-3">
     <div class="col-6 offset-6 text-right">
-      <h6 class="text-right mr-5 jp-font">会員数：<%= @user_count %>名</h6>
+      <h6 class="text-right mr-5"><i class="fas fa-user-circle"></i> <%= @user_count %></h6>
     </div>
   </div>
 
@@ -27,9 +26,9 @@
               <p class="inactive_color mb-0"><%= user.is_deleted_status %></p>
             <% end %>
           </td>
-          <!--<td style="width: 10%" class="py-0 px-1 align-middle text-center">-->
-          <!--  <%#= link_to "CHAT", admin_chat_path(user), class: 'btn btn-sm btn-outline-secondary', style: 'font-size: 13px' %>-->
-          <!--</td>-->
+          <td style="width: 10%" class="py-0 px-1 align-middle text-center">
+            <%= link_to "CHAT", admin_chat_path(user), class: 'btn btn-sm btn-outline-secondary', style: 'font-size: 13px' %>
+          </td>
         </tr>
       <% end %>
     </table>

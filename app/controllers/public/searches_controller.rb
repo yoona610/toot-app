@@ -1,6 +1,6 @@
 class Public::SearchesController < ApplicationController
 	def index
 		@content = params[:content]
-		@records = Post.search_for(@content)
+		@records = Post.where(is_draft: false).search_for(@content)
 	end
 end

@@ -1,11 +1,9 @@
 <!------------- 顧客側：チャット問い合わせ ----------------->
 <div class="container">
-
-  <div class="row mt-5">
-    <div class="mx-auto">
-      <h3 class="jp-font-classic text-center">お問い合わせ</h3>
-      <p class="jp-font-classic text-center">チャット</p>
-    </div>
+  <p class="btn-sticky m-2">CHAT</p>
+  <div class="mx-auto">
+    <h3 class="text-center">お問い合わせ</h3>
+    <p class="text-center">チャット</p>
   </div>
 
   <div class="add-chat-bubble">
@@ -14,14 +12,14 @@
 
   <!--チャットメッセージ投稿フォーム-->
   <div class="mt-1 mx-auto">
-    <div>
-      <%= form_with model: @chat, class: "text-center", remote: true do |f| %>
-        <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力してください", class: 'p-3 clear-form' %>
+    <div class="form-width">
+      <%= form_with model: @chat, remote: true do |f| %>
+        <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力してください", class: 'mb-3 clear-form form-control' %>
         <%= f.hidden_field :chat_room_id %>
         <%= f.hidden_field :is_admin, value: false %>
     </div>
     <div class="text-center">
-        <%= f.submit "送信", class: 'btn btn-lg btn-outline-primary chat_button'%>
+        <%= f.submit "送信", class: 'btn-flat-border btn-lg'%>
       <% end %>
     </div>
     <div id="response_button">
