@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :prohibit_guest_withdraw, only: [:update]
 
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).per(12)
     @user_count = User.count
   end
 

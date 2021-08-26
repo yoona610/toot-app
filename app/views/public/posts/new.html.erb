@@ -5,32 +5,27 @@
     <div class='mx-auto mb-5'>
 
     <%= form_with model: @post, local:true do |f| %>
-      <div class="row">
-        <div class="form-group mt-5 mx-auto">
-          <%= f.text_field :title, placeholder: "タイトル", size: "40", class: 'py-2 px-2 form-control' %>
-          <%= render 'layouts/error_messages', obj: @post, column: :title %>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-md-6 col-lg-5 offset-lg-1 mt-3">
           <div class="form-group mt-4 ml-md-2">
-            <%= f.text_area :introduction, placeholder: "紹介", size: "45 x 4", class: 'p-2 form-control' %>
+            <%= f.text_field :title, placeholder: "タイトル", size: '40', class: 'mb-3 form-control' %>
+            <%= render 'layouts/error_messages', obj: @post, column: :title %>
+            <%= f.text_area :introduction, placeholder: "紹介", size: '45x4', class: 'p-2 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
           </div>
         </div>
-        <div class="col-md-6 col-lg-5 col-sm-4 mt-3 pl-4 pt-2">
-          <div class="from-group mr-md-2 mt-3 ml-md-5 p-3 bg-white shadow-sm">
-            <h6 class="mb-3"><i class="fas fa-camera font-color-pink mr-2"></i>写真をアップロード</h6>
-            <%= f.attachment_field :post_image %>
-            <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
-          </div>
+
+        <div class="mx-auto from-group mr-md-2 ml-md-5 bg-white shadow-sm">
+          <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
+          <%= f.attachment_field :post_image, class: "ml-3 mb-3" %>
+          <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
         </div>
       </div>
 
 
       <!--材料のフォームを追加・削除-->
-      <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm">
+      <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm flex-wrap">
         <div id="ingredients">
           <%= f.fields_for :ingredients do |t| %>
             <%= render "public/posts/ingredient_fields", f: t %>
@@ -47,6 +42,10 @@
             association_insertion_method: 'after'}
             %>
         </div>
+        <%= render 'layouts/error_messages', obj: @post, column: :ingredients %>
+        <%= render 'layouts/error_messages', obj: @post, column: :"ingredients.name" %>
+        <%= render 'layouts/error_messages', obj: @post, column: :"ingredients.shop_name" %>
+        <%= render 'layouts/error_messages', obj: @post, column: :"ingredients.price" %>
       </div>
 
       <group class="inline-radio">
@@ -60,8 +59,8 @@
         </div>
       </group>
 
-      <div class="row mt-4 pb-5">
-        <div class="form-inline mx-auto">
+      <div class="row mt-4 mb-4">
+        <div class="mx-auto text-center">
           <%= f.submit '投稿を公開', :name => 'save_post', class: 'm-5 btn-flat-border' %>
           <%= f.submit '下書きに保存', :name => 'draft', class: 'm-5 btn-flat-border' %>
         </div>

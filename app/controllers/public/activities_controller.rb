@@ -3,7 +3,7 @@ class Public::ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.where(user_id: current_user.id, activity_status: "user_activity")
-    @activities_count = Activity.where(user_id: current_user.id, activity_status: "user_activity", read: false)
+    @activities_count = Activity.where(user_id: current_user.id, activity_status: "user_activity", read: "unread").count
   end
 
   def read

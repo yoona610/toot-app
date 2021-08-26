@@ -6,7 +6,7 @@
     <% end %>
     <p class="caption"><i class="fas fa-comment"></i> <%= "#{latest_post.comments.count}" %></p>
     <p class='mr-1 mt-2 mb-2'>by
-      <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap font-color-green jp-font-pop' %>
+      <%= link_to latest_post.user.name, user_path(latest_post.user), class: 'card-text text-wrap' %>
     </p>
   </div>
 <% end %>

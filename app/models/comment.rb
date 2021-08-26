@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :post
   has_one :activity, as: :subject, dependent: :destroy
 
+  validates :comment, presence: true, length: { maximum: 35 }
+
   attribute :current_user
   after_create_commit :create_activities
 

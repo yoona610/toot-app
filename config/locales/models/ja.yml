@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        post_image: 投稿写真
+        introduction: 紹介文
+      post/ingredients:
+        name: 材料名
+        shop_name: 購入店
+        price: 値段
+      chat:
+        message: メッセージ
+      comment:
+        comment: コメント

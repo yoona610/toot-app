@@ -3,25 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // 投稿一覧
-.post_img{
+.post_img {
   width: 100%;
 }
 
-.post-form{
+.post-form {
   background-color: #f7f7f7;
 }
 
 // ラジオボタン
-h1 {
-  color: #2C43B0;
-}
 
 .inline-radio {
   display: flex;
   border-radius: 3px;
   overflow: hidden;
   border: 2px solid #2C43B0;
-  width: 20vw;
+  width: 60vw;
   height: 5vh;
   margin: 0 auto;
 

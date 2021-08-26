@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @posts = Post.where(is_draft: false)
+    @posts = Post.where(is_draft: false).order(created_at: "DESC").limit(6)
   end
 
   def about

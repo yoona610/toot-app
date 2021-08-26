@@ -4,6 +4,8 @@ class Chat < ApplicationRecord
   belongs_to :chat_room
   has_one :activity, as: :subject, dependent: :destroy
 
+  validates :message, presence: true, length: { maximum: 60 }
+
   after_create_commit :create_activities
 
   private

@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-md-4 offset-md-8">
-      <h6 class="text-right mr-5 jp-font">投稿数：<%= @post_count %>件</h6>
+      <h6 class="text-right mr-5 jp-font"><i class="fas fa-book-open"></i> <%= @post_count %></h6>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
 
   <div class="row">
     <div class="mx-auto mt-4 mb-5">
-    <%#= paginate @posts %>
+      <%= paginate @latest_posts %>
     </div>
   </div>
 </div>

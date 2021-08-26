@@ -3,6 +3,7 @@ class Admin::ActivitiesController < ApplicationController
 
   def index
      @activities = Activity.where(activity_status: "admin_activity")
+     @admin_activities_count = Activity.where(activity_status: "admin_activity", read: "unread").count
   end
 
   def read

@@ -5,21 +5,24 @@
     <h3 class="text-center">お問い合わせ</h3>
   </div>
 
-  <div class="add-chat-bubble">
-    <%= render partial: 'chat_bubbles', locals: { chats: @chats, user: @user } %>
+  <div id="admin_add-chat-bubble">
+    <%= render partial: 'admin/chats/chat_bubbles', locals: { chats: @chats, user: @user } %>
   </div>
 
   <!--チャットメッセージ投稿フォーム-->
   <div class="mt-1 mx-auto">
     <div class="form-width">
       <%= form_with model: [:admin, @chat], remote: true do |f| %>
+      <div class="row">
+        <div class="error_explanation text-center"></div>
+      </div>
         <%= f.text_area :message, size: '45x4', placeholder: "メッセージを入力", class: 'mb-3 clear-form form-control' %>
         <%= f.hidden_field :chat_room_id %>
         <%= f.hidden_field :is_admin, value: true %>
-    </div>
-    <div class="text-center">
+      <div class="text-center">
         <%= f.submit "送信", class: 'btn-flat-border btn-lg' %>
       <% end %>
+      </div>
     </div>
   </div>
 

@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+  has_many :following_user, through: :follower, source: :followed
+  has_many :follower_user, through: :followed, source: :follower
   has_many :posts, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one :chat_room, dependent: :destroy
@@ -57,6 +57,7 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  #ユーザーの検索
   def self.search_for(contents)
     User.where("name LIKE?", "%#{contents}%")
   end

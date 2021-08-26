@@ -6,7 +6,7 @@
       <% if chat.user_id == current_user.id %>
         <div class="text-right mt-4 balloon_l">
           <div class="faceicon">
-            <span><%= chat.created_at %></span></br>
+            <span><%= chat.created_at.to_s(:datetime_jp) %></span></br>
             <span class="ml-3 font-weight-bold"><%= chat.user.name %></span>
           </div>
           <div class="chat-bubble text-left says">
@@ -18,7 +18,7 @@
         <div class="mt-4 balloon_r">
           <div class="faceicon">
             <span class="font-weight-bold">管理者</span></br>
-            <span class="ml-2"><%= chat.created_at %></span>
+            <span class="ml-2"><%= chat.created_at.to_s(:datetime_jp) %></span>
           </div>
           <div class="chat-bubble receiver-chat-bubble says">
             <p><%= chat.message %></p>

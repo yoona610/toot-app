@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   before_action :set_correct_user, except: [:index, :new, :create, :show]
 
   def index
-    @latest_posts = Post.where(is_draft: false).page(params[:page]).per(6)
+    @latest_posts = Post.where(is_draft: false).includes([:user]).order(created_at: "DESC").page(params[:page]).per(8)
   end
 
   #親モデル.子モデル.buildで子モデルのインスタンス作成

@@ -14,9 +14,9 @@
       <% @users.each do |user| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 5%" class='text-right'>
-            <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg", size: '40x40', class:'rounded-circle'), admin_user_path(user.id) %>
+            <%= link_to (attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg", size: '100x100', class: 'rounded-circle'), admin_user_path(user.id) %>
           </td>
-          <td style="width: 15%" class='px-1 py-4 text-center'>
+          <td style="width: 15%" class='px-1 py-4 align-middle text-center'>
             <%= link_to user.name, admin_user_path(user.id) %>
           </td>
           <td style="width: 8%" class="py-0 px-1 align-middle text-center">

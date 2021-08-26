@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy]
 
   def index
-    @latest_posts = Post.all#.page(params[:page])
+    @latest_posts = Post.page(params[:page]).per(12)
     @post_count = Post.count
   end
 

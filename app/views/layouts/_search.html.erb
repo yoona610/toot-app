@@ -2,14 +2,14 @@
   <%= form_with url: admin_index_path, method: :get, class: 'form-inline', local: true do |f| %>
     <%= f.text_field :content, class: "form-control m-2", placeholder: "検索" %>
     <%= f.select :model, options_for_select({ "会員" => "user", "投稿" => "post" }), class: "form-select" %>
-    <%= f.button :type => "submit", style: 'border-style: none;' do %>
+    <%= f.button :type => "submit", style: 'border-style: none; background-color: white;' do %>
       <i class="fas fa-search"></i>
     <% end %>
   <% end %>
 <% else %>
   <%= form_with url: public_index_path, method: :get, class: 'form-inline', local: true do |f| %>
     <%= f.text_field :content, class: "form-control m-2", placeholder: "検索" %>
-    <%= f.button :type => "submit", style: 'border-style: none;', class: "submit-button" do %>
+    <%= f.button :type => "submit", style: 'border-style: none; background-color: white;', class: "submit-button" do %>
       <i class="fas fa-search"></i>
     <% end %>
   <% end %>

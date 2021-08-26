@@ -4,6 +4,14 @@ class ChatRoom < ApplicationRecord
 
   after_update_commit :update_activities
 
+  def response_status_sring
+    if response_status == true
+      "解決済み"
+    elsif response_status == false
+      "未解決"
+    end
+  end
+
   private
 
   def update_activities

@@ -5,7 +5,7 @@
 
   <div class="row d-flex mt-5">
     <div class="col-md-2 col-sm-1 text-md-right">
-      <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', class: 'rounded-circle' %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
     </div>
 
    <div class="d-flex">
@@ -15,7 +15,7 @@
    </div>
 
     <div class="col-md-4 col-sm-4 ml-5">
-      <h3><%= link_to @user.name, user_path(@user.id), class: 'jp-font-pop font-color-green' %></h3>
+      <h3><%= link_to @user.name, user_path(@user.id) %></h3>
       <p class='jp-font-pop pr-1'><%= @user.introduction %></p>
       <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
     </div>
@@ -46,15 +46,15 @@
       <!--タブ：会員本人の投稿-->
       <div id="tab1" class="tab-pane active">
         <% if @user_posts.empty? %>
-          <h6 class='jp-font-pop mt-4'>投稿はまだありません。</h6>
+          <h6 class='mt-4'>投稿はまだありません。</h6>
         <% else %>
           <div class="d-flex flex-wrap">
             <% @user_posts.each do |user_post| %>
-              <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5">
+              <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
                 <%= link_to post_path(user_post) do %>
                   <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
                 <% end %>
-                <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2 jp-font-pop' %>
+                <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2' %>
               </div>
             <% end %>
           </div>
@@ -65,16 +65,16 @@
       <!--タブ：「いいね」した投稿-->
       <div id="tab2" class="tab-pane">
         <% if @liked_posts.empty? %>
-          <h6 class='jp-font-pop mt-4'>いいね！した投稿はまだありません。</h6>
+          <h6 class='mt-4'>いいね！した投稿はまだありません。</h6>
         <% else %>
           <div class="d-flex flex-wrap">
             <% @liked_posts.each do |liked_post| %>
-              <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+              <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5 shadow bg-white rounded">
                 <%= link_to post_path(liked_post) do %>
                   <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
                 <% end %>
-                <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
-                <p class="mb-1 pt-1 en-font-pop">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2 font-color-green' %></p>
+                <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
+                <p class="mb-1 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2' %></p>
               </div>
             <% end %>
           </div>
@@ -85,16 +85,16 @@
       <!--タブ：保存（ブックマーク）した投稿-->
         <div id="tab3" class="tab-pane">
           <% if @saved_posts.empty? %>
-            <h6 class='jp-font-pop mt-4'>ブックマーク保存した投稿はまだありません。</h6>
+            <h6 class='mt-4'>ブックマーク保存した投稿はまだありません。</h6>
           <% else %>
             <div class="d-flex flex-wrap">
               <% @saved_posts.each do |saved_post| %>
-                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5">
+                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5 shadow bg-white rounded">
                   <%= link_to post_path(saved_post) do %>
                     <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
                   <% end %>
-                  <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2 jp-font-pop' %>
-                  <p class="mb-1 pt-1 en-font-pop">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1 font-color-green' %></p>
+                  <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
+                  <p class="mb-1 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
                 </div>
               <% end %>
             </div>
@@ -105,13 +105,11 @@
       <!--タブ：下書き保存した投稿-->
         <div id="tab4" class="tab-pane">
           <% if @draft_posts.empty? %>
-            <h6>下書き中の投稿はまだありません。</h6>
+            <h6 class='mt-4'>下書き中の投稿はまだありません。</h6>
           <% else %>
             <table style='width: 90%' class="table ml-2">
               <% @draft_posts.each do |draft_post| %>
               <tr>
-                <!--<td class="p-2 text-center">-->
-                <!--</td>-->
                 <td class="p-2 ml-3">
                   <%= draft_post.title %>
                 </td>

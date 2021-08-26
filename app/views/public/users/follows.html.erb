@@ -1,20 +1,21 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <h1 class="font-weight-normal mt-5 mb-5">フォロー一覧</h1>
-  </div>
-  <div class="row justify-content-center">
+  <p class="btn-sticky m-2">FOLLOW</p>
+  <table id="user-table" class="table table-borderless mt-4">
     <% @users.each do |user| %>
-    <div class="one-post card w-100">
-      <%= link_to user_path(user) do %>
-      <p class="caption h4"><%= user.name %></p>
-      <div class="d-flex">
-        <%= attachment_image_tag @user, :profile_image, size: '50x50', fallback: "no_image.jpg", class: "mb-3 mt-3 ml-3 profile-img" %>
-        <h4 class="ml-5"><%= user.profile_image %></h4>
-      </div>
-      <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
-      <% end %>
-    </div>
+      <tr>
+        <td class="text-center">
+          <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
+        </td>
+        <td class="align-middle">
+          <%= link_to user.name, user_path(user.id) %></br>
+          <%= user.introduction %>
+        </td>
+        <td class="align-middle">
+          <i class="fas fa-book-open"></i> <%= user.posts.count %>
+        </td>
+      </tr>
     <% end %>
-  </div>
+    </tbody>
+  </table>
   <%#= paginate @users %>
 </div>
