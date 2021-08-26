@@ -16,7 +16,7 @@
 
     <div class="col-md-4 col-sm-4 ml-5">
       <h3><%= link_to @user.name, user_path(@user.id) %></h3>
-      <p class='jp-font-pop pr-1'><%= @user.introduction %></p>
+      <p class='pr-1'><%= @user.introduction %></p>
       <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
     </div>
   </div>
@@ -40,6 +40,8 @@
         </li>
         <% end %>
       </ul>
+    </div>
+  </div>
 
       <div class="tab-content px-4 pb-4 border rounded-bottom">
 
@@ -48,15 +50,22 @@
         <% if @user_posts.empty? %>
           <h6 class='mt-4'>投稿はまだありません。</h6>
         <% else %>
-          <div class="d-flex flex-wrap">
+          <div class="row">
             <% @user_posts.each do |user_post| %>
-              <div style='width: 210px' class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
-                <%= link_to post_path(user_post) do %>
-                  <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
-                <% end %>
-                <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2' %>
+              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                  <%= link_to post_path(user_post) do %>
+                    <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+                  <% end %>
+                  <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2' %>
+                </div>
               </div>
             <% end %>
+          </div>
+          <div class="row">
+            <div class="mx-auto mb-5">
+              <%= paginate @user_posts %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -67,16 +76,23 @@
         <% if @liked_posts.empty? %>
           <h6 class='mt-4'>いいね！した投稿はまだありません。</h6>
         <% else %>
-          <div class="d-flex flex-wrap">
+          <div class="row">
             <% @liked_posts.each do |liked_post| %>
-              <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5 shadow bg-white rounded">
-                <%= link_to post_path(liked_post) do %>
-                  <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
-                <% end %>
-                <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
-                <p class="mb-1 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2' %></p>
+              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                  <%= link_to post_path(liked_post) do %>
+                    <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+                  <% end %>
+                  <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
+                  <p class="mb-1 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2' %></p>
+                </div>
               </div>
             <% end %>
+          </div>
+          <div class="row">
+            <div class="mx-auto mb-5">
+              <%= paginate @liked_posts %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -87,16 +103,23 @@
           <% if @saved_posts.empty? %>
             <h6 class='mt-4'>ブックマーク保存した投稿はまだありません。</h6>
           <% else %>
-            <div class="d-flex flex-wrap">
+            <div class="row">
               <% @saved_posts.each do |saved_post| %>
-                <div style='width: 210px' class="card text-center mt-3 pt-3 px-2 ml-5 shadow bg-white rounded">
-                  <%= link_to post_path(saved_post) do %>
-                    <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img" %>
-                  <% end %>
-                  <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
-                  <p class="mb-1 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
+                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                  <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                    <%= link_to post_path(saved_post) do %>
+                      <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+                    <% end %>
+                    <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
+                    <p class="mb-1 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
+                  </div>
                 </div>
               <% end %>
+            </div>
+            <div class="row">
+              <div class="mx-auto mb-5">
+                <%= paginate @saved_posts %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -119,13 +142,16 @@
               </tr>
               <% end %>
             </table>
+            <div class="row">
+              <div class="mx-auto mb-5">
+                <%= paginate @draft_posts %>
+              </div>
+            </div>
           <% end %>
         </div>
       <!--タブ：下書き保存した投稿-->
 
-        </div>
+      </div>
 
-    </div>
-  </div>
   </div>
 </div>

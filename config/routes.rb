@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
     get 'search' => 'searches#index', as: 'public_index'
+    get 'posts/rankings' => 'rankings#index'
 
     resources :users, only: [:show, :edit, :update] do
       member do

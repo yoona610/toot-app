@@ -32,4 +32,8 @@ class Activity < ApplicationRecord
       admin_chat_path(subject)
     end
   end
+
+  def self.unread_count(user)
+    Activity.where(user_id: user.id, activity_status: "user_activity", read: "unread").count
+  end
 end

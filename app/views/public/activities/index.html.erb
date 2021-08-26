@@ -20,6 +20,11 @@
         <%= render "#{activity.action_type}", activity: activity %>
       </div>
     <% end %>
+    <div class="row">
+      <div class="mx-auto mb-5">
+        <%= paginate @activities %>
+      </div>
+    </div>
   <% else %>
     <div class="text-center">
       お知らせはありません

@@ -1,9 +1,9 @@
 <div class="nested-fields">
   <div class="row mx-auto unit mt-2">
-    <div class="col-3"><%= f.text_field :name, class: "form-control", placeholder: "材料名" %></div>
-    <div class="col-3"><%= f.text_field :shop_name, class: "form-control", placeholder: "購入店" %></div>
-    <div class="col-3"><%= f.text_field :price, class: "form-control", placeholder: "購入価格" %></div>
-    <div class="col-3 px-0 w-auto">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.text_field :name, class: "form-control", placeholder: "材料名" %></div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.text_field :shop_name, class: "form-control", placeholder: "購入店" %></div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.text_field :price, class: "form-control", placeholder: "購入価格" %></div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
       <%= link_to_remove_association "削除", f, class: "btn-flat-border btn-block text-center" %>
     </div>
   </div>

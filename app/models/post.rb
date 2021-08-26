@@ -34,4 +34,8 @@ class Post < ApplicationRecord
       "コメント許可"
     end
   end
+
+  def self.create_post_ranks
+    Post.find(Like.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
+  end
 end

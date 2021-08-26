@@ -169,21 +169,24 @@ a.btn--circle:hover {
   box-shadow: 0 3px 0 #0C4271;
 }
 
-// .activity_budge{
-//   position: relative;
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 2rem;
+  color: #efa04c;
+}
+
+// ページネーション
+// .pagination {
+//   border-style: none;
 // }
 
-// .activity_budge span{
-//   position: absolute;     /* 相対位置に指定 */
-//   top: -10px;             /* 表示位置を上から-10pxの位置にする */
-//   left: calc(100% - 10px);/* 表示位置を右から内側に10pxの位置 */
-//   color: #FFF;            /* 文字色を白に指定 */
-//   font-weight: bold;      /* 太文字にする */
-//   line-height: 20px;      /* 行の高さを指定 */
-//   text-align: center;     /* 文字を中央揃えにする */
-//   background: #E68031;    /* 背景色をオレンジに指定 */
-//   border-radius: 10px;    /* line-heightの半分の角丸を指定 */
-//   min-width: 20px;        /* 最低幅を指定 */
-//   padding: 0 3px;         /* 左右に少しだけ余白を設定 */
-//   box-sizing: border-box; /* 計算しやすいように */
-// }
+@media screen and (max-width: 992px) {
+  .n-circle {
+    position: absolute;
+    padding-left: 2.5rem;
+    padding-top: 2rem;
+    color: #efa04c;
+    text-align: left;
+  }
+}
