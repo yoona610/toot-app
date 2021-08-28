@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: %i[show edit update]
   before_action :prohibit_guest_withdraw, only: [:update]
 
   def index
@@ -8,17 +8,15 @@ class Admin::UsersController < ApplicationController
     @user_count = User.count
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "会員ステータスを更新しました"
+      redirect_to admin_user_path(@user), notice: '会員ステータスを更新しました'
     else
-      render :edit, alert: "会員ステータスを更新できませんでした"
+      render :edit, alert: '会員ステータスを更新できませんでした'
     end
   end
 
@@ -33,8 +31,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def prohibit_guest_withdraw
-    if @user.id == 1
-      redirect_to admin_users_path, alert: "ゲスト会員は退会できません。"
-    end
+    redirect_to admin_users_path, alert: 'ゲスト会員は退会できません。' if @user.id == 1
   end
 end

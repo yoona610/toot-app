@@ -4,7 +4,9 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
-  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda {|attributes| attributes[:name].blank? && attributes[:shop_name].blank? && attributes[:price].blank?}
+  accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes|
+                                                                                attributes[:name].blank? && attributes[:shop_name].blank? && attributes[:price].blank?
+                                                                              }
   attachment :post_image
 
   with_options presence: true, on: :publicize do
@@ -12,8 +14,8 @@ class Post < ApplicationRecord
     validates :post_image
     validates :introduction
   end
-    validates :title, length: { maximum: 14 }, on: :publicize
-    validates :introduction, length: { maximum: 80 }, on: :publicize
+  validates :title, length: { maximum: 14 }, on: :publicize
+  validates :introduction, length: { maximum: 80 }, on: :publicize
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
@@ -24,14 +26,14 @@ class Post < ApplicationRecord
   end
 
   def self.search_for(contents)
-    Post.where("title LIKE?", "%#{contents}%")
+    Post.where('title LIKE?', "%#{contents}%")
   end
 
   def commentable_status
     if commentable == false
-      "コメント不可"
+      'コメント不可'
     elsif commentable == true
-      "コメント許可"
+      'コメント許可'
     end
   end
 

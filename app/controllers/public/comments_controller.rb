@@ -17,6 +17,6 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     # params.require(:comment).permit(:comment)
-    {current_user: current_user.id, comment: params[:comment][:comment]}
+    { current_user: current_user.id, comment: params[:comment][:comment] }
   end
 end

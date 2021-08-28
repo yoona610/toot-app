@@ -1,32 +1,33 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_user, only: [:edit, :show, :update]
-  before_action :set_current_user, only: [:unsubscribe, :withdraw]
-  before_action :set_correct_user, only: [:edit, :update]
+  before_action :set_user, only: %i[edit show update]
+  before_action :set_current_user, only: %i[unsubscribe withdraw]
+  before_action :set_correct_user, only: %i[edit update]
 
   def show
-    @user_posts = Post.where(user_id: @user, is_draft: false).order(created_at: "DESC").page(params[:page]).per(8)
-    @liked_posts = Post.includes(:user).joins(:likes).where(is_draft: false,'likes.user_id': @user.id).order('likes.created_at': "DESC").page(params[:page]).per(8)
-    @saved_posts = Post.includes(:user).joins(:bookmarks).where(is_draft: false,'bookmarks.user_id': @user.id).order('bookmarks.created_at': "DESC").page(params[:page]).per(8)
-    @draft_posts = Post.where(user_id: @user, is_draft: true).order(created_at: "DESC").page(params[:page]).per(8)
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
+    @user_posts = Post.where(user_id: @user, is_draft: false).order(created_at: 'DESC').page(params[:page]).per(8)
+    @liked_posts = Post.includes(:user).joins(:likes).where(is_draft: false,
+                                                            'likes.user_id': @user.id).order('likes.created_at': 'DESC').page(params[:page]).per(8)
+    @saved_posts = Post.includes(:user).joins(:bookmarks).where(is_draft: false,
+                                                                'bookmarks.user_id': @user.id).order('bookmarks.created_at': 'DESC').page(params[:page]).per(8)
+    @draft_posts = Post.where(user_id: @user, is_draft: true).order(created_at: 'DESC').page(params[:page]).per(8)
+    @following_users = @user.following_user.page(params[:page]).per(20)
+    @follower_users = @user.follower_user.page(params[:page]).per(20)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "プロフィールを更新しました！"
+      redirect_to user_path(@user.id), notice: 'プロフィールを更新しました！'
     else
-      render :edit, alert: "プロフィールを更新できませんでした。"
+      render :edit, alert: 'プロフィールを更新できませんでした。'
     end
   end
 
   def unsubscribe
     if @user.id == 1
-      redirect_to root_path, alert: "恐れ入りますが、ゲスト会員では退会できません。"
+      redirect_to root_path, alert: '恐れ入りますが、ゲスト会員では退会できません。'
     else
       render :unsubscribe
     end
@@ -36,7 +37,7 @@ class Public::UsersController < ApplicationController
     @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
-    flash[:notice] = "ご利用いただき、ありがとうございました。"
+    flash[:notice] = 'ご利用いただき、ありがとうございました。'
   end
 
   def follows
@@ -66,5 +67,4 @@ class Public::UsersController < ApplicationController
   def set_correct_user
     redirect_to root_path unless @user == current_user
   end
-
 end

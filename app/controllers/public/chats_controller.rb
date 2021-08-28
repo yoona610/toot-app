@@ -4,12 +4,12 @@ class Public::ChatsController < ApplicationController
   def show
     user_chat_room = current_user.chat_room
     @chat_room = nil
-    if user_chat_room.nil?
-      @chat_room = ChatRoom.create(user_id: current_user.id)
-    else
-      @chat_room = user_chat_room
-    end
-    @chats = @chat_room.chats.includes(:user, :admin)
+    @chat_room = if user_chat_room.nil?
+                   ChatRoom.create(user_id: current_user.id)
+                 else
+                   user_chat_room
+                 end
+    @chats = @chat_room.chats
     @chat = Chat.new(chat_room_id: @chat_room.id)
   end
 

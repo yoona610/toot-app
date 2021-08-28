@@ -1,8 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
-    @posts = Post.where(is_draft: false).order(created_at: "DESC").limit(6)
+    @posts = Post.includes([:user]).where(is_draft: false).order(created_at: 'DESC').limit(6)
   end
 
-  def about
-  end
+  def about; end
 end

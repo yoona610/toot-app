@@ -4,25 +4,16 @@
       <% chats.each do |chat| %>
         <!--管理者(admin)のチャット内容-->
         <% if chat.admin_id != nil %>
-          <div class="text-left mt-4 balloon_r">
-            <div class="faceicon">
-              <span><%= chat.created_at.to_s(:datetime_jp) %></span>
-              <span class="ml-2 font-weight-bold">管理者</span>
-            </div>
-            <div class="chat-bubble text-left says">
-              <%= chat.message %>
-            </div>
+          <div class="line__right">
+            <div class="text"><%= chat.message %></div>
+            <span class="date"><%= chat.created_at.to_s(:time) %></span>
           </div>
         <!--顧客(user)のチャット内容-->
         <% elsif chat.user_id == user.id %>
-          <div class="text-right mt-4 balloon_l">
-            <div class="faceicon">
-              <span class="ml-md-3 ml-sm-1 font-weight-bold"><%= chat.user.name %></span>
-              <span class="ml-3"><%= chat.created_at.to_s(:datetime_jp) %></span>
-            </div>
-            <div class="chat-bubble text-left says">
-              <%= chat.message %>
-            </div>
+          <div class="line__left">
+            <div class="name"><%= chat.user.name %></div>
+            <div class="text"><%= chat.message %></div>
+            <span class="date"><%= chat.created_at.to_s(:time) %></span>
           </div>
         <% end %>
       <% end %>

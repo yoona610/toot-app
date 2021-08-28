@@ -27,7 +27,7 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   before_action :reset_status, only: [:create]
 
   def after_sign_in_path_for(resourse)
-    admin_root_path
+    admin_users_path
   end
 
   def guest_sign_in
@@ -37,7 +37,7 @@ class Admin::Devise::SessionsController < Devise::SessionsController
     redirect_to admin_users_path, notice: 'ゲスト管理者としてログインしました。'
   end
 
-#同一ユーザーによる重複ログインを制限
+  # 同一ユーザーによる重複ログインを制限
   def reset_status
     if user_signed_in?
       sign_out current_user

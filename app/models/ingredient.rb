@@ -6,5 +6,4 @@ class Ingredient < ApplicationRecord
     validates :shop_name
     validates :price
   end
-
 end

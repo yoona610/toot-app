@@ -5,7 +5,8 @@ class Activity < ApplicationRecord
 
   include Rails.application.routes.url_helpers
 
-  enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, bookmarked_to_own_post: 2, followed_me: 3, chated_me: 4, chated_admin: 5, chatroom_admin: 6 }
+  enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, bookmarked_to_own_post: 2, followed_me: 3,
+                      chated_me: 4, chated_admin: 5, chatroom_admin: 6 }
   enum activity_status: { user_activity: false, admin_activity: true }
   enum read: { unread: false, read: true }
 
@@ -34,6 +35,6 @@ class Activity < ApplicationRecord
   end
 
   def self.unread_count(user)
-    Activity.where(user_id: user.id, activity_status: "user_activity", read: "unread").count
+    Activity.where(user_id: user.id, activity_status: 'user_activity', read: 'unread').count
   end
 end

@@ -1,13 +1,13 @@
 <% if activity.read == "unread" %>
   <div class="activity_unread border">
     <%= link_to read_admin_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
-      <p class="m-0 p-3"><%= activity.subject.user.name %>がお問い合わせステータスを解決済みに変更しました<%= activity.created_at.to_s(:datetime_jp) %></p>
+      <p class="m-0 p-3"><%= activity.subject.user.name %>がお問い合わせステータスを解決済みに変更しました <%= date_format(activity.created_at) %></p>
     <% end %>
   </div>
 <% else %>
   <div class="activity_read border">
     <%= link_to read_admin_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
-      <p class="m-0 p-3"><%= activity.subject.user.name %>がお問い合わせステータスを解決済みに変更しました<%= activity.created_at.to_s(:datetime_jp) %></p>
+      <p class="m-0 p-3"><%= activity.subject.user.name %>がお問い合わせステータスを解決済みに変更しました <%= date_format(activity.created_at) %></p>
     <% end %>
   </div>
 <% end %>

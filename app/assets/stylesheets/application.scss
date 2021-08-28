@@ -18,7 +18,21 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
 p {
+  font-family: "Noto Sans JP"!important;
+}
+
+td {
   font-family: "Noto Sans JP"!important;
 }
 
@@ -32,7 +46,7 @@ input, label{
   font-family: "Noto Sans JP"!important;
 }
 
-h1, h3{
+h1, h3, h4 {
   font-family: "Noto Sans JP"!important;
 }
 
@@ -44,11 +58,12 @@ a:hover{
 // ヘッダー
 header .top{
   color: #000!important;
-  font-size: 30px!important;
+  font-size: 3vw;
 }
 
 header .text{
   color: #000!important;
+  font-size: 1.3vw;
 }
 
 // フッター
@@ -177,10 +192,16 @@ a.btn--circle:hover {
 }
 
 // ページネーション
-// .pagination {
-//   border-style: none;
-// }
+.pagination a {
+  border-style: none!important;
+  margin: .0em!important;
+}
 
+span.disabled {
+  border-style: none!important;
+}
+
+// レスポンシブ
 @media screen and (max-width: 992px) {
   .n-circle {
     position: absolute;
@@ -189,4 +210,8 @@ a.btn--circle:hover {
     color: #efa04c;
     text-align: left;
   }
+  .mypage_l{
+    text-align: center!important;
+  }
 }
+

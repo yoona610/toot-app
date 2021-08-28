@@ -10,8 +10,9 @@ class Like < ApplicationRecord
 
   def create_activities
     # binding.irb
-    unless self.post.user_id == current_user
-      Activity.create!(subject: self, user: self.post.user, action_type: :liked_to_own_post, activity_status: :user_activity)
+    unless post.user_id == current_user
+      Activity.create!(subject: self, user: post.user, action_type: :liked_to_own_post,
+                       activity_status: :user_activity)
     end
   end
 end

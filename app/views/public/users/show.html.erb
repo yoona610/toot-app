@@ -3,18 +3,18 @@
   <div class="container">
     <p class="btn-sticky m-2">MYPAGE</p>
 
-  <div class="row d-flex mt-5">
-    <div class="col-md-2 col-sm-1 text-md-right">
+  <div class="row mt-5">
+    <div class="col-lg-4 col-md-12 col-sm-12 text-center">
       <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
     </div>
 
-   <div class="d-flex">
+   <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
      <div id= "follow_form_<%= @user.id %>" class="m-5">
        <%= render "public/relationships/follow", user: @user %>
      </div>
    </div>
 
-    <div class="col-md-4 col-sm-4 ml-5">
+    <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
       <h3><%= link_to @user.name, user_path(@user.id) %></h3>
       <p class='pr-1'><%= @user.introduction %></p>
       <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
@@ -53,7 +53,7 @@
           <div class="row">
             <% @user_posts.each do |user_post| %>
               <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
                   <%= link_to post_path(user_post) do %>
                     <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                   <% end %>
@@ -79,7 +79,7 @@
           <div class="row">
             <% @liked_posts.each do |liked_post| %>
               <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
                   <%= link_to post_path(liked_post) do %>
                     <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                   <% end %>
@@ -106,7 +106,7 @@
             <div class="row">
               <% @saved_posts.each do |saved_post| %>
                 <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                  <div class="card text-center mt-3 py-3 px-2 ml-5 shadow bg-white rounded">
+                  <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
                     <%= link_to post_path(saved_post) do %>
                       <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                     <% end %>
@@ -133,7 +133,7 @@
             <table style='width: 90%' class="table ml-2">
               <% @draft_posts.each do |draft_post| %>
               <tr>
-                <td class="p-2 ml-3">
+                <td class="p-2 m-3">
                   <%= draft_post.title %>
                 </td>
                 <td class="p-2">
