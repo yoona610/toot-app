@@ -60,4 +60,13 @@ class User < ApplicationRecord
   def self.search_for(contents)
     User.where('name LIKE?', "%#{contents}%")
   end
+
+  # いいねの削除
+  def destroy_like(post)
+    likes.find_by(post_id: post.id).destroy
+  end
+
+  def checked_user?(current_user)
+    id == current_user.id
+  end
 end

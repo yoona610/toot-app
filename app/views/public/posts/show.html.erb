@@ -9,10 +9,11 @@
       <div class="mx-auto">
         <p>by
         <% if admin_signed_in? %>
-          <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id) %></p>
+          <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id) %>
         <% else %>
-          <%= link_to "#{@post.user.name}", user_path(@post.user.id) %></p>
+          <%= link_to "#{@post.user.name}", user_path(@post.user.id) %>
         <% end %>
+        </p>
       </div>
     </div>
     <div class="row mt-2">
@@ -37,11 +38,7 @@
       <div id="book_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
       <!--コメント一覧-->
       <div class="col-12 col-sm-4">
-        <% if @post.commentable == false %>
-          <p><i class="fas fa-comment-slash"></i> コメント</p>
-        <% else %>
-          <p><i class="fas fa-comment"></i> コメント</p>
-        <% end %>
+        <p><i class="fas fa-comment"></i> <%= @post.checked_commentable? %></p>
       </div>
     </div>
 
@@ -70,7 +67,7 @@
 
     <div class="row mt-4">
       <div class="mx-auto">
-        <% if user_signed_in? && @post.user_id == current_user.id %>
+        <% if @post.written_by?(current_user) %>
           <%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-md btn-outline-primary mb-4' %>
         <% end %>
       </div>
@@ -84,18 +81,17 @@
         <div class="col-12 col-lg-6 col-sm-12">
           <% if user_signed_in? %>
             <%= form_with model:[@post, @comment] do |f| %>
-            <div class="row">
-              <div class="error_explanation text-center"></div>
-            </div>
-            <div class="mx-auto">
-              <%= f.text_area :comment, class: "form-control", placeholder: "コメントする" %><br>
-              <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center" %>
-            </div>
+              <div class="row">
+                <div class="error_explanation text-center"></div>
+              </div>
+              <div class="mx-auto">
+                <%= f.text_area :comment, class: "form-control", placeholder: "コメントする" %><br>
+                <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center" %>
+              </div>
             <% end %>
           <% end %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>

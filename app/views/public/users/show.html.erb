@@ -31,7 +31,7 @@
         <li class="nav-item">
           <a href="#tab2" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
         </li>
-        <% if user_signed_in? && @user.id == current_user.id %>
+        <% if @user.checked_user?(current_user) %>
         <li class="nav-item">
           <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
         </li>

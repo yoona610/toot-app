@@ -26,7 +26,7 @@ class Admin::Devise::SessionsController < Devise::SessionsController
   # end
   before_action :reset_status, only: [:create]
 
-  def after_sign_in_path_for(resourse)
+  def after_sign_in_path_for(_resourse)
     admin_users_path
   end
 
