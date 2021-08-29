@@ -3,7 +3,7 @@
   <p class="btn-sticky m-2">CHATS</p>
   <div class="row">
     <div class="mx-auto">
-      <h4 class="mt-5 py-2 pl-4">お問い合わせ一覧</h4>
+      <h4 class="mt-5 py-2">お問い合わせ一覧</h4>
     </div>
   </div>
 
@@ -12,19 +12,19 @@
       <% @chats.each do |chat| %>
         <% if chat.user != nil %>
         <tr class="mt-5 border-bottom">
-          <td class='col-lg-3'>
+          <td class='col-lg-3 align-middle text-center'>
             <%= chat.created_at.to_s(:datetime_jp) %>
           </td>
-          <td class="col-lg-2">
+          <td class="col-lg-2 align-middle text-center">
             <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
           </td>
-          <td class="col-lg-2">
+          <td class="col-lg-2 align-middle text-center">
             <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
           </td>
-          <td class="col-lg-2">
+          <td class="col-lg-2 align-middle text-center">
             <%= chat.chat_room.response_status_sring %>
           </td>
-          <td class="col-lg-3">
+          <td class="col-lg-3 align-middle text-center">
             <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn-flat-border' %>
           </td>
         </tr>
@@ -35,7 +35,7 @@
 
   <div class="row">
     <div class="mx-auto mt-4 mb-5">
-    <%= paginate @chats %>
+      <%= paginate @chats %>
     </div>
   </div>
 

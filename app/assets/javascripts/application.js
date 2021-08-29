@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 //= require cocoon
+/*global $*/
 
 document.addEventListener("turbolinks:load", function() {
   // フォームの追加・削除ボタン
@@ -32,6 +33,44 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
   });
-})
+  $(function() {
+    $('.top').slick({
+        autoplay: true,
+        autoplaySpeed: 2500,
+        slidesToShow: 3,
+        centerMode: true,
+        centerPadding: '80px',
+        responsive: [
+      {
+        breakpoint: 1920,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '20px',
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1
+        }
+      }
+    ]
+    });
+  })
+});
 
 // console.log(('.nested-fields').length)

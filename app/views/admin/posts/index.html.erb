@@ -11,16 +11,18 @@
   </div>
 
   <div class="row">
-    <table style="width: 90%" class="table table-borderless mx-auto">
+    <table style="width: 80%" class="table table-borderless mx-auto">
       <% @latest_posts.each do |latest_post| %>
         <tr class="mt-5 border-bottom">
-          <td style="width: 5%" class="text-center">
-            <%= latest_post.title %>
+          <td style="width: 10%" class='px-1 py-4 align-middle text-center'>
+            <%= link_to latest_post.title, admin_posts_path %>
+          </td>
+          <td style="width: 15%" class='text-center'>
             <%= link_to admin_post_path(latest_post) do %>
               <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: 'm-2' %>
             <% end %>
           </td>
-          <td style="width: 20%" class="p-0 align-middle">
+          <td style="width: 15%" class="py-0 px-1 align-middle text-center">
             <% if latest_post.is_draft == true && latest_post.user.is_deleted == true %>
               <p class="inactive_color mb-0 text-center">非公開<br />（退会済）</p>
             <% elsif latest_post.is_draft == true %>

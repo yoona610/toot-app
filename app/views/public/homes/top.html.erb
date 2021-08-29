@@ -4,6 +4,8 @@
     <div class="carousel-item active active1">
       <%= image_tag "happy.jpg", class: "d-block w-100" %>
       <p>ToOccupational</br>Therapist</p>
+      <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-flat-border btn-block" %></div>
+      <div class="guest_admin"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn-flat-border btn-block" %></div>
     </div>
     <div class="carousel-item active2">
       <%= image_tag "background.jpg", class: "d-block w-100" %>
@@ -19,8 +21,20 @@
     <span class="sr-only">Next</span>
   </a>
   </div>
-
-  <div class="d-flex flex-wrap mt-3" style="justify-content: center;">
+  <div class="container">
+    <p class="btn-sticky m-2 mt-3">POSTS</p>
+  </div>
+  <div class="d-flex flex-wrap" style="justify-content: center;">
     <%= render 'public/posts/index', latest_posts: @posts %>
+  </div>
+  <div class="container">
+    <p class="btn-sticky m-2">RANKING</p>
+    <div class="top">
+      <% @post_ranks.each do |post_rank| %>
+        <%= link_to post_path(post_rank) do %>
+          <%= attachment_image_tag post_rank, :post_image, :fill, 200, 200, format: 'jpeg', class: "image1 p-2" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </main>

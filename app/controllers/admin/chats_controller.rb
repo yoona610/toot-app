@@ -13,7 +13,7 @@ class Admin::ChatsController < ApplicationController
                 else
                   user_chat_room
                 end
-    @chats = chat_room.chats
+    @chats = chat_room.chats.includes(:user)
     @chat = Chat.new(chat_room_id: chat_room.id)
   end
 

@@ -16,39 +16,42 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "slick-theme";
+@import "slick";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "Noto Sans JP"!important;
 }
 
 footer {
   margin-top: auto;
 }
 
-p {
-  font-family: "Noto Sans JP"!important;
-}
+// p {
+//   font-family: "Noto Sans JP"!important;
+// }
 
-td {
-  font-family: "Noto Sans JP"!important;
-}
+// td {
+//   font-family: "Noto Sans JP"!important;
+// }
 
 a{
   text-decoration: none!important;
   color: #000;
-  font-family: "Noto Sans JP"!important;
+  // font-family: "Noto Sans JP"!important;
 }
 
-input, label{
-  font-family: "Noto Sans JP"!important;
-}
+// input, label{
+//   font-family: "Noto Sans JP"!important;
+// }
 
-h1, h3, h4 {
-  font-family: "Noto Sans JP"!important;
-}
+// h1, h3, h4 {
+//   font-family: "Noto Sans JP"!important;
+// }
 
 
 a:hover{
@@ -58,12 +61,12 @@ a:hover{
 // ヘッダー
 header .top{
   color: #000!important;
-  font-size: 3vw;
+  font-size: 110%;
 }
 
 header .text{
   color: #000!important;
-  font-size: 1.3vw;
+  font-size: 110%;
 }
 
 // フッター
@@ -215,3 +218,22 @@ span.disabled {
   }
 }
 
+.image1{
+  width : 70%;
+  margin: 0 auto;
+}
+
+.top{
+  overflow: hidden;
+}
+
+.slick-slide{
+  outline: none;
+}
+
+.dropdown-image{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #FFF;
+}

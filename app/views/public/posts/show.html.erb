@@ -67,7 +67,7 @@
 
     <div class="row mt-4">
       <div class="mx-auto">
-        <% if @post.written_by?(current_user) %>
+        <% if user_signed_in? && @post.written_by?(current_user) %>
           <%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn btn-md btn-outline-primary mb-4' %>
         <% end %>
       </div>
