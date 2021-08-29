@@ -50,7 +50,7 @@
             <li class="nav-item active m-2"><%= link_to "ABOUT", about_path, class: "nav-link text-center text" %></li>
             <li class="nav-item active m-2"><%= link_to "投稿一覧", posts_path, class: "nav-link text-center text" %></li>
             <li class="nav-item active m-2"><%= link_to "ログイン", new_user_session_path, class: "nav-link text-center text" %></li>
-            <li class="nav-item active m-2"><%= link_to "サインアップ", new_user_registration_path, class: "nav-link text-center text" %></li>
+            <li class="nav-item active m-2"><%= link_to "サインアップ", new_user_registration_path, class: "nav-link text-center text", 'data-tabolinks': false %></li>
           </ul>
         <% end %>
 
