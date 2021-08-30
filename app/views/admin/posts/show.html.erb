@@ -68,15 +68,6 @@
     </table>
   </div>
 
-  <div class="row mt-4">
-    <div class="mx-auto">
-      <% if @post.written_by?(current_user)%>
-        <u><%= link_to "投稿を編集", edit_post_path(@post.id), class: 'btn-flat-border mb-4' %></u>
-      <% end %>
-    </div>
-  </div>
-
-
   <div class="row">
     <div class="mb-5 mx-auto">
       <%= link_to "投稿を削除", "/admin/posts/#{@post.id}", method: :delete, data: {confirm: "本当に投稿を削除しますか？"}, class: 'btn-flat-border py-2' %>

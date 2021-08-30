@@ -11,8 +11,8 @@ class Public::UsersController < ApplicationController
     @saved_posts = Post.includes(:user).joins(:bookmarks).where(is_draft: false,
                                                                 'bookmarks.user_id': @user.id).order('bookmarks.created_at': 'DESC').page(params[:page]).per(8)
     @draft_posts = Post.where(user_id: @user, is_draft: true).order(created_at: 'DESC').page(params[:page]).per(8)
-    @following_users = @user.following_user.page(params[:page]).per(20)
-    @follower_users = @user.follower_user.page(params[:page]).per(20)
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def edit; end
@@ -42,12 +42,12 @@ class Public::UsersController < ApplicationController
 
   def follows
     user = User.find(params[:id])
-    @users = user.following_user.reverse_order
+    @users = user.following_user.page(params[:page]).per(20)
   end
 
   def followers
     user = User.find(params[:id])
-    @users = user.follower_user.reverse_order
+    @users = user.follower_user.page(params[:page]).per(20)
   end
 
   private
