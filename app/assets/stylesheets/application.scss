@@ -19,6 +19,7 @@
 @import "slick-theme";
 @import "slick";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
 body {
   display: flex;
@@ -31,28 +32,10 @@ footer {
   margin-top: auto;
 }
 
-// p {
-//   font-family: "Noto Sans JP"!important;
-// }
-
-// td {
-//   font-family: "Noto Sans JP"!important;
-// }
-
 a{
   text-decoration: none!important;
   color: #000;
-  // font-family: "Noto Sans JP"!important;
 }
-
-// input, label{
-//   font-family: "Noto Sans JP"!important;
-// }
-
-// h1, h3, h4 {
-//   font-family: "Noto Sans JP"!important;
-// }
-
 
 a:hover{
   color: #000;
@@ -62,6 +45,7 @@ a:hover{
 header .top{
   color: #000!important;
   font-size: 110%;
+  font-family: 'Playfair Display', serif!important;
 }
 
 header .text{
@@ -69,14 +53,23 @@ header .text{
   font-size: 110%;
 }
 
+.dropdown-image{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #FFF;
+}
+
 // フッター
 footer .top{
   color: #000;
   font-size: 30px;
+  font-family: 'Playfair Display', serif!important;
 }
 
 footer .text{
   color: #000;
+  font-family: 'Playfair Display', serif!important;
 }
 
 // 通知
@@ -204,20 +197,7 @@ span.disabled {
   border-style: none!important;
 }
 
-// レスポンシブ
-@media screen and (max-width: 992px) {
-  .n-circle {
-    position: absolute;
-    padding-left: 2.5rem;
-    padding-top: 2rem;
-    color: #efa04c;
-    text-align: left;
-  }
-  .mypage_l{
-    text-align: center!important;
-  }
-}
-
+// slickスライダー
 .image1{
   width : 70%;
   margin: 0 auto;
@@ -231,9 +211,17 @@ span.disabled {
   outline: none;
 }
 
-.dropdown-image{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #FFF;
+
+// レスポンシブ
+@media screen and (max-width: 992px) {
+  .n-circle {
+    position: absolute;
+    padding-left: 2.5rem;
+    padding-top: 2rem;
+    color: #efa04c;
+    text-align: left;
+  }
+  .mypage_l{
+    text-align: center!important;
+  }
 }

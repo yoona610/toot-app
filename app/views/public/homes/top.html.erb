@@ -4,8 +4,10 @@
     <div class="carousel-item active active1">
       <%= image_tag "happy.jpg", class: "d-block w-100" %>
       <p>ToOccupational</br>Therapist</p>
-      <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-flat-border btn-block" %></div>
-      <div class="guest_admin"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn-flat-border btn-block" %></div>
+      <% unless user_signed_in? %>
+        <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-guest p-3 m-5" %></div>
+        <div class="guest_admin"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn-guest p-3 m-5" %></div>
+      <% end %>
     </div>
     <div class="carousel-item active2">
       <%= image_tag "background.jpg", class: "d-block w-100" %>
