@@ -103,7 +103,7 @@ https://docs.google.com/spreadsheets/d/1C3rz6ptc5tMSv_yz4akpZeY4Ek7novYP/edit?us
  refile, mini_magick（画像投稿）
  RuboCop（静的コード解析）
  kaminari（ページネーション）
- cocoon ()
+ cocoon (フォームの追加削除)
  whenever（バッチ処理）
  bullet（N+1問題）
  dotenvrails（環境変数）
