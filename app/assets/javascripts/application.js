@@ -36,7 +36,7 @@ document.addEventListener("turbolinks:load", function() {
   $(function() {
     $('.top').slick({
         autoplay: true,
-        autoplaySpeed: 2500,
+        autoplaySpeed: 1500,
         slidesToShow: 3,
         centerMode: true,
         centerPadding: '80px',
@@ -72,5 +72,3 @@ document.addEventListener("turbolinks:load", function() {
     });
   })
 });
-
-// console.log(('.nested-fields').length)
