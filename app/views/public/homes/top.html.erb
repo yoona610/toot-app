@@ -5,13 +5,16 @@
       <%= image_tag "happy.jpg", class: "d-block w-100" %>
       <p>ToOccupational</br>Therapist</p>
       <% unless user_signed_in? %>
-        <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-guest p-3 m-5" %></div>
-        <div class="guest_admin"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn-guest p-3 m-5" %></div>
+        <div class="guest_signin d-flex">
+          <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-guest p-3 m-2" %></div>
+          <div class="guest_admin"><%= link_to "管理者ログイン", new_admin_session_path, class: "btn-guest p-3 m-2" %></div>
+        </div>
       <% end %>
     </div>
     <div class="carousel-item active2">
       <%= image_tag "background.jpg", class: "d-block w-100" %>
-      <p>作業療法士のための自助具投稿・共有アプリ</p>
+      <h1>TOOTとは</h1></br>
+      <p>作業療法士が、自助具を投稿・共有</br>検索できるアプリケーション</p>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselFadeExampleIndicators" role="button" data-slide="prev">
@@ -34,7 +37,7 @@
     <div class="top">
       <% @post_ranks.each do |post_rank| %>
         <%= link_to post_path(post_rank) do %>
-          <%= attachment_image_tag post_rank, :post_image, :fill, 200, 200, format: 'jpeg', class: "image1 p-2 m-2" %>
+          <%= attachment_image_tag post_rank, :post_image, :fill, 200, 200, format: 'jpeg', class: "image1 p-2" %>
         <% end %>
       <% end %>
     </div>

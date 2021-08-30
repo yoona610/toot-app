@@ -14,27 +14,29 @@
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-size: 5vw;
   font-family: 'Playfair Display', serif!important;
 }
 
 .guest_user{
   position: absolute;
-  top: 85%;
-  left: 30%;
-  height: 2vh;
+  top: 80%;
+  left: 20%;
+  height: 3vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .guest_admin{
   position: absolute;
-  top: 85%;
-  left: 50%;
-  height: 2vh;
+  top: 80%;
+  left: 20%;
+  height: 3vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,6 +68,19 @@
   position: relative;
 }
 
+.active2 h1{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin: 0;
+  padding: 0;
+  font-size: 3vw;
+  font-weight: 700;
+}
+
 .active2 p{
   position: absolute;
   top: 50%;
@@ -73,9 +88,10 @@
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-size: 2vw;
+  text-align: center;
 }
 
 // aboutページ
@@ -83,25 +99,30 @@
   position: relative;
 }
 
+.about h1 {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  font-size: 3.5vw;
+  font-weight: 700;
+}
+
 .about p {
   position: absolute;
-  top: 40%;
-  left: 60%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-  font-size: 3vw;
+  top: 45%;
+  left: 45%;
+  margin: 0;
+  padding: 0;
+  font-size: 2vw;
 }
 
 .about a {
   position: absolute;
-  top: 80%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
+  top: 70%;
+  left: 40%;
+  margin: 0;
   padding: 10px;
+  font-size: 2vw;
 }
