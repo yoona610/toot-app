@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   def checked_commentable?
     if commentable == false
       'コメント不可'
-    elsif commentable == true
+    else
       'コメント許可'
     end
   end
@@ -44,5 +44,4 @@ class Post < ApplicationRecord
   def self.create_post_ranks
     Post.find(Like.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
   end
-
 end

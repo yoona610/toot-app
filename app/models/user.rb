@@ -24,10 +24,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  def is_deleted_status
+  def deleted_status
     if is_deleted == true
       '退会済'
-    elsif is_deleted == false
+    else
       '有効'
     end
   end

@@ -7,7 +7,7 @@ class ChatRoom < ApplicationRecord
   def response_status_sring
     if response_status == true
       '解決済み'
-    elsif response_status == false
+    else
       '未解決'
     end
   end
@@ -15,8 +15,8 @@ class ChatRoom < ApplicationRecord
   private
 
   def update_activities
-    if response_status == true
-      Activity.create!(subject: self, user: user, action_type: :chatroom_admin, activity_status: :admin_activity)
-    end
+    return unless response_status == true
+
+    Activity.create!(subject: self, user: user, action_type: :chatroom_admin, activity_status: :admin_activity)
   end
 end

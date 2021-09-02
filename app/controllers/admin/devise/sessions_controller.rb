@@ -39,9 +39,9 @@ class Admin::Devise::SessionsController < Devise::SessionsController
 
   # 同一ユーザーによる重複ログインを制限
   def reset_status
-    if user_signed_in?
-      sign_out current_user
-      sign_out current_admin
-    end
+    return unless user_signed_in?
+
+    sign_out current_user
+    sign_out current_admin
   end
 end

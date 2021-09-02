@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20_210_812_022_614) do
   create_table 'comments', force: :cascade do |t|
     t.integer 'user_id'
     t.integer 'post_id'
+    t.float 'rate', default: 0.0
     t.text 'comment'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false

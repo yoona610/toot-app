@@ -22,13 +22,13 @@ class Activity < ApplicationRecord
       user_path(subject.follower)
     when :chated_me
       chats_path(subject.chat_room)
-    when :chated_admin
-      admin_chat_path(subject.chat_room)
     end
   end
 
   def redirect_path
     case action_type.to_sym
+    when :chated_admin
+      admin_chat_path(subject.chat_room)
     when :chatroom_admin
       admin_chat_path(subject)
     end

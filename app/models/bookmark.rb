@@ -9,9 +9,9 @@ class Bookmark < ApplicationRecord
   private
 
   def create_activities
-    unless post.user_id == current_user
-      Activity.create!(subject: self, user: post.user, action_type: :bookmarked_to_own_post,
-                       activity_status: :user_activity)
-    end
+    return if post.user_id == current_user
+
+    Activity.create!(subject: self, user: post.user, action_type: :bookmarked_to_own_post,
+                     activity_status: :user_activity)
   end
 end

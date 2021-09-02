@@ -1,6 +1,7 @@
-<div class="comment-count"><i class="fas fa-comment"></i> <%= comment_post.comments.count %></div>
+<div class="comment-count"><i class="fas fa-comment"></i> <%= comments.count %></div>
 <div>
-  <% comment_post.comments.each do |comment| %>
+  <% comments.each do |comment| %>
+    <div class="star-rate" data-score="<%= comment.rate %>"></div>
     <%= comment.user.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><br>
     <%= comment.comment %>
@@ -9,3 +10,14 @@
     <% end %><br>
   <% end %>
 </div>
+
+<script>
+  $('.star-rate').empty();
+  $('.star-rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

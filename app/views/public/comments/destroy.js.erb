@@ -1,3 +1,2 @@
-$("#comment_<%= @post.id %> .comment-count").html("コメント数: <%= @post.comments.count %>");
-$("#comment_<%= @post.id %>").html("<%= j(render 'public/comments/index', comment_post: @post, comment: @comment) %>");
-$("#comment_comment").val("");
+$("#comment_<%= @post.id %>").html("<%= j(render 'public/comments/index', comments: @comments) %>");
+$('.error_explanation').html('<%= j(render partial: 'layouts/error_messages', locals: { obj: @comment, column: :comment}) %>');

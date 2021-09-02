@@ -31,7 +31,7 @@
         <li class="nav-item">
           <a href="#tab2" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
         </li>
-        <% if @user.checked_user?(current_user) %>
+        <% if user_signed_in? && @user.checked_user?(current_user) %>
         <li class="nav-item">
           <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
         </li>
@@ -64,7 +64,7 @@
           </div>
           <div class="row">
             <div class="mx-auto mb-5">
-              <%= paginate @user_posts %>
+              <%= paginate @user_posts, :param_name => 'posts_page' %>
             </div>
           </div>
         <% end %>
@@ -91,7 +91,7 @@
           </div>
           <div class="row">
             <div class="mx-auto mb-5">
-              <%= paginate @liked_posts %>
+              <%= paginate @liked_posts, :param_name => 'liked_page' %>
             </div>
           </div>
         <% end %>
@@ -118,7 +118,7 @@
             </div>
             <div class="row">
               <div class="mx-auto mb-5">
-                <%= paginate @saved_posts %>
+                <%= paginate @saved_posts, :param_name => 'saved_page' %>
               </div>
             </div>
           <% end %>
@@ -144,7 +144,7 @@
             </table>
             <div class="row">
               <div class="mx-auto mb-5">
-                <%= paginate @draft_posts %>
+                <%= paginate @draft_posts, :param_name => 'draft_page' %>
               </div>
             </div>
           <% end %>
