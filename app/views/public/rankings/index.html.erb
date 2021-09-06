@@ -13,7 +13,7 @@
             NO. <%= i %>
           </div>
           <%= link_to post_path(post_rank) do %>
-            <%= attachment_image_tag post_rank, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+            <%= image_tag post_rank.post_image.url, class: 'post_img p-2' %>
           <% end %>
           <%= link_to post_rank.title, post_path(post_rank), class: 'card-text text-wrap' %>
           <p class='mr-1 mt-2 mb-2'>by

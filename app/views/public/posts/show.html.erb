@@ -18,7 +18,7 @@
     </div>
     <div class="row mt-2">
       <div class="mx-auto">
-        <%= attachment_image_tag @post, :post_image, :fill, 200, 200, format: 'jpeg' %>
+        <%= image_tag @post.post_image.url %>
       </div>
     </div>
     <div class="row mt-2">
