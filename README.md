@@ -56,7 +56,7 @@ https://docs.google.com/spreadsheets/d/1C3rz6ptc5tMSv_yz4akpZeY4Ek7novYP/edit?us
 ## 機能一覧
 ### ◆顧客側の機能
 | 機能 | 非ログイン時利用可否 | 無料会員利用可否 |
-|  | :: |:: |
+|:---|:---|:---|
 | 無料会員登録  | ○ | × |
 | ログイン | ○ | ○ |
 | ログアウト | × | ○ |
@@ -79,7 +79,7 @@ https://docs.google.com/spreadsheets/d/1C3rz6ptc5tMSv_yz4akpZeY4Ek7novYP/edit?us
 
 ### ◆管理者側の機能
 | 機能 | 非ログイン時利用可否 |
-|  |
+|:---|:---|
 | ログイン | ○ |
 | ログアウト | × |
 |投稿一覧表示 | × |
