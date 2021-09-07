@@ -11,6 +11,7 @@ class Public::UsersController < ApplicationController
     @saved_posts = Post.includes(:user).joins(:bookmarks).where(is_draft: false,
                                                                 'bookmarks.user_id': @user.id).order('bookmarks.created_at': 'DESC').page(params[:saved_page]).per(8)
     @draft_posts = Post.where(user_id: @user, is_draft: true).order(created_at: :desc).page(params[:draft_page]).per(8)
+    @browsed_posts = Post.joins(:histories).where(is_draft: false,'histories.user_id': @user.id).order('histories.created_at': 'DESC').page(params[:browsed_page]).per(8)
     @following_users = @user.following_user
     @follower_users = @user.follower_user
   end

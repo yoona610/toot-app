@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :histories, dependent: :destroy
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes|
                                                                                 attributes[:name].blank? && attributes[:shop_name].blank? && attributes[:price].blank?
                                                                               }
@@ -36,6 +37,17 @@ class Post < ApplicationRecord
     else
       'コメント許可'
     end
+  end
+
+  def browsing_history(user)
+    new_history = histories.new
+    new_history.user_id = user.id
+    # 同じ投稿をcurrent_userが閲覧している場合、古い履歴を削除
+    if user.histories.exists?(post_id: id)
+      visited_history = user.histories.find_by(post_id: id)
+      visited_history.destroy
+    end
+    new_history.save
   end
 
   def self.search_for(contents)

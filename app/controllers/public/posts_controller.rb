@@ -33,6 +33,9 @@ class Public::PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.includes(:user, :post).where(post_id: params[:id]).order(id: :desc)
+    if user_signed_in?
+      @post.browsing_history(current_user)
+    end
   end
 
   def edit; end

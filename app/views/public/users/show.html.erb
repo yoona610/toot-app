@@ -36,7 +36,10 @@
           <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
         </li>
         <li class="nav-item">
-          <a href="#tab4" class="nav-link tab-style" data-toggle="tab"><i class="far fa-hand-paper mr-1"></i>下書き</a>
+          <a href="#tab4" class="nav-link tab-style" data-toggle="tab"><i class="far fa-sticky-note mr-1"></i>下書き</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab5" class="nav-link tab-style" data-toggle="tab"><i class="fas fa-history mr-1"></i>閲覧履歴</a>
         </li>
         <% end %>
       </ul>
@@ -150,6 +153,33 @@
           <% end %>
         </div>
       <!--タブ：下書き保存した投稿-->
+
+      <!--タブ：閲覧履歴-->
+        <div id="tab5" class="tab-pane">
+          <% if @browsed_posts.empty? %>
+            <h6 class='mt-4'>閲覧した投稿はまだありません。</h6>
+          <% else %>
+            <div class="row">
+              <% @browsed_posts.each do |browsed_post| %>
+                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                  <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
+                    <%= link_to post_path(browsed_post) do %>
+                      <%= image_tag browsed_post.post_image.url, class: 'post_img p-2' %>
+                    <% end %>
+                    <%= link_to browsed_post.title, post_path(browsed_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
+                    <p class="mb-1 pt-1">by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="row">
+              <div class="mx-auto mb-5">
+                <%= paginate @browsed_posts, :param_name => 'browsed_page' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <!--タブ：閲覧履歴-->
 
       </div>
 
