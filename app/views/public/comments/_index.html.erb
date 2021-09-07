@@ -15,9 +15,11 @@
   $('.star-rate').empty();
   $('.star-rate').raty({
     readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
     score: function() {
       return $(this).attr('data-score');
-    },
-    path: '/assets/'
+    }
+    // path: '/assets/'
   });
 </script>
