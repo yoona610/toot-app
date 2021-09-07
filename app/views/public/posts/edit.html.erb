@@ -18,7 +18,7 @@
 
         <div class="mx-auto from-group mr-md-2 ml-md-5 bg-white shadow-sm">
           <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
-          <%= f.file_field :post_image, class: 'rounded-circle ml-3 mb-3' %>
+          <%= f.file_field :post_image, class: 'ml-3 mb-3' %>
           <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
         </div>
       </div>
