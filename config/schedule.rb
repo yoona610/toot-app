@@ -8,8 +8,9 @@ env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
 set :environment, :production
 
-every 1.days, at: '0:00 am' do
+every 1.minutes, at: '0:00 am' do
   runner 'Activity.where("created_at < ?", 30.days.ago.beginning_of_day).delete_all'
+  runner 'History.where("created_at < ?", 30.days.ago.beginning_of_day).delete_all'
 end
 #
 # set :output, "/path/to/my/cron_log.log"
