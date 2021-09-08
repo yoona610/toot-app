@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_042547) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
-    t.string "post_image"
+    t.string "post_image_id"
     t.text "introduction"
     t.boolean "commentable", default: false, null: false
     t.boolean "is_draft", default: false, null: false

@@ -6,7 +6,7 @@
           <td style="width: 5%" class="text-center">
             <%= latest_post.title %>
             <%= link_to admin_post_path(latest_post) do %>
-              <%= image_tag latest_post.post_image.url, class: "m-2" %>
+              <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: 'm-2' %>
             <% end %>
           </td>
           <td style="width: 70%" class="p-0 align-middle">

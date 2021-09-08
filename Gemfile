@@ -80,7 +80,3 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-
-gem 'carrierwave', '~> 2.0'
-gem 'mini_magick'
-gem 'fog-aws'

@@ -19,8 +19,8 @@
         <div class="col-md-12 col-lg-6 mt-3">
           <div class="form-group mx-auto mt-4 ml-md-2 bg-white shadow-sm pb-3">
             <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
-            <%= f.file_field :post_image, id: :user_img, class: "ml-3 mb-3" %>
-            <%= image_tag @post.post_image.url, id: :img_prev, size: '100x100' %>
+            <%= f.attachment_field :post_image, id: :user_img, class: "ml-3 mb-3" %>
+            <%#= image_tag @post.post_image.url, id: :img_prev, size: '100x100' %>
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
           </div>
         </div>
@@ -29,6 +29,7 @@
 
       <!--材料のフォームを追加・削除-->
       <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm">
+        <p class="btn-sticky m-2">INGREDIENT</p>
         <div id="ingredients">
           <%= f.fields_for :ingredients do |t| %>
             <%= render "public/posts/ingredient_fields", f: t %>
@@ -53,6 +54,7 @@
 
       <!--使い方のフォームを追加・削除-->
       <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm">
+        <p class="btn-sticky m-2">GUIDE</p>
         <div id="guides">
           <%= f.fields_for :guides do |t| %>
             <%= render "public/posts/guide_fields", f: t %>

@@ -13,7 +13,7 @@ class Post < ApplicationRecord
                                                                            attributes[:guide_image].blank? && attributes[:body].blank?
                                                                          }
 
-  mount_uploader :post_image, PostUploader
+  attachment :post_image
 
   with_options presence: true, on: :publicize do
     validates :title

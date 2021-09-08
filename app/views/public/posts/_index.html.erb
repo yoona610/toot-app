@@ -2,7 +2,7 @@
   <div class="card text-center m-3 mb-3 col-md-3 col-sm-5 shadow bg-white rounded">
     <p class="mt-2"><%= latest_post.title %></p>
     <%= link_to post_path(latest_post) do %>
-      <%= image_tag latest_post.post_image.url, class: 'm-2' %>
+      <%= attachment_image_tag latest_post, :post_image, :fill, 150, 150, format: 'jpeg', class: 'm-2' %>
     <% end %>
     <p class="caption"><i class="fas fa-comment"></i> <%= "#{latest_post.comments.count}" %></p>
     <p class='mr-1 mt-2 mb-2'>by
