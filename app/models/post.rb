@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :ingredients, dependent: :destroy
+  has_many :guides, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -8,6 +9,9 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: lambda { |attributes|
                                                                                 attributes[:name].blank? && attributes[:shop_name].blank? && attributes[:price].blank?
                                                                               }
+  accepts_nested_attributes_for :guides, allow_destroy: true, reject_if: lambda { |attributes|
+                                                                           attributes[:guide_image].blank? && attributes[:body].blank?
+                                                                         }
 
   mount_uploader :post_image, PostUploader
 

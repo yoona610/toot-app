@@ -11,6 +11,7 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @post_ingredients = @post.ingredients.build
+    @post_guides = @post.guides.build
   end
 
   def create
@@ -69,7 +70,8 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:user_id, :title, :introduction, :post_image, :commentable, :is_draft,
-                                 ingredients_attributes: %i[id name shop_name price _destroy])
+                                 ingredients_attributes: %i[id name shop_name price _destroy],
+                                 guides_attributes:[:id, :guide_image, :body, :_destroy])
   end
 
   def set_post

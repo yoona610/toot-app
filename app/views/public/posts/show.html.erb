@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <!--材料のフォーム追加・削除-->
+    <!--材料一覧-->
     <div class="row mt-4 text-center table-responsive">
       <table style="width: 60%" class="table table-borderless text-nowrap mx-auto">
         <thead class="border-bottom">
@@ -59,6 +59,28 @@
             <td style="width: 40%" class='pt-4'><%= ingredient.name %></td>
             <td style="width: 30%" class='pt-4'><%= ingredient.shop_name %></td>
             <td style="width: 30%" class='pt-4'><%= ingredient.price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!--使い方一覧-->
+    <div class="row mt-4 text-center table-responsive">
+      <table style="width: 60%" class="table table-borderless text-nowrap mx-auto">
+        <thead class="border-bottom">
+          <th class="d-flex pb-0 mb-2">
+            <h5 class="mb-0">使い方</h5>
+            <p class="mb-0 ml-1 pt-1"></p>
+          </th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @post.guides.each do |guide| %>
+          <tr>
+            <td style="width: 40%" class='pt-4'><%= guide.body %></td>
+            <td style="width: 30%" class='pt-4'><%= attachment_image_tag guide, :guide_image, :fill, 150, 150, size: '150x150' %></td>
           </tr>
           <% end %>
         </tbody>

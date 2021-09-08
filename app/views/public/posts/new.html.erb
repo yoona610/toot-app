@@ -19,7 +19,8 @@
         <div class="col-md-12 col-lg-6 mt-3">
           <div class="form-group mx-auto mt-4 ml-md-2 bg-white shadow-sm pb-3">
             <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
-            <%= f.file_field :post_image, class: "ml-3 mb-3" %>
+            <%= f.file_field :post_image, id: :user_img, class: "ml-3 mb-3" %>
+            <%= image_tag @post.post_image.url, id: :img_prev, size: '100x100' %>
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
           </div>
         </div>
@@ -36,9 +37,9 @@
 
         <div id="detail-association-insertion-point"></div>
 
-        <div class="col-10 mx-auto mt-2 add-ingredient">
+        <div class="col-10 mx-auto mt-2">
           <%= link_to_add_association "+フォームを追加", f, :ingredients,
-            class: "btn-flat-border text-center",
+            class: "btn-flat-border text-center add_ingredient",
             data: {
             association_insertion_node: '#detail-association-insertion-point',
             association_insertion_method: 'after'}
@@ -50,6 +51,30 @@
         <%= render 'layouts/error_messages', obj: @post, column: :"ingredients.price" %>
       </div>
 
+      <!--使い方のフォームを追加・削除-->
+      <div class="mx-auto mr-md-2 mt-3 mb-3 ml-md-5 p-3 bg-white shadow-sm">
+        <div id="guides">
+          <%= f.fields_for :guides do |t| %>
+            <%= render "public/posts/guide_fields", f: t %>
+          <% end %>
+        </div>
+
+        <div id="guide-association-insertion-point"></div>
+
+        <div class="col-10 mx-auto mt-2">
+          <%= link_to_add_association "+フォームを追加", f, :guides,
+            class: "btn-flat-border text-center add_guide",
+            data: {
+            association_insertion_node: '#guide-association-insertion-point',
+            association_insertion_method: 'after'}
+            %>
+        </div>
+        <%= render 'layouts/error_messages', obj: @post, column: :guides %>
+        <%= render 'layouts/error_messages', obj: @post, column: :"guides.guide_image" %>
+        <%= render 'layouts/error_messages', obj: @post, column: :"guides.body" %>
+      </div>
+
+      <!--コメント可否-->
       <group class="inline-radio">
         <div>
           <%= f.radio_button :commentable, :false %>

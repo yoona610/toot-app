@@ -22,6 +22,16 @@ class PostUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w(jpg jpeg gif png)
   end
+
+  def default_url
+    'no_image.jpg'
+  end
+
+  def filename
+    time = Time.now
+    name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+    name.downcase
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

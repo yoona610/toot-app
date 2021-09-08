@@ -23,17 +23,29 @@
 /*global $*/
 
 document.addEventListener("turbolinks:load", function() {
-  // フォームの追加・削除ボタン
-  $('.add_fields').on("click", function () {
-    if ($('.nested-fields').length == 5) {
-      $('.add_fields').hide();
+  // 材料フォームの追加・削除ボタン
+  $('.add_ingredient').on("click", function () {
+    if ($('.ingredient_fields').length == 2) {
+      $('.add_ingredient').hide();
     }
-    $('.remove_fields').on("click", function () {
-      if ($('.nested-fields').length < 7 ) {
-        $('.add_fields').show();
+    $('.remove_ingredient').on("click", function () {
+      if ($('.ingredient_fields').length < 4 ) {
+        $('.add_ingredient').show();
       }
     });
   });
+   // 使い方フォームの追加・削除ボタン
+  $('.add_guide').on("click", function () {
+    if ($('.guide_fields').length == 2) {
+      $('.add_guide').hide();
+    }
+    $('.remove_guide').on("click", function () {
+      if ($('.guide_fields').length < 4 ) {
+        $('.add_guide').show();
+      }
+    });
+  });
+  // slickスライダー
   $(function() {
     $('.top').slick({
         autoplay: true,
@@ -71,5 +83,20 @@ document.addEventListener("turbolinks:load", function() {
       }
     ]
     });
-  })
+  });
+  // 画像プレビュー
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#user_img").change(function(){
+        readURL(this);
+    });
+  });
 });
