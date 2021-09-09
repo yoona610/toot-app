@@ -12,7 +12,7 @@
           <div class="form-group mt-4 ml-md-2">
             <%= f.text_field :title, placeholder: "タイトル", size: '40', class: 'mb-3 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :title %>
-            <%= f.text_area :introduction, placeholder: "紹介", size: '45x4', class: 'p-2 form-control' %>
+            <%= f.text_area :introduction, placeholder: "紹介文", size: '45x4', class: 'p-2 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
           </div>
         </div>
@@ -20,8 +20,8 @@
         <div class="col-md-12 col-lg-6 mt-3">
           <div class="form-group mx-auto mt-4 ml-md-2 bg-white shadow-sm pb-3">
             <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
-            <%= f.attachment_field :post_image, id: :user_img, class: "ml-3 mb-3" %>
-            <%#= image_tag @post.post_image.url, id: :img_prev, size: '100x100' %>
+            <%= f.attachment_field :post_image, class: "ml-3 mb-3" %>
+            <img id="preview" style="width: 100px;">
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
           </div>
         </div>
@@ -37,15 +37,8 @@
           <% end %>
         </div>
 
-        <div id="detail-association-insertion-point"></div>
-
         <div class="col-10 mx-auto mt-2">
-          <%= link_to_add_association "+フォームを追加", f, :ingredients,
-            class: "btn-flat-border text-center add_ingredient",
-            data: {
-            association_insertion_node: '#detail-association-insertion-point',
-            association_insertion_method: 'after'}
-            %>
+          <%= link_to_add_association "+フォームを追加", f, :ingredients, class: "btn-flat-border text-center add_ingredient" %>
         </div>
         <%= render 'layouts/error_messages', obj: @post, column: :ingredients %>
         <%= render 'layouts/error_messages', obj: @post, column: :"ingredients.name" %>
@@ -62,15 +55,8 @@
           <% end %>
         </div>
 
-        <div id="guide-association-insertion-point"></div>
-
         <div class="col-10 mx-auto mt-2">
-          <%= link_to_add_association "+フォームを追加", f, :guides,
-            class: "btn-flat-border text-center add_guide",
-            data: {
-            association_insertion_node: '#guide-association-insertion-point',
-            association_insertion_method: 'after'}
-            %>
+          <%= link_to_add_association "+フォームを追加", f, :guides, class: "btn-flat-border text-center add_guide" %>
         </div>
         <%= render 'layouts/error_messages', obj: @post, column: :guides %>
         <%= render 'layouts/error_messages', obj: @post, column: :"guides.guide_image" %>
@@ -102,3 +88,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#post_post_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+</script>

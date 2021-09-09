@@ -1,8 +1,13 @@
 <div class="nested-fields guide_fields">
   <div class="row mx-auto unit mt-2">
-    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.attachment_field :guide_image, class: :guide_img %></div>
-    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><img class="preview" style="width: 100px;"></div>
-    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.text_field :body, class: "form-control", placeholder: "説明" %></div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+      <%= f.attachment_field :guide_image, class: :guide_img %>
+      <%= attachment_image_tag f.object, :guide_image, :fill, 150, 150, format: 'jpeg', class: 'ml-3 mb-3 guide_edit', size: '150x150' %>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+      <img class="preview" style="width: 100px;">
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2"><%= f.text_field :body, class: "form-control", placeholder: "説明文" %></div>
     <div class="col-lg-3 col-md-6 col-sm-12">
       <%= link_to_remove_association "削除", f, class: "btn-flat-border btn-block text-center remove_guide" %>
     </div>
@@ -32,3 +37,48 @@
     reader.readAsDataURL(e.target.files[0]);
   });
 </script>
+
+<!--<script>-->
+<!--  $(function() {-->
+<!--    function readURL(input) {-->
+<!--      if (input.files && input.files[0]) {-->
+<!--        var reader = new FileReader();-->
+<!--        reader.onload = function (e) {-->
+<!--          $('.guide_edit').eq(0).attr('src', e.target.result);-->
+<!--        }-->
+<!--        reader.readAsDataURL(input.files[0]);-->
+<!--      }-->
+<!--    }-->
+<!--    $(".guide_img").eq(0).change(function(){-->
+<!--      readURL(this);-->
+<!--    });-->
+<!--  });-->
+<!--  $(function() {-->
+<!--    function readURL(input) {-->
+<!--      if (input.files && input.files[0]) {-->
+<!--        var reader = new FileReader();-->
+<!--        reader.onload = function (e) {-->
+<!--          $('.guide_edit').eq(1).attr('src', e.target.result);-->
+<!--        }-->
+<!--        reader.readAsDataURL(input.files[0]);-->
+<!--      }-->
+<!--    }-->
+<!--    $(".guide_img").eq(1).change(function(){-->
+<!--      readURL(this);-->
+<!--    });-->
+<!--  });-->
+<!--  $(function() {-->
+<!--    function readURL(input) {-->
+<!--      if (input.files && input.files[0]) {-->
+<!--        var reader = new FileReader();-->
+<!--        reader.onload = function (e) {-->
+<!--          $('.guide_edit').eq(2).attr('src', e.target.result);-->
+<!--        }-->
+<!--        reader.readAsDataURL(input.files[0]);-->
+<!--      }-->
+<!--    }-->
+<!--    $(".guide_img").eq(2).change(function(){-->
+<!--      readURL(this);-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->

@@ -37,7 +37,7 @@
       <div id="like_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/likes/like-btn", like_post: @post %></div>
       <!--ブックマークボタン-->
       <div id="book_<%= @post.id %>" class="col-12 col-sm-4"><%= render "public/bookmarks/bookmark-btn", bookmark_post: @post %></div>
-      <!--コメント一覧-->
+      <!--コメント可否-->
       <div class="col-12 col-sm-4">
         <p><i class="fas fa-comment"></i> <%= @post.checked_commentable? %></p>
       </div>
