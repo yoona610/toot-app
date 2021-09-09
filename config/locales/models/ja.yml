@@ -3,13 +3,17 @@ ja:
     attributes:
       post:
         title: タイトル
-        post_image: 投稿写真
         introduction: 紹介文
+        post_image: 投稿写真
       post/ingredients:
         name: 材料名
         shop_name: 購入店
-        price: 値段
+        price: 購入価格
+      post/guides:
+        guide_image: ガイド写真
+        body: 説明文
       chat:
         message: メッセージ
       comment:
         comment: コメント
+        rate: 評価
