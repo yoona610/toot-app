@@ -1,7 +1,9 @@
 <!---------- 投稿編集フォーム -------------->
 <div class="post-form">
-  <div class="container mt-4 align-imtes-center">
+  <div class="container mt-4 align-items-center">
+    <% breadcrumb :post_edit, @post %>
     <p class="btn-sticky m-2">EDIT POST</p>
+
     <div class='mx-auto mb-5'>
 
     <%= form_with model: @post, local: true do |f| %>

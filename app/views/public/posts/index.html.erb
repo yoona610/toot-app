@@ -1,6 +1,7 @@
 <!--------- 投稿一覧画面 ------------>
 <div class="post-form">
   <div class="container">
+    <% breadcrumb :latest_posts %>
     <p class="btn-sticky m-2">POSTS</p>
     <div class="row">
       <% @latest_posts.each do |latest_post| %>

@@ -139,6 +139,9 @@ GEM
       sassc (>= 1.11)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    gretel (4.3.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -355,6 +358,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 5.13)
+  gretel
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 1.2.1)

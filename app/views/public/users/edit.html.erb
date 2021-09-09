@@ -1,5 +1,7 @@
 <!--マイページ（会員編集ページ）-->
 <div class="container">
+  <% breadcrumb :user_edit, @user %>
+  <p class="btn-sticky m-2">PROFILE EDITING</p>
   <div class="row ml-2">
     <%= form_with model: @user, local:true do |f| %>
       <div class="form-group mt-2">

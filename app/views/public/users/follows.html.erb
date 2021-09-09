@@ -1,4 +1,5 @@
 <div class="container">
+  <% breadcrumb :user_follow, @user %>
   <p class="btn-sticky m-2">FOLLOW</p>
   <table id="user-table" class="table table-borderless mt-4">
     <% @users.each do |user| %>
