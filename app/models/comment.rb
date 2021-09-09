@@ -4,10 +4,7 @@ class Comment < ApplicationRecord
   has_one :activity, as: :subject, dependent: :destroy
 
   validates :comment, presence: true, length: { maximum: 35 }
-  validates :rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 1
-  }, presence: true
+  validates :rate, presence: true
 
   attribute :current_user
   after_create_commit :create_activities

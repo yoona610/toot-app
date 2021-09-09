@@ -1,3 +1,5 @@
 $("#comment_<%= @post.id %>").html("<%= j(render 'public/comments/index', comments: @comments) %>");
-$('.error_explanation').html('<%= j(render partial: 'layouts/error_messages', locals: { obj: @comment, column: :comment}) %>');
+$('.error_explanation').html(
+  '<%= j(render partial: 'layouts/error_messages', locals: { obj: @comment, column: :comment}) %><%= j(render partial: 'layouts/error_messages', locals: { obj: @comment, column: :rate}) %>'
+);
 $("#comment_comment").val("");
