@@ -15,7 +15,7 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash' %>
-    <%= breadcrumbs separator: " &rsaquo; " %>
+    <%= breadcrumbs separator: " &rsaquo; ", id: "breadcrumbs-style" %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

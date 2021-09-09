@@ -20,12 +20,12 @@ crumb :user_unsubscribe do |user|
 end
 
 crumb :user_follow do |user|
-  link "#{user.name}さんのフォロー", follows_user_path(user)
+  link "フォロー", follows_user_path(user)
   parent :user_show, user
 end
 
 crumb :user_follower do |user|
-  link "#{user.name}さんのフォロワー", followers_user_path(user)
+  link "フォロワー", followers_user_path(user)
   parent :user_show, user
 end
 

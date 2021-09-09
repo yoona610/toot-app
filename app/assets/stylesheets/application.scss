@@ -211,6 +211,30 @@ span.disabled {
   outline: none;
 }
 
+// パンくずリスト
+#breadcrumbs-style {
+  margin: 0 0 10px 80px;
+  padding-right: 10px;
+  color: gray!important;
+}
+
+#breadcrumbs-style a {
+  color: gray;
+}
+
+#breadcrumbs-style a:first-child:before {
+  padding-right: 5px;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.1em;
+  font-weight: 900;
+  content: "\f015";
+}
+
+#breadcrumbs-style a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
 
 // レスポンシブ対応
 @media screen and (max-width: 992px) {
@@ -223,5 +247,12 @@ span.disabled {
   }
   .mypage_l{
     text-align: center!important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #breadcrumbs-style {
+  margin: 0 auto;
+  padding-right: 10px;
   }
 }
