@@ -6,13 +6,14 @@
   margin: 0 auto;
 }
 
-.form-width{
-  width: 60%;
+/* チャットエリア */
+.chat-area{
+  width: 70%;
   margin: 0 auto;
 }
 
-.chat-area{
-  width: 70%;
+.form-width{
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -103,9 +104,7 @@
   border-bottom: 10px solid transparent;
 }
 
-
-
-/* 既読エリア */
+/* 時刻 */
 .line__right .date {
   content: '';
   position: absolute;
@@ -116,4 +115,14 @@
   bottom: 0px;
   font-size: 80%;
   color: #000;
+}
+
+/* チャットエリアのレスポンシブ */
+@media screen and (max-width: 768px) {
+  .chat-area{
+    width: 100%;
+  }
+  .form-width{
+  width: 90%;
+  }
 }
