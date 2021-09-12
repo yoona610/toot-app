@@ -16,13 +16,16 @@
 
 <script>
   $('.guide_img').eq(0).on('change', function (e) {
+    $(this).next().remove();
     var reader = new FileReader();
     reader.onload = function (e) {
       $(".preview").eq(0).attr('src', e.target.result);
+      $(".guide_edit").eq(0).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
   $('.guide_img').eq(1).on('change', function (e) {
+    $(this).next().remove();
     var reader = new FileReader();
     reader.onload = function (e) {
       $(".preview").eq(1).attr('src', e.target.result);
@@ -30,6 +33,7 @@
     reader.readAsDataURL(e.target.files[0]);
   });
   $('.guide_img').eq(2).on('change', function (e) {
+    $(this).next().remove();
     var reader = new FileReader();
     reader.onload = function (e) {
       $(".preview").eq(2).attr('src', e.target.result);
@@ -37,48 +41,3 @@
     reader.readAsDataURL(e.target.files[0]);
   });
 </script>
-
-<!--<script>-->
-<!--  $(function() {-->
-<!--    function readURL(input) {-->
-<!--      if (input.files && input.files[0]) {-->
-<!--        var reader = new FileReader();-->
-<!--        reader.onload = function (e) {-->
-<!--          $('.guide_edit').eq(0).attr('src', e.target.result);-->
-<!--        }-->
-<!--        reader.readAsDataURL(input.files[0]);-->
-<!--      }-->
-<!--    }-->
-<!--    $(".guide_img").eq(0).change(function(){-->
-<!--      readURL(this);-->
-<!--    });-->
-<!--  });-->
-<!--  $(function() {-->
-<!--    function readURL(input) {-->
-<!--      if (input.files && input.files[0]) {-->
-<!--        var reader = new FileReader();-->
-<!--        reader.onload = function (e) {-->
-<!--          $('.guide_edit').eq(1).attr('src', e.target.result);-->
-<!--        }-->
-<!--        reader.readAsDataURL(input.files[0]);-->
-<!--      }-->
-<!--    }-->
-<!--    $(".guide_img").eq(1).change(function(){-->
-<!--      readURL(this);-->
-<!--    });-->
-<!--  });-->
-<!--  $(function() {-->
-<!--    function readURL(input) {-->
-<!--      if (input.files && input.files[0]) {-->
-<!--        var reader = new FileReader();-->
-<!--        reader.onload = function (e) {-->
-<!--          $('.guide_edit').eq(2).attr('src', e.target.result);-->
-<!--        }-->
-<!--        reader.readAsDataURL(input.files[0]);-->
-<!--      }-->
-<!--    }-->
-<!--    $(".guide_img").eq(2).change(function(){-->
-<!--      readURL(this);-->
-<!--    });-->
-<!--  });-->
-<!--</script>-->

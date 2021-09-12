@@ -23,6 +23,7 @@
           <%= attachment_image_tag @post, :post_image, :fill, 100, 100, format: 'jpeg', class: 'ml-3 mb-3', id: 'img_prev', style: "width: 100px;" %>
           <%= f.attachment_field :post_image, class: "ml-3 mb-3", id: "book_img" %>
           <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+          <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
         </div>
       </div>
 

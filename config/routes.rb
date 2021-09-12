@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
     get 'search' => 'searches#index', as: 'public_index'
+    get 'posts/search' => 'posts#search', as: 'category_index'
     get 'posts/rankings' => 'rankings#index'
 
     resources :users, only: %i[show edit update] do
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
     get 'search' => 'searches#index', as: 'index'
     resources :users, only: %i[index show edit update]
     resources :posts, only: %i[index show destroy]
+    resources :categories ,only: [:index, :create, :edit, :update, :destroy]
     resources :chats, only: %i[index show create]
     resources :activities, only: [:index] do
       patch :read, on: :member

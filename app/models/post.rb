@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :ingredients, dependent: :destroy
   has_many :guides, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -52,6 +53,10 @@ class Post < ApplicationRecord
       visited_history.destroy
     end
     new_history.save
+  end
+
+  def self.looks(ids)
+    where("category_id LIKE?","#{ids}")
   end
 
   def self.search_for(contents)

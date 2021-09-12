@@ -3,6 +3,19 @@
   <div class="container">
     <% breadcrumb :latest_posts %>
     <p class="btn-sticky m-2">POSTS</p>
+    <div class="dropdown mr-5">
+      <button class="btn dropdown-toggle product-dropdown font-weight-bold"
+      type="button" id="dropdownMenu1" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <span class='product-dropdown'>カテゴリー検索</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <%= link_to 'すべての投稿', posts_path, class: "dropdown-item" %>
+        <% @categories.each do |category| %>
+          <%= link_to category.name, category_index_path(word: category.name), class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
     <div class="row">
       <% @latest_posts.each do |latest_post| %>
         <div class="col-12 col-lg-3 col-md-4 col-sm-6">

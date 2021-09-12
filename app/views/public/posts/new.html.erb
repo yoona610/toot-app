@@ -5,7 +5,7 @@
     <p class="btn-sticky m-2">NEW POST</p>
     <div class='mx-auto mb-5'>
 
-    <%= form_with model: @post, local: true do |f| %>
+     <%= form_with model: @post, local: true do |f| %>
 
       <div class="row">
         <div class="col-md-12 col-lg-6 mt-3">
@@ -23,9 +23,11 @@
             <%= f.attachment_field :post_image, class: "ml-3 mb-3" %>
             <img id="preview" style="width: 100px;">
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+            <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
           </div>
         </div>
       </div>
+    </div>
 
 
       <!--材料のフォームを追加・削除-->

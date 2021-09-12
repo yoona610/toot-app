@@ -1,10 +1,18 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_post, except: %i[index new create]
-  before_action :set_correct_user, except: %i[index new create show]
+  before_action :set_post, except: %i[index new create search]
+  before_action :set_category, except: %i[show destroy]
+  before_action :set_correct_user, except: %i[index new create show search]
 
   def index
     @latest_posts = Post.where(is_draft: false).includes(:user).order(created_at: :desc).page(params[:page]).per(8)
+  end
+
+  def search
+    @word = params[:word]
+    @id = Category.find_by(name: @word).id
+    @latest_posts = Post.looks(@id).where(is_draft: false).includes(:user).order(created_at: :desc).page(params[:page]).per(8)
+    render :index
   end
 
   # 親モデル.子モデル.buildで子モデルのインスタンス作成
@@ -39,7 +47,8 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     # 下書きの更新（公開）の場合
@@ -69,7 +78,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :introduction, :post_image, :commentable, :is_draft,
+    params.require(:post).permit(:user_id, :category_id, :title, :introduction, :post_image, :commentable, :is_draft,
                                  ingredients_attributes: %i[id name shop_name price _destroy],
                                  guides_attributes:[:id, :guide_image, :body, :_destroy])
   end
@@ -80,6 +89,10 @@ class Public::PostsController < ApplicationController
 
   def set_correct_user
     redirect_to root_path unless @post.user == current_user
+  end
+
+  def set_category
+    @categories = Category.all
   end
 
   def save_post(post, message)
