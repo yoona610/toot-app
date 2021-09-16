@@ -20,9 +20,9 @@
       <tr>
         <td style="width:25%", class="font-weight-bold">会員ステータス</td>
           <% if @user.is_deleted == false %>
-            <td class="ml-3 active_color"><%= @user.is_deleted_status %></td>
+            <td class="ml-3 active_color"><%= @user.deleted_status %></td>
           <% else %>
-            <td class="ml-3 inactive_color"><%= @user.is_deleted_status %></td>
+            <td class="ml-3 inactive_color"><%= @user.deleted_status %></td>
           <% end %>
       </tr>
     </table>

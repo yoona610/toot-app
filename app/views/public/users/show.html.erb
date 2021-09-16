@@ -18,7 +18,9 @@
     <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
       <h3><%= link_to @user.name, user_path(@user.id) %></h3>
       <p class='pr-1'><%= @user.introduction %></p>
-      <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
+      <% if user_signed_in? && @user.checked_user?(current_user) %>
+        <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
+      <% end %>
     </div>
   </div>
 

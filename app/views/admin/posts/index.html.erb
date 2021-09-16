@@ -16,7 +16,7 @@
       <% @latest_posts.each do |latest_post| %>
         <tr class="mt-5 border-bottom">
           <td style="width: 10%" class='px-1 py-4 align-middle text-center'>
-            <%= link_to latest_post.title, admin_posts_path %>
+            <%= link_to latest_post.title, admin_post_path(latest_post) %>
           </td>
           <td style="width: 15%" class='text-center'>
             <%= link_to admin_post_path(latest_post) do %>

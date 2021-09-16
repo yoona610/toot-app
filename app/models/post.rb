@@ -32,8 +32,8 @@ class Post < ApplicationRecord
     bookmarks.where(user_id: user.id).exists?
   end
 
-  def written_by?(current_user)
-    user_id == current_user.id
+  def written_by?(target_user)
+    user_id == target_user.id
   end
 
   def checked_commentable?

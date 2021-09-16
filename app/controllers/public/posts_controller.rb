@@ -54,11 +54,11 @@ class Public::PostsController < ApplicationController
     # 下書きの更新（公開）の場合
     if params[:publicize_draft]
       @post.attributes = post_params.merge(is_draft: false)
-      save_post(@post, '投稿を更新しました！')
+      save_post(@post, '下書きを更新しました！')
     # 公開済み投稿の更新の場合
     elsif params[:update_post]
       @post.attributes = post_params
-      save_post(@post, '下書きを更新しました！')
+      save_post(@post, '投稿を更新しました！')
     # 下書きの更新（非公開）の場合
     elsif @post.update(post_params)
       redirect_to user_path(current_user), notice: '下書きを更新しました！'
