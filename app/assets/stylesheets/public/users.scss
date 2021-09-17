@@ -51,3 +51,8 @@
 table, td {
   border: 0px solid white!important;
 }
+
+// プロフィール画像のプレビュー
+#prev_img {
+  object-fit: cover;
+}

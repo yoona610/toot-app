@@ -29,6 +29,7 @@
     var reader = new FileReader();
     reader.onload = function (e) {
       $(".preview").eq(1).attr('src', e.target.result);
+      $(".guide_edit").eq(1).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
@@ -37,6 +38,7 @@
     var reader = new FileReader();
     reader.onload = function (e) {
       $(".preview").eq(2).attr('src', e.target.result);
+      $(".guide_edit").eq(2).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });

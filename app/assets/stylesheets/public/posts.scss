@@ -55,3 +55,19 @@
     color: #fff;
   }
 }
+
+#preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+#img_prev {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.guide_edit {
+  object-fit: cover;
+}
