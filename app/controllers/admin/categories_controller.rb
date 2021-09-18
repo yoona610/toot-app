@@ -7,10 +7,9 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path
-      flash[:notice] = "#{@category.name}が追加されました"
+      redirect_to admin_categories_path, notice: 'カテゴリが追加されました'
     else
-      render :index
+      render :index, alert: 'カテゴリを追加できませんでした'
     end
   end
 
@@ -23,17 +22,15 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path
-      flash[:notice] = "#{@category.name}が変更されました"
+      redirect_to admin_categories_path, notice: 'カテゴリが変更されました'
     else
-      render :edit
+      render :edit, alert: 'カテゴリを変更できませんでした'
     end
   end
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_path
-    flash[:notice] = "#{@category.name}が削除されました"
+    redirect_to admin_categories_path, notice: 'カテゴリが削除されました'
   end
 
   private

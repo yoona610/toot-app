@@ -8,6 +8,7 @@
         <%= form_with model: @category, url: "/admin/categories", local: true do |f| %>
           <%= f.label :name, "カテゴリ名" %>
           <%= f.text_field :name, placeholder: "投稿名", size: "40", class: 'mb-3 form-control' %>
+          <%= render 'layouts/error_messages', obj: @category, column: :name %>
           <%= f.submit "新規登録", class: "btn btn-sm btn-outline-secondary" %>
         <% end %>
       </div>

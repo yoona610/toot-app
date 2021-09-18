@@ -49,7 +49,7 @@
     </div>
   </div>
 
-      <div class="tab-content px-4 pb-4 border rounded-bottom">
+      <div class="tab-content px-4 pb-4">
 
       <!--タブ：会員本人の投稿-->
       <div id="tab1" class="tab-pane active">
@@ -59,11 +59,11 @@
           <div class="row">
             <% @user_posts.each do |user_post| %>
               <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white">
                   <%= link_to post_path(user_post) do %>
                     <%= attachment_image_tag user_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                   <% end %>
-                  <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap py-2' %>
+                  <%= link_to user_post.title, post_path(user_post), class: 'card-text font-weight-bold text-wrap' %>
                 </div>
               </div>
             <% end %>
@@ -85,12 +85,12 @@
           <div class="row">
             <% @liked_posts.each do |liked_post| %>
               <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white">
                   <%= link_to post_path(liked_post) do %>
                     <%= attachment_image_tag liked_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                   <% end %>
-                  <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
-                  <p class="mb-1 pt-1">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap ml-2' %></p>
+                  <%= link_to liked_post.title, post_path(liked_post), class: 'card-text text-wrap font-weight-bold' %>
+                  <p class="font-weight-bold">by<%= link_to liked_post.user.name, user_path(liked_post.user), class: 'card-text text-wrap' %></p>
                 </div>
               </div>
             <% end %>
@@ -112,12 +112,12 @@
             <div class="row">
               <% @saved_posts.each do |saved_post| %>
                 <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                  <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
+                  <div class="card text-center py-3 px-2 m-3 shadow bg-white">
                     <%= link_to post_path(saved_post) do %>
                       <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                     <% end %>
-                    <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
-                    <p class="mb-1 pt-1">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
+                    <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold' %>
+                    <p class="font-weight-bold">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap' %></p>
                   </div>
                 </div>
               <% end %>
@@ -136,7 +136,7 @@
           <% if @draft_posts.empty? %>
             <h6 class='mt-4'>下書き中の投稿はまだありません。</h6>
           <% else %>
-            <table style='width: 90%' class="table ml-2">
+            <table style='width: 90%' class="table table-borderless text-nowrap mx-auto">
               <% @draft_posts.each do |draft_post| %>
               <tr>
                 <td class="p-2 m-3">
@@ -165,12 +165,12 @@
             <div class="row">
               <% @browsed_posts.each do |browsed_post| %>
                 <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                  <div class="card text-center py-3 px-2 m-3 shadow bg-white rounded">
+                  <div class="card text-center py-3 px-2 m-3 shadow bg-white">
                     <%= link_to post_path(browsed_post) do %>
                       <%= attachment_image_tag browsed_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
                     <% end %>
-                    <%= link_to browsed_post.title, post_path(browsed_post), class: 'card-text text-wrap font-weight-bold pt-2' %>
-                    <p class="mb-1 pt-1">by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class: 'card-text text-wrap ml-2 pt-1' %></p>
+                    <%= link_to browsed_post.title, post_path(browsed_post), class: 'card-text text-wrap font-weight-bold' %>
+                    <p class="font-weight-bold">by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class: 'card-text text-wrap' %></p>
                   </div>
                 </div>
               <% end %>

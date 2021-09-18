@@ -17,3 +17,5 @@ ja:
       comment:
         comment: コメント
         rate: 評価
+      category:
+        name: カテゴリ名

@@ -1,22 +1,26 @@
 <div class="container">
   <% breadcrumb :user_follower, @user %>
   <p class="btn-sticky m-2">FOLLOWER</p>
-  <table id="user-table" class="table table-borderless mt-4">
-    <% @users.each do |user| %>
-      <tr>
-        <td class="text-center">
-          <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
-        </td>
-        <td class="align-middle">
-          <%= link_to user.name, user_path(user.id) %></br>
-          <%= user.introduction %>
-        </td>
-        <td class="align-middle">
-          <i class="fas fa-book-open"></i> <%= user.posts.count %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="row mt-4 text-center table-responsive">
+    <table id="user-table" class="table table-borderless text-nowrap mt-4">
+      <% @users.each do |user| %>
+        <tr>
+          <td class="text-center">
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <%= link_to user.name, user_path(user.id) %></br>
+            <%= user.introduction %>
+          </td>
+          <td class="align-middle">
+            <i class="fas fa-book-open"></i> <%= user.posts.count %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
   <%= paginate @users %>
 </div>
