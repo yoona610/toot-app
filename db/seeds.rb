@@ -12,6 +12,6 @@ User.find_or_create_by(id: 2) do |user|
 end
 
 Admin.find_or_create_by(id: 2) do |admin|
-  user.email = 'toot-admin@example.com'
-  user.password = 'toot1234'
+  admin.email = 'toot-admin@example.com'
+  admin.password = 'toot1234'
 end
