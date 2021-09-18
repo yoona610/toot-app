@@ -2,7 +2,7 @@
 <div class="post-form">
   <div class="container mt-4 align-items-center">
     <% breadcrumb :new_post %>
-    <p class="btn-sticky m-2">NEW POST</p>
+    <p class="btn-sticky m-2">POST</p>
     <div class='mx-auto mb-5'>
 
      <%= form_with model: @post, local: true do |f| %>
@@ -12,17 +12,18 @@
           <div class="form-group mt-4 ml-md-2">
             <%= f.text_field :title, placeholder: "タイトル", size: '40', class: 'mb-3 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :title %>
-            <%= f.text_area :introduction, placeholder: "紹介文", size: '45x4', class: 'p-2 form-control' %>
+            <%= f.text_area :introduction, placeholder: "紹介文", size: '40x4', class: 'form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
           </div>
         </div>
 
         <div class="col-md-12 col-lg-6 mt-3">
           <div class="form-group mx-auto mt-4 ml-md-2 bg-white shadow-sm pb-3">
-            <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i>写真をアップロード</h6>
+            <h6 class="mb-3"><i class="fas fa-camera mt-4 ml-4"></i> 写真をアップロード</h6>
             <%= f.attachment_field :post_image, class: "ml-3 mb-3" %>
-            <img id="preview">
+            <img id="preview" class="d-none">
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+            <h6 class="m-4">カテゴリーを選択</h6>
             <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
           </div>
         </div>
@@ -94,6 +95,7 @@
   $('#post_post_image').on('change', function (e) {
     var reader = new FileReader();
     reader.onload = function (e) {
+        $('#preview').removeClass('d-none');
         $("#preview").attr('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);

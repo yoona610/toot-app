@@ -1,24 +1,25 @@
 <!---------------- 管理者(会員編集) ------------------>
-  <div class="container mt-3">
+  <div class="container">
+    <p class="btn-sticky m-2">USER</p>
+    <h3 class="mx-auto text-center mb-3">会員ステータスの変更</h3>
 
-    <h3 class="jp-font-classic">会員ステータスの変更</h3>
     <%= form_with model: @user, url: admin_user_path(@user.id), method: :PATCH, local: true do |f| %>
-      <table style='width:75%' class="table mt-5">
+      <table style='width:80%' class="table table-borderless text-nowrap mx-auto">
         <tr>
-          <td style="width:25%" class="font-weight-bold">ユーザー名</td>
-          <td><%= @user.name %></td>
+          <td style="width:50%" class="font-weight-bold text-center">ユーザー名</td>
+          <td style="width:50%"><%= @user.name %></td>
         </tr>
         <tr>
-          <td style="width:25%" class="font-weight-bold">自己紹介</td>
-          <td><%= @user.introduction %></td>
+          <td style="width:50%" class="font-weight-bold text-center">自己紹介</td>
+          <td style="width:50%"><%= @user.introduction %></td>
         </tr>
         <tr>
-          <td style="width:25%" class="font-weight-bold">メールアドレス</td>
-          <td><%= @user.email %></td>
+          <td style="width:50%" class="font-weight-bold text-center">メールアドレス</td>
+          <td style="width:50%"><%= @user.email %></td>
         </tr>
         <tr class="form-group">
-          <td style="width:25%" class="font-weight-bold">会員ステータス</td>
-          <td>
+          <td style="width:50%" class="font-weight-bold text-center">会員ステータス</td>
+          <td style="width:50%">
             <%= f.radio_button :is_deleted, :false %>
             <%= f.label :is_deleted, "有効" %>
             <%= f.radio_button :is_deleted, :true %>
@@ -27,9 +28,11 @@
         </tr>
       </table>
 
-      <div class="d-flex mt-4 ml-2">
-        <%= f.submit '会員ステータスを変更', class: 'btn-flat-border py-0', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
-        <%= link_to "戻る", admin_user_path(@user.id), class: 'btn-flat-border ml-4' %>
+      <div class="row mt-4">
+        <div class="form-inline mx-auto">
+          <%= f.submit '変更', class: 'btn-flat-border', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
+          <%= link_to "戻る", admin_user_path(@user.id), class: 'btn-flat-border ml-4' %>
+        </div>
       </div>
     <% end %>
 

@@ -2,7 +2,7 @@
 <div class="post-form">
   <div class="container mt-4 align-items-center">
     <% breadcrumb :post_edit, @post %>
-    <p class="btn-sticky m-2">EDIT POST</p>
+    <p class="btn-sticky m-2">POST</p>
 
     <div class='mx-auto mb-5'>
 
@@ -13,7 +13,7 @@
           <div class="form-group mt-4 ml-md-2">
             <%= f.text_field :title, placeholder: "投稿名", size: "40", class: 'mb-3 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :title %>
-            <%= f.text_area :introduction, placeholder: "説明", size: "45 x 4", class: 'p-2 form-control' %>
+            <%= f.text_area :introduction, placeholder: "説明", size: "40 x 4", class: 'form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
           </div>
         </div>
@@ -23,6 +23,7 @@
           <%= attachment_image_tag @post, :post_image, :fill, 100, 100, format: 'jpeg', class: 'ml-3 mb-3', id: 'img_prev' %>
           <%= f.attachment_field :post_image, class: "ml-3 mb-3", id: "book_img" %>
           <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
+          <h6 class="m-4">カテゴリーを選択</h6>
           <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
         </div>
       </div>
@@ -62,6 +63,7 @@
         <%= render 'layouts/error_messages', obj: @post, column: :"guides.body" %>
       </div>
 
+      <!--コメント可否-->
       <div class="row">
         <div class="col-12">
           <group class="inline-radio">

@@ -16,7 +16,7 @@
             <%= chat.created_at.to_s(:datetime_jp) %>
           </td>
           <td class="col-lg-2 align-middle text-center">
-            <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
+            <%= link_to (attachment_image_tag chat.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg", size: '100x100', class: 'rounded-circle'), admin_user_path(chat.user.id) %>
           </td>
           <td class="col-lg-2 align-middle text-center">
             <%= link_to chat.user.name, admin_user_path(chat.user.id) %>
@@ -25,7 +25,7 @@
             <%= chat.chat_room.response_status_sring %>
           </td>
           <td class="col-lg-3 align-middle text-center">
-            <%= link_to "チャットへ", admin_chat_path(chat.user.id), class: 'btn-flat-border' %>
+            <%= link_to "CHAT", admin_chat_path(chat.user.id), class: 'btn btn-sm btn-outline-secondary' %>
           </td>
         </tr>
         <% end %>

@@ -3,11 +3,13 @@
   <div class="container">
     <% breadcrumb :post_show, @post %>
     <p class="btn-sticky m-2">POST DETAIL</p>
-    <div class="text-center">
-      <h2 class="px-3"><%= @post.title %></h2>
-    </div>
-    <div class="row">
-      <div class="mx-auto">
+
+    <div class="row bg-white shadow-sm mb-3">
+      <div class="col-12 m-2 text-center">
+        <h2><%= @post.title %></h2>
+      </div>
+      <div class="col-md-12 col-lg-6 mt-3 text-center">
+        <%= attachment_image_tag @post, :post_image, :fill, 200, 200, format: 'jpeg' %>
         <p>by
         <% if admin_signed_in? %>
           <%= link_to "#{@post.user.name}", admin_user_path(@post.user.id) %>
@@ -16,23 +18,14 @@
         <% end %>
         </p>
       </div>
-    </div>
-    <div class="row mt-2">
-      <div class="mx-auto">
-        <%= attachment_image_tag @post, :post_image, :fill, 200, 200, format: 'jpeg' %>
-      </div>
-    </div>
-    <div class="mx-auto">
-      <label class="field-size">カテゴリー</label>
-      <%= @post.category.name %>
-    </div>
-    <div class="row mt-2">
-      <div class="mx-auto">
+      <div class="col-md-12 col-lg-6 mt-3 text-center">
+        <h6 class="m-2">カテゴリー</h6>
+        <%= @post.category.name %>
+        <h6 class="m-2">作成日時</h6>
         <%= @post.created_at.to_s(:datetime_jp) %>
+        <h6 class="m-2">説明</h6>
+        <p class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
       </div>
-    </div>
-    <div class="row mt-4 mb-3">
-      <p class="mx-auto text-wrap text-center px-3"><%= @post.introduction %></p>
     </div>
 
 
@@ -61,9 +54,9 @@
         <tbody>
           <% @post.ingredients.each do |ingredient| %>
           <tr>
-            <td style="width: 40%" class='pt-4'><%= ingredient.name %></td>
-            <td style="width: 30%" class='pt-4'><%= ingredient.shop_name %></td>
-            <td style="width: 30%" class='pt-4'><%= ingredient.price %></td>
+            <td style="width: 40%" class='pt-4 align-middle text-center'><%= ingredient.name %></td>
+            <td style="width: 30%" class='pt-4 align-middle text-center'><%= ingredient.shop_name %></td>
+            <td style="width: 30%" class='pt-4 align-middle text-center'><%= ingredient.price %></td>
           </tr>
           <% end %>
         </tbody>
@@ -84,8 +77,8 @@
         <tbody>
           <% @post.guides.each do |guide| %>
           <tr>
-            <td style="width: 40%" class='pt-4'><%= guide.body %></td>
-            <td style="width: 30%" class='pt-4'><%= attachment_image_tag guide, :guide_image, :fill, 150, 150, size: '150x150' %></td>
+            <td style="width: 50%" class='pt-4 align-middle text-center'><%= attachment_image_tag guide, :guide_image, :fill, 150, 150, size: '150x150' %></td>
+            <td style="width: 50%" class='pt-4 align-middle text-center'><%= guide.body %></td>
           </tr>
           <% end %>
         </tbody>
@@ -113,8 +106,8 @@
               </div>
               <div class="mx-auto">
                 <%= f.text_area :comment, class: "form-control", placeholder: "コメントする" %>
-                <div id="star"></div>
-                <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center" %>
+                <div id="star" class="m-2"></div>
+                <%= f.submit "送信する", class: "btn btn-md btn-outline-primary text-center mb-2" %>
               </div>
             <% end %>
           <% end %>

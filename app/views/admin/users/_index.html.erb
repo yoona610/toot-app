@@ -1,23 +1,24 @@
-<div class="container">
-  <div class="row">
-    <table style="width: 95%" class="table table-borderless mx-auto">
-      <% users.each do |user| %>
-        <tr class="mt-5 border-bottom">
-          <td style="width: 5%" class='text-right'>
-            <%= link_to (attachment_image_tag user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg", size: '150x150', class: 'rounded-circle'), admin_user_path(user.id) %>
-          </td>
-          <td style="width: 15%" class='px-1 py-4 align-middle text-center'>
-            <%= link_to user.name, admin_user_path(user.id) %>
-          </td>
-          <td style="width: 8%" class="py-0 px-1 align-middle text-center">
-            <% if user.is_deleted == false %>
-              <p class="active_color mb-0"><%= user.is_deleted_status %></p>
-            <% else %>
-              <p class="inactive_color mb-0"><%= user.is_deleted_status %></p>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+<div class="row table-responsive">
+  <table style="width: 90%" class="table table-borderless text-nowrap mx-auto">
+    <% users.each do |user| %>
+      <tr class="mt-5 border-bottom">
+        <td style="width: 15%" class='text-right'>
+          <%= link_to (attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg", size: '100x100', class: 'rounded-circle'), admin_user_path(user.id) %>
+        </td>
+        <td style="width: 15%" class='align-middle text-center'>
+          <%= link_to user.name, admin_user_path(user.id) %>
+        </td>
+        <td style="width: 15%" class="align-middle text-center">
+          <% if user.is_deleted == false %>
+            <p class="active_color mb-0"><%= user.deleted_status %></p>
+          <% else %>
+            <p class="inactive_color mb-0"><%= user.deleted_status %></p>
+          <% end %>
+        </td>
+        <td style="width: 15%" class="align-middle text-center">
+          <%= link_to "CHAT", admin_chat_path(user), class: 'btn btn-sm btn-outline-secondary' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
