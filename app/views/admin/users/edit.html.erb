@@ -10,6 +10,12 @@
           <td style="width:50%"><%= @user.name %></td>
         </tr>
         <tr>
+          <td style="width:50%" class="font-weight-bold text-center align-middle">プロフィール画像</td>
+          <td style="width:50%">
+            <%= link_to (attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg", size: '100x100', class: 'rounded-circle'), admin_user_path(@user.id) %>
+          </td>
+        </tr>
+        <tr>
           <td style="width:50%" class="font-weight-bold text-center">自己紹介</td>
           <td style="width:50%"><%= @user.introduction %></td>
         </tr>
@@ -30,10 +36,9 @@
 
       <div class="row mt-4">
         <div class="form-inline mx-auto">
-          <%= f.submit '変更', class: 'btn-flat-border', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
-          <%= link_to "戻る", admin_user_path(@user.id), class: 'btn-flat-border ml-4' %>
+          <%= f.submit '変更', class: 'btn btn-md btn-outline-secondary', data: { confirm: "本当に#{@user.name}さんの会員ステータスを変更しますか？" } %>
+          <%= link_to "戻る", admin_user_path(@user.id), class: 'btn btn-md btn-outline-secondary ml-4' %>
         </div>
       </div>
     <% end %>
-
   </div>

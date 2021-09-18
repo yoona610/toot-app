@@ -4,14 +4,14 @@
       <%= f.attachment_field :guide_image, class: :guide_img %>
       <%= attachment_image_tag f.object, :guide_image, :fill, 100, 100, format: 'jpeg', class: 'm-3 guide_edit' %>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-2 text-center">
       <img class="preview d-none">
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
       <%= f.text_field :body, class: "form-control", placeholder: "説明文" %>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-12">
-      <%= link_to_remove_association "削除", f, class: "btn-flat-border btn-block text-center remove_guide" %>
+      <%= link_to_remove_association "削除", f, class: "btn-flat-border2 btn-block text-center remove_guide" %>
     </div>
   </div>
 </div>
@@ -23,7 +23,6 @@
     reader.onload = function (e) {
       $('.preview').eq(0).removeClass('d-none');
       $(".preview").eq(0).attr('src', e.target.result);
-      $(".guide_edit").eq(0).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
@@ -33,7 +32,6 @@
     reader.onload = function (e) {
       $('.preview').eq(1).removeClass('d-none');
       $(".preview").eq(1).attr('src', e.target.result);
-      $(".guide_edit").eq(1).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
@@ -43,7 +41,6 @@
     reader.onload = function (e) {
       $('.preview').eq(2).removeClass('d-none');
       $(".preview").eq(2).attr('src', e.target.result);
-      $(".guide_edit").eq(2).remove('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });

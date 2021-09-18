@@ -1,12 +1,13 @@
 // Place all the styles related to the public/chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// チャットエリア
 .add-chat-bubble{
   width: 50%;
   margin: 0 auto;
 }
 
-/* チャットエリア */
 .chat-area{
   width: 70%;
   margin: 0 auto;
@@ -17,7 +18,7 @@
   margin: 0 auto;
 }
 
-/* 相手の会話 */
+// 相手の会話
 .line__left {
     position: relative;
     display: block;
@@ -33,7 +34,7 @@
   color: #000;
 }
 
-/* コメントエリア */
+// コメントエリア
 .line__left .text {
   margin: 0;
   position: relative;
@@ -43,7 +44,7 @@
   margin-right: 80px;
 }
 
-/* 吹き出し */
+// 吹き出し
 .line__left .text::after {
   content: '';
   position: absolute;
@@ -57,7 +58,7 @@
   border-bottom: 10px solid transparent;
 }
 
-/* 既読エリア */
+// 既読エリア
 .line__left .date {
   content: '';
   position: absolute;
@@ -70,7 +71,7 @@
   color: #000;
 }
 
-/* 自分の会話 */
+// 自分の会話
 .line__right {
     position: relative;
     display: block;
@@ -81,7 +82,7 @@
     clear: both;
 }
 
-/* コメントエリア */
+// コメントエリア
 .line__right .text {
   padding: 10px;
   border-radius: 20px;
@@ -90,7 +91,7 @@
   margin-left: 80px;
 }
 
-/* 吹き出し */
+// 吹き出し
 .line__right .text::after {
   content: '';
   position: absolute;
@@ -104,7 +105,7 @@
   border-bottom: 10px solid transparent;
 }
 
-/* 時刻 */
+// 時刻
 .line__right .date {
   content: '';
   position: absolute;
@@ -115,6 +116,66 @@
   bottom: 0px;
   font-size: 80%;
   color: #000;
+}
+
+// 解決したボタン
+#response_button{
+  position: fixed;
+  right: 10%;
+  bottom: 10%;
+}
+
+.chat,
+a.chat,
+button.chat {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #0C4271;
+  border-radius: 0.5rem;
+}
+
+a.btn--circle {
+  width: 80px;
+  height: 80px;
+  padding: 20px 0 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #5FA4A6;
+  box-shadow: 0 7px 0 #0C4271;
+}
+
+a.btn--circle i {
+  font-size: 150%;
+}
+
+.fa-position-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: calc(50% - 0.5rem);
+}
+
+a.btn--circle:hover {
+  transform: translate(0, 4px);
+  color: #fff;
+  box-shadow: 0 3px 0 #0C4271;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 2rem;
+  color: #efa04c;
 }
 
 /* チャットエリアのレスポンシブ */

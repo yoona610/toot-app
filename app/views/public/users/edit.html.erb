@@ -30,26 +30,9 @@
 
         <div class="form-group pt-3 mt-3 mb-4">
           <%= f.submit '変更', class: 'btn-flat-border px-3' %>
-          <%= link_to "退会する", users_unsubscribe_path, class: 'btn-flat-border ml-4' %>
+          <%= link_to "退会する", users_unsubscribe_path, class: 'btn-flat-border2 ml-4' %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<script>
-  $(function() {
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#prev_img').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#user_img").change(function(){
-      readURL(this);
-    });
-  });
-</script>

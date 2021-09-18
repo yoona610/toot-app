@@ -1,3 +1,27 @@
 // Place all the styles related to the public/activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 通知機能
+.activity-width{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.activity_read{
+  background-color: #F2F3F4;
+}
+
+.border-line{
+  border: 0!important;
+  border-bottom: 1px solid #FFFFFF!important;
+}
+
+.border-line a{
+  text-decoration: none;
+  color: #000000;
+}
+
+.border-line a:hover{
+  color: #566A8B;
+}

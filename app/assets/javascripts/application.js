@@ -84,4 +84,43 @@ document.addEventListener("turbolinks:load", function() {
     ]
     });
   });
+  // プロフィール編集ページ/プレビュー
+  $(function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#prev_img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $("#user_img").change(function(){
+      readURL(this);
+    });
+  });
+  // 新規投稿ページ/プレビュー
+  $('#post_post_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $('#preview').removeClass('d-none');
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+  // 投稿編集ページ/プレビュー
+  $(function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $("#book_img").change(function(){
+      readURL(this);
+    });
+  });
 });

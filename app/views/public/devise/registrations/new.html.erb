@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="h3 mt-3 font-weight-normal">サインアップ</h1>
+  <h1 class="h3 mt-3 font-weight-normal">SIGN UP</h1>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.label :name, class: "sr-only" %><br />
@@ -10,6 +10,6 @@
     <%= f.password_field :password, placeholder: "パスワード", class: "form-control", autocomplete: "new-password" %>
     <%= f.label :password_confirmation, class: "sr-only" %>
     <%= f.password_field :password_confirmation, placeholder: "パスワード(確認用)", class: "form-control", autocomplete: "new-password" %><br />
-    <%= f.submit "サインアップ", class: "btn-lg btn-flat-border btn-block" %>
+    <%= f.submit "Sign up", class: "btn-lg btn-flat-border btn-block" %>
   <% end %>
 </div>

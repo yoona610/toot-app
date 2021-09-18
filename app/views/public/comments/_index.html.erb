@@ -6,7 +6,7 @@
     <%= comment.created_at.strftime('%Y/%m/%d') %><br>
     <%= comment.comment %>
     <% if comment.user == current_user %>
-      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn-flat-border2 m-2" %>
     <% end %><br>
   <% end %>
 </div>
@@ -20,6 +20,5 @@
     score: function() {
       return $(this).attr('data-score');
     }
-    // path: '/assets/'
   });
 </script>

@@ -1,11 +1,11 @@
 <% if activity.read == "unread" %>
-  <div class="activity_unread border">
+  <div class="activity_unread border-line">
     <%= link_to read_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
       <p class="m-0 p-3"><%= activity.subject.user.name %>があなたの投稿にコメントしました <%= date_format(activity.subject.created_at) %></p>
     <% end %>
   </div>
 <% else %>
-  <div class="activity_read border">
+  <div class="activity_read border-line">
     <%= link_to read_activity_path(activity), class: "list-group-item-light #{'read' if activity.read?}", method: :patch do %>
       <p class="m-0 p-3"><%= activity.subject.user.name %>があなたの投稿にコメントしました <%= date_format(activity.subject.created_at) %></p>
     <% end %>

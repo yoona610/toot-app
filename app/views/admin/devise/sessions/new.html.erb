@@ -1,11 +1,11 @@
 <div class="text-center">
-  <h1 class="h3 mt-3 font-weight-normal">サインイン</h1>
+  <h1 class="h3 mt-3 font-weight-normal">SIGN IN</h1>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
     <%= f.label :email, class: "sr-only" %><br />
     <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control", autofocus: true, autocomplete: "email" %>
     <%= f.label :password, class: "sr-only" %><br />
     <%= f.password_field :password, placeholder: "パスワード", class: "form-control", autocomplete: "current-password" %><br />
-    <%= f.submit "サインイン", class: "btn-lg btn-flat-border btn-block mb-3" %>
+    <%= f.submit "Sign in", class: "btn-lg btn-flat-border btn-block mb-3" %>
     <%= link_to "ゲストログイン（管理者）", admin_guest_sign_in_path, method: :post, class: "btn-lg btn-flat-border btn-block" %>
   <% end %>
 </div>

@@ -13,8 +13,8 @@
   padding: 0.5em 1em;
   text-decoration: none;
   background: #f7f7f7;
-  border-left: solid 6px #5682B8;/*左線*/
-  color: #5682B8;/*文字色*/
+  border-left: solid 6px #6097A0;/*左線*/
+  color: #6097A0;/*文字色*/
   font-weight: bold;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   font-family: 'Playfair Display', serif!important;
@@ -26,7 +26,7 @@
 }
 
 .btn-sticky:hover {
-  color: #5682B8;
+  color: #6097A0;
 }
 
 
@@ -35,15 +35,32 @@
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #2C43B0!important;
-  border: solid 2px #2C43B0;
+  color: #6097A0!important;
+  border: solid 2px #6097A0;
   border-radius: 3px;
   transition: .4s;
   background: none;
 }
 
 .btn-flat-border:hover {
-  background: #2C43B0;
+  background: #6097A0;
+  color: white!important;
+}
+
+// ボタン2
+.btn-flat-border2 {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #E59999!important;
+  border: solid 2px #E59999;
+  border-radius: 3px;
+  transition: .4s;
+  background: none;
+}
+
+.btn-flat-border2:hover {
+  background: #E59999;
   color: white!important;
 }
 
