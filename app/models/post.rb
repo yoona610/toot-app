@@ -56,7 +56,7 @@ class Post < ApplicationRecord
   end
 
   def self.looks(ids)
-    where("category_id LIKE?","#{ids}")
+    where('category_id LIKE?', ids.to_s)
   end
 
   def self.search_for(contents)

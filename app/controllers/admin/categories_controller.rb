@@ -19,15 +19,14 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)
-       redirect_to admin_categories_path
-       flash[:notice] = "#{@category.name}が変更されました"
+      redirect_to admin_categories_path
+      flash[:notice] = "#{@category.name}が変更されました"
     else
-       render :edit
+      render :edit
     end
   end
 
@@ -46,5 +45,4 @@ class Admin::CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-
 end

@@ -42,13 +42,10 @@ class Public::PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.includes(:user, :post).where(post_id: params[:id]).order(id: :desc)
-    if user_signed_in?
-      @post.browsing_history(current_user)
-    end
+    @post.browsing_history(current_user) if user_signed_in?
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     # 下書きの更新（公開）の場合
@@ -80,7 +77,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :category_id, :title, :introduction, :post_image, :commentable, :is_draft,
                                  ingredients_attributes: %i[id name shop_name price _destroy],
-                                 guides_attributes:[:id, :guide_image, :body, :_destroy])
+                                 guides_attributes: %i[id guide_image body _destroy])
   end
 
   def set_post

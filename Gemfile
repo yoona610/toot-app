@@ -56,9 +56,9 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -68,6 +68,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'cocoon'
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'gretel'
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.2.1'
 gem 'rails-i18n'
@@ -75,7 +76,6 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'refile-s3', github: 'refile/refile-s3', ref: '768d60d4e5e5e6a00a874767018ff8e31b1da3cd'
 gem 'whenever', require: false
-gem 'gretel'
 
 gem 'dotenv-rails'
 group :production do
@@ -83,6 +83,6 @@ group :production do
 end
 
 group :tools do
-  gem 'squasher', '>= 0.6.0'
   gem 'capistrano'
+  gem 'squasher', '>= 0.6.0'
 end

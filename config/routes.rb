@@ -58,7 +58,7 @@ Rails.application.routes.draw do
     get 'search' => 'searches#index', as: 'index'
     resources :users, only: %i[index show edit update]
     resources :posts, only: %i[index show destroy]
-    resources :categories ,only: [:index, :create, :edit, :update, :destroy]
+    resources :categories, only: %i[index create edit update destroy]
     resources :chats, only: %i[index show create]
     resources :activities, only: [:index] do
       patch :read, on: :member
