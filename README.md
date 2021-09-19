@@ -1,6 +1,8 @@
 # TOOT
 **すべての作業療法士が、より良いリハビリテーションを対象者に提供するため、自助具の材料や作り方を手軽に情報検索・共有できるサービスです。**
 
+![top4](https://user-images.githubusercontent.com/83486228/133912454-b58d0588-b38a-4b4d-a891-c47056a0cdfc.JPG)
+
 URL: https://tootapp.net
 
 【顧客アカウント】
@@ -143,7 +145,7 @@ URL: https://tootapp.net
 
 #### 使用ライブラリ
  - ログイン認証(devise)
- - 画像アップロード(refile)
+ - 画像アップロード(refile,refile-mini_magick)
  - S3への画像アップロード(refile-s3)
  - ページネーション(kaminari)
  - ネストしたフォームの処理(cocoon)
@@ -153,6 +155,7 @@ URL: https://tootapp.net
  - パンくずリスト(gretel)
  - 環境変数(dotenv-rails)
  - デバッグ(pry-byebug)
+ - エラーメッセージの日本語化(rails-i18n)
  - 単体テスト(RSpec, FactoryBot, Faker)
  - 統合テスト(Capybara)
  - マイグレーションファイル集約(squasher)
