@@ -82,8 +82,8 @@
       <div class="row mt-4">
         <div class="form-inline mx-auto">
           <% if @post.is_draft == true %>
-            <%= f.submit "投稿を公開", :name => 'publicize_draft', class: 'm-5 btn-flat-border' %>
-            <%= f.submit "下書きを更新", :name => 'update_draft', class: 'm-5 btn-flat-border' %>
+            <%= f.submit "投稿を公開", :name => 'publicize_draft', class: 'm-4 btn-flat-border' %>
+            <%= f.submit "下書きを更新", :name => 'update_draft', class: 'm-4 btn-flat-border' %>
           <% else %>
             <%= f.submit "投稿を更新", :name => 'update_post', class: 'm-5 btn-flat-border p-2' %>
           <% end %>
