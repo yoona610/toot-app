@@ -25,6 +25,8 @@
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
             <h6 class="m-4">カテゴリーを選択</h6>
             <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
+            <h6 class="m-4">カテゴリーがない場合は、お問い合わせまで</h6>
+            <%= link_to "お問い合わせ", chats_path, class: "mt-2 ml-4 btn-flat-border" %>
           </div>
         </div>
       </div>
