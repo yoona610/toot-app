@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-6 mt-3">
           <div class="form-group mt-4 ml-md-2">
-            <%= f.text_field :title, placeholder: "タイトル", size: '40', class: 'mb-3 form-control' %>
+            <%= f.text_field :title, placeholder: "タイトル", size: '40', class: 'mb-4 form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :title %>
             <%= f.text_area :introduction, placeholder: "紹介文", size: '40x4', class: 'form-control' %>
             <%= render 'layouts/error_messages', obj: @post, column: :introduction %>
@@ -23,9 +23,9 @@
             <%= f.attachment_field :post_image, class: "ml-3 mb-3" %>
             <img id="preview" class="d-none">
             <%= render 'layouts/error_messages', obj: @post, column: :post_image %>
-            <h6 class="m-4">カテゴリーを選択</h6>
+            <h6 class="ml-4 mt-2">カテゴリーを選択</h6>
             <%= f.collection_select(:category_id, @categories, :id, :name, {}, {class: "dropdown-item"}) %>
-            <h6 class="m-4">カテゴリーがない場合は、お問い合わせまで</h6>
+            <h6 class="ml-4 mt-2">カテゴリーがない場合は、お問い合わせまで</h6>
             <%= link_to "お問い合わせ", chats_path, class: "mt-2 ml-4 btn-flat-border" %>
           </div>
         </div>
