@@ -76,6 +76,7 @@ URL: https://tootapp.net
 
 ## 設計書
 ### ◆ER図
+![ER図 (2)](https://user-images.githubusercontent.com/83486228/134286841-6e881178-8552-4a48-825e-610fa3e89113.jpg)
 
 
 ### ◆テーブル定義書
