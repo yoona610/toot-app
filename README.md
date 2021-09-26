@@ -82,6 +82,11 @@ URL: https://tootapp.net
 ### ◆テーブル定義書
  https://docs.google.com/spreadsheets/d/1C3rz6ptc5tMSv_yz4akpZeY4Ek7novYP/edit?usp=sharing&ouid=116209756082326194131&rtpof=true&sd=true
 
+
+### ◆チャレンジ要素一覧
+ https://docs.google.com/spreadsheets/d/1VtoXgMQlgSZwaTbThwK5Vagr3zmwZMHoQPx5KEHCEUs/edit?usp=sharing
+
+
 ### ◆インフラ構成図
 ![AWS構成図 (1)](https://user-images.githubusercontent.com/83486228/133893647-183d6fe5-9872-429d-8308-e9b2ab3449ad.jpg)
 
