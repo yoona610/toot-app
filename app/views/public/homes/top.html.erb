@@ -3,7 +3,7 @@
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active active1">
       <%= image_tag "happy.jpg", class: "d-block w-100" %>
-      <p>ToOccupational</br>Therapist</p>
+      <p>ToOccupational<br/>Therapist</p>
       <% unless user_signed_in? %>
         <div class="guest_signin d-flex">
           <div class="guest_user"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn-guest p-3 m-2" %></div>
@@ -13,8 +13,8 @@
     </div>
     <div class="carousel-item active2">
       <%= image_tag "background.jpg", class: "d-block w-100" %>
-      <h1>TOOTとは</h1></br>
-      <p>作業療法士が、自助具を投稿・共有</br>検索できるアプリケーション</p>
+      <h1>TOOTとは</h1><br/>
+      <p>作業療法士が、自助具を投稿・共有<br/>検索できるアプリケーション</p>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselFadeExampleIndicators" role="button" data-slide="prev">
