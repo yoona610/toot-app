@@ -4,55 +4,55 @@
     <% breadcrumb :user_show, @user %>
     <p class="btn-sticky m-2">PROFILE</p>
 
-  <div class="row mt-5">
-    <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-      <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
-    </div>
+    <div class="row mt-5">
+      <div class="col-lg-4 col-md-12 col-sm-12 text-center">
+        <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpg', fallback: 'no_image.jpg', size: '150x150', class: 'rounded-circle' %>
+      </div>
 
-   <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
-     <div id= "follow_form_<%= @user.id %>" class="m-5">
-       <%= render "public/relationships/follow", user: @user %>
+     <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
+       <div id= "follow_form_<%= @user.id %>" class="m-5">
+         <%= render "public/relationships/follow", user: @user %>
+       </div>
      </div>
-   </div>
 
-    <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
-      <h3><%= link_to @user.name, user_path(@user.id) %></h3>
-      <p class='pr-1'><%= @user.introduction %></p>
-      <% if user_signed_in? && @user.checked_user?(current_user) %>
-        <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
-      <% end %>
-    </div>
-  </div>
-
-  <!--タブ-->
-  <div class="row mt-4 mb-5">
-    <div class="col-11 wrap mx-auto">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a href="#tab1" class="nav-link tab-style" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿</a>
-        </li>
-        <li class="nav-item">
-          <a href="#tab2" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
-        </li>
+      <div class="col-lg-4 col-md-12 col-sm-12 text-left mypage_l">
+        <h3><%= link_to @user.name, user_path(@user.id) %></h3>
+        <p class='pr-1'><%= @user.introduction %></p>
         <% if user_signed_in? && @user.checked_user?(current_user) %>
-        <li class="nav-item">
-          <a href="#tab3" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
-        </li>
-        <li class="nav-item">
-          <a href="#tab4" class="nav-link tab-style" data-toggle="tab"><i class="far fa-sticky-note mr-1"></i>下書き</a>
-        </li>
-        <li class="nav-item">
-          <a href="#tab5" class="nav-link tab-style" data-toggle="tab"><i class="fas fa-history mr-1"></i>閲覧履歴</a>
-        </li>
+          <p><%= link_to '編集する', edit_user_path(@user.id), class: "btn-flat-border" %></p>
         <% end %>
-      </ul>
+      </div>
     </div>
-  </div>
 
-      <div class="tab-content px-4 pb-4">
+    <!--タブ-->
+    <div class="row mt-4 mb-5">
+      <div class="col-11 wrap mx-auto">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a href="#mypost" class="nav-link tab-style" data-toggle="tab"><i class="far fa-edit mr-1"></i>投稿</a>
+          </li>
+          <li class="nav-item">
+            <a href="#likes" class="nav-link tab-style" data-toggle="tab"><i class="far fa-heart mr-1"></i>いいね</a>
+          </li>
+          <% if user_signed_in? && @user.checked_user?(current_user) %>
+          <li class="nav-item">
+            <a href="#bookmarks" class="nav-link tab-style" data-toggle="tab"><i class="far fa-bookmark mr-1"></i>ブックマーク</a>
+          </li>
+          <li class="nav-item">
+            <a href="#savepost" class="nav-link tab-style" data-toggle="tab"><i class="far fa-sticky-note mr-1"></i>下書き</a>
+          </li>
+          <li class="nav-item">
+            <a href="#histories" class="nav-link tab-style" data-toggle="tab"><i class="fas fa-history mr-1"></i>閲覧履歴</a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-content px-4 pb-4">
 
       <!--タブ：会員本人の投稿-->
-      <div id="tab1" class="tab-pane active">
+      <div id="mypost" class="tab-pane active">
         <% if @user_posts.empty? %>
           <h6 class='mt-4'>投稿はまだありません。</h6>
         <% else %>
@@ -75,10 +75,9 @@
           </div>
         <% end %>
       </div>
-      <!--タブ：会員本人の投稿-->
 
       <!--タブ：「いいね」した投稿-->
-      <div id="tab2" class="tab-pane">
+      <div id="likes" class="tab-pane">
         <% if @liked_posts.empty? %>
           <h6 class='mt-4'>いいね！した投稿はまだありません。</h6>
         <% else %>
@@ -102,89 +101,84 @@
           </div>
         <% end %>
       </div>
-      <!--タブ：「いいね」した投稿-->
 
       <!--タブ：保存（ブックマーク）した投稿-->
-        <div id="tab3" class="tab-pane">
-          <% if @saved_posts.empty? %>
-            <h6 class='mt-4'>ブックマーク保存した投稿はまだありません。</h6>
-          <% else %>
-            <div class="row">
-              <% @saved_posts.each do |saved_post| %>
-                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                  <div class="card text-center py-3 px-2 m-3 shadow bg-white">
-                    <%= link_to post_path(saved_post) do %>
-                      <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
-                    <% end %>
-                    <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold' %>
-                    <p class="font-weight-bold">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap' %></p>
-                  </div>
+      <div id="bookmarks" class="tab-pane">
+        <% if @saved_posts.empty? %>
+          <h6 class='mt-4'>ブックマーク保存した投稿はまだありません。</h6>
+        <% else %>
+          <div class="row">
+            <% @saved_posts.each do |saved_post| %>
+              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white">
+                  <%= link_to post_path(saved_post) do %>
+                    <%= attachment_image_tag saved_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+                  <% end %>
+                  <%= link_to saved_post.title, post_path(saved_post), class: 'card-text text-wrap font-weight-bold' %>
+                  <p class="font-weight-bold">by<%= link_to saved_post.user.name, user_path(saved_post.user), class: 'card-text text-wrap' %></p>
                 </div>
-              <% end %>
-            </div>
-            <div class="row">
-              <div class="mx-auto mb-5">
-                <%= paginate @saved_posts, :param_name => 'saved_page' %>
               </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="mx-auto mb-5">
+              <%= paginate @saved_posts, :param_name => 'saved_page' %>
             </div>
-          <% end %>
-        </div>
-      <!--タブ：保存（ブックマーク）した投稿-->
-
-      <!--タブ：下書き保存した投稿-->
-        <div id="tab4" class="tab-pane">
-          <% if @draft_posts.empty? %>
-            <h6 class='mt-4'>下書き中の投稿はまだありません。</h6>
-          <% else %>
-            <table style='width: 90%' class="table table-borderless text-nowrap mx-auto">
-              <% @draft_posts.each do |draft_post| %>
-              <tr>
-                <td class="p-2 m-3">
-                  <%= draft_post.title %>
-                </td>
-                <td class="p-2">
-                  <%= link_to "編集する", edit_post_path(draft_post), class: 'btn-flat-border' %>
-                </td>
-              </tr>
-              <% end %>
-            </table>
-            <div class="row">
-              <div class="mx-auto mb-5">
-                <%= paginate @draft_posts, :param_name => 'draft_page' %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <!--タブ：下書き保存した投稿-->
-
-      <!--タブ：閲覧履歴-->
-        <div id="tab5" class="tab-pane">
-          <% if @browsed_posts.empty? %>
-            <h6 class='mt-4'>閲覧した投稿はまだありません。</h6>
-          <% else %>
-            <div class="row">
-              <% @browsed_posts.each do |browsed_post| %>
-                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                  <div class="card text-center py-3 px-2 m-3 shadow bg-white">
-                    <%= link_to post_path(browsed_post) do %>
-                      <%= attachment_image_tag browsed_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
-                    <% end %>
-                    <%= link_to browsed_post.title, post_path(browsed_post), class: 'card-text text-wrap font-weight-bold' %>
-                    <p class="font-weight-bold">by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class: 'card-text text-wrap' %></p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-            <div class="row">
-              <div class="mx-auto mb-5">
-                <%= paginate @browsed_posts, :param_name => 'browsed_page' %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <!--タブ：閲覧履歴-->
-
+          </div>
+        <% end %>
       </div>
 
+      <!--タブ：下書き保存した投稿-->
+      <div id="savepost" class="tab-pane">
+        <% if @draft_posts.empty? %>
+          <h6 class='mt-4'>下書き中の投稿はまだありません。</h6>
+        <% else %>
+          <table style='width: 90%' class="table table-borderless text-nowrap mx-auto">
+            <% @draft_posts.each do |draft_post| %>
+            <tr>
+              <td class="p-2 m-3">
+                <%= draft_post.title %>
+              </td>
+              <td class="p-2">
+                <%= link_to "編集する", edit_post_path(draft_post), class: 'btn-flat-border' %>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+          <div class="row">
+            <div class="mx-auto mb-5">
+              <%= paginate @draft_posts, :param_name => 'draft_page' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!--タブ：閲覧履歴-->
+      <div id="#histories" class="tab-pane">
+        <% if @browsed_posts.empty? %>
+          <h6 class='mt-4'>閲覧した投稿はまだありません。</h6>
+        <% else %>
+          <div class="row">
+            <% @browsed_posts.each do |browsed_post| %>
+              <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                <div class="card text-center py-3 px-2 m-3 shadow bg-white">
+                  <%= link_to post_path(browsed_post) do %>
+                    <%= attachment_image_tag browsed_post, :post_image, :fill, 150, 150, format: 'jpeg', class: "post_img p-2" %>
+                  <% end %>
+                  <%= link_to browsed_post.title, post_path(browsed_post), class: 'card-text text-wrap font-weight-bold' %>
+                  <p class="font-weight-bold">by<%= link_to browsed_post.user.name, user_path(browsed_post.user), class: 'card-text text-wrap' %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="mx-auto mb-5">
+              <%= paginate @browsed_posts, :param_name => 'browsed_page' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>

@@ -9,9 +9,8 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @word = params[:word]
-    @id = Category.find_by(name: @word).id
-    @latest_posts = Post.looks(@id).where(is_draft: false).includes(:user).order(created_at: :desc).page(params[:page]).per(8)
+    id = Category.find_by(name: params[:word]).id
+    @latest_posts = Post.looks(id).where(is_draft: false).includes(:user).order(created_at: :desc).page(params[:page]).per(8)
     render :index
   end
 
