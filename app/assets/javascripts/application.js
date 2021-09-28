@@ -49,7 +49,7 @@ document.addEventListener("turbolinks:load", function() {
   $(function() {
     $('.top').slick({
         autoplay: true,
-        autoplaySpeed: 1500,
+        autoplaySpeed: 20000,
         slidesToShow: 3,
         centerMode: true,
         centerPadding: '80px',
